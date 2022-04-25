@@ -1,8 +1,14 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
+import NextProgressbar from 'nextjs-progressbar';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+function App({ Component, pageProps }: AppProps) {
+	return (
+		<>
+			<NextProgressbar color='#2563eb' />
+			<Component {...pageProps} />
+		</>
+	);
 }
 
-export default MyApp
+export default App;
