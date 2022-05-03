@@ -4,9 +4,10 @@ const HTTP_STATUS = {
 	UN_AUTHORIZED: 401,
 	OK: 200,
 };
+const isDev = false;
 
 const request = axios.create({
-	baseURL: 'http://localhost:9527',
+	baseURL: isDev ? 'http://localhost:9527' : 'https://www.omazio.com/api',
 });
 
 request.interceptors.request.use((config) => {
