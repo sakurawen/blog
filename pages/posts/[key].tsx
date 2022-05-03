@@ -29,6 +29,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 			props: {
 				data: ret.data,
 			},
+      revalidate: 10,
 		};
 	} catch {
 		return {
@@ -36,7 +37,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 			props: {
 				data: null,
 			},
-			revalidate: 10,
 		};
 	}
 };
