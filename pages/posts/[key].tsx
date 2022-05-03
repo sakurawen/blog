@@ -18,7 +18,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	return {
 		paths: keys,
 		fallback: false,
-    revalidate:10,
 	};
 };
 
@@ -37,6 +36,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 			props: {
 				data: null,
 			},
+			revalidate: 10,
 		};
 	}
 };
