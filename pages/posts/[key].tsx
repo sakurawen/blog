@@ -17,7 +17,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	}));
 	return {
 		paths: keys,
-		fallback: false,
+		fallback: 'blocking',
 	};
 };
 
@@ -29,7 +29,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 			props: {
 				data: ret.data,
 			},
-      revalidate: 10,
+			revalidate: 10,
 		};
 	} catch {
 		return {
