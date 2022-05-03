@@ -7,7 +7,7 @@ const HTTP_STATUS = {
 const isDev = false;
 
 const request = axios.create({
-	baseURL: isDev ? 'http://localhost:9527' : 'https://www.omazio.com/api',
+	baseURL: isDev ? 'http://localhost:9527' : 'https://api.omazio.com/v1',
 });
 
 request.interceptors.request.use((config) => {
