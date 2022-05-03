@@ -21,37 +21,37 @@ const overrides: MarkdownToJSX.Overrides | undefined = {
 	},
 	h1: {
 		props: {
-			className: 'text-3xl font-bold',
+			className: 'text-3xl text-black mt-6',
 		},
 	},
 	h2: {
 		props: {
-			className: 'text-2xl font-bold',
+			className: 'text-2xl text-black mt-6',
 		},
 	},
 	h3: {
 		props: {
-			className: 'text-xl font-bold',
+			className: 'text-xl text-black mt-6',
 		},
 	},
 	h4: {
 		props: {
-			className: 'text-lg font-bold',
+			className: 'text-lg text-black mt-6',
 		},
 	},
 	h5: {
 		props: {
-			className: 'text-base font-bold',
+			className: 'text-base font-bold text-black mt-6',
 		},
 	},
 	h6: {
 		props: {
-			className: 'text-sm font-bold',
+			className: 'text-sm font-bold text-black mt-6',
 		},
 	},
 	p: {
 		props: {
-			className: 'text-base',
+			className: 'text-base leading-7',
 		},
 	},
 	a: {
@@ -79,7 +79,7 @@ const overrides: MarkdownToJSX.Overrides | undefined = {
 	},
 	img: {
 		props: {
-			className: 'rounded shadow-lg ',
+			className: 'rounded-md shadow-lg my-4',
 		},
 	},
 	blockquote: {

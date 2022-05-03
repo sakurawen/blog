@@ -9,7 +9,7 @@ const Bilibili: React.FC<{ bv: string }> = (props) => {
 		<iframe
 			src={`//player.bilibili.com/player.html?bvid=${bv}&danmaku=0`}
 			scrolling='no'
-			className='aspect-video w-full'
+			className='aspect-video my-4 w-full'
 			title='biliVideo'
 			frameBorder='no'
 			allowFullScreen={true}

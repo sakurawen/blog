@@ -9,6 +9,7 @@ const NeteaseMuisc: React.FC<{ aid: string; type: number }> = ({
 			frameBorder='no'
 			marginWidth={0}
 			marginHeight={0}
+      className="my-4"
 			width='100%'
 			height='86'
 			src={`//music.163.com/outchain/player?type=${type}&id=${aid}&auto=0&height=66`}
