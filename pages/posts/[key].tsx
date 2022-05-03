@@ -18,6 +18,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	return {
 		paths: keys,
 		fallback: false,
+    revalidate:10,
 	};
 };
 
