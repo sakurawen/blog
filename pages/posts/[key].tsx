@@ -57,27 +57,13 @@ const Posts: NextPage<{ data: Posts }> = ({ data }) => {
 				<title>{data.title}</title>
 			</Head>
 			<span
-				className='text-sm group hover:bg-gray-100  text-black transition p-1  rounded mb-6 inline-block cursor-pointer'
+				className='text-base group font-bold hover:bg-gray-100  text-black transition p-1  rounded mb-8 inline-block cursor-pointer'
 				onClick={goBack}
 			>
-				<svg
-					xmlns='http://www.w3.org/2000/svg'
-					className='h-5 w-5 inline-block mr-1'
-					fill='none'
-					viewBox='0 0 24 24'
-					stroke='currentColor'
-					strokeWidth={2}
-				>
-					<path
-						strokeLinecap='round'
-						strokeLinejoin='round'
-						d='M11 17l-5-5m0 0l5-5m-5 5h12'
-					/>
-				</svg>
 				wen&apos;s blog
 			</span>
-			<h1 className='text-4xl leading-sung'>{data.title}</h1>
-			<p className='my-6 text-sm text-gray-500'>
+			<h1 className='text-4xl font-bold leading-sung'>{data.title}</h1>
+			<p className='mt-4 mb-8 text-sm text-gray-500'>
 				{dayjs(data.create_time).format('YYYY / MM / DD')}
 			</p>
 			<div className='mb-12'>

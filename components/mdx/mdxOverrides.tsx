@@ -21,32 +21,32 @@ const overrides: MarkdownToJSX.Overrides | undefined = {
 	},
 	h1: {
 		props: {
-			className: 'text-3xl text-black mt-6',
+			className: 'text-3xl text-black !mt-8 font-bold',
 		},
 	},
 	h2: {
 		props: {
-			className: 'text-2xl text-black mt-6',
+			className: 'text-2xl text-black !mt-8 font-bold',
 		},
 	},
 	h3: {
 		props: {
-			className: 'text-xl text-black mt-6',
+			className: 'text-xl text-black !mt-8 font-bold',
 		},
 	},
 	h4: {
 		props: {
-			className: 'text-lg text-black mt-6',
+			className: 'text-lg text-black !mt-8 font-bold',
 		},
 	},
 	h5: {
 		props: {
-			className: 'text-base font-bold text-black mt-6',
+			className: 'text-base font-bold text-black !mt-8 font-bold',
 		},
 	},
 	h6: {
 		props: {
-			className: 'text-sm font-bold text-black mt-6',
+			className: 'text-sm font-bold text-black !mt-8 font-bold',
 		},
 	},
 	p: {
