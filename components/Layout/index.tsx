@@ -3,7 +3,7 @@ import type { FC } from 'react';
 const Layout: FC<{ children: React.ReactNode }> = (props) => {
 	return (
 		<div className='min-h-screen bg-white transition-colors'>
-			<div className='max-w-2xl mx-auto sm:pt-24 pt-12 px-2'>{props.children}</div>
+			<div className='max-w-2xl mx-auto sm:pt-24 pt-12 px-4'>{props.children}</div>
 		</div>
 	);
 };
