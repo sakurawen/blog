@@ -79,7 +79,7 @@ const overrides: MarkdownToJSX.Overrides | undefined = {
 	},
 	img: {
 		props: {
-			className: 'rounded-md shadow-lg my-4',
+			className: 'rounded-md shadow-lg my-6 mx-auto',
 		},
 	},
 	blockquote: {
