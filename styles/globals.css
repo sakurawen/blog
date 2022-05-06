@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-	@apply selection:bg-blue-200 selection:text-blue-600;
+	@apply selection:bg-blue-300/50 selection:text-blue-600;
 }
 
 article {

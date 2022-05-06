@@ -59,7 +59,7 @@ const overrides: MarkdownToJSX.Overrides | undefined = {
 			target: '_blank',
 			rel: 'noreferrer',
 			className:
-				'relative after:block after:absolute mx-0.5 px-0.5 after:block after:h-1/4 after:w-full after:-z-10 after:bottom-0 after:left-0 after:bg-gray-300',
+				'relative z-10 inline-block after:block after:absolute mx-0.5 px-0.5 after:block after:h-2 after:w-full after:-z-10 after:bottom-1 after:left-0 after:bg-blue-200',
 		},
 	},
 	ul: {
@@ -69,22 +69,22 @@ const overrides: MarkdownToJSX.Overrides | undefined = {
 	},
 	ol: {
 		props: {
-			className: 'space-y-1.5 pl-4 list-decimal',
+			className: 'space-y-1.5 pl-4 marker:text-blue-300 list-decimal',
 		},
 	},
 	li: {
 		props: {
-			className: 'text-sm  list-inside',
+			className: 'text-sm  marker:text-blue-300 list-inside',
 		},
 	},
 	img: {
 		props: {
-			className: 'rounded-md shadow-lg my-6 mx-auto',
+			className: 'rounded-md  shadow-lg my-6 mx-auto',
 		},
 	},
 	blockquote: {
 		props: {
-			className: 'border-l-4 border-gray-900 pl-4 space-y-2 bg-gray-100 py-2',
+			className: 'border-l-4 border-blue-500 pl-4 space-y-2 bg-blue-100 py-2',
 		},
 	},
 	code: {

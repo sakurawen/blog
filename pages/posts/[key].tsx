@@ -57,7 +57,7 @@ const Posts: NextPage<{ data: Posts }> = ({ data }) => {
 				<title>{data.title}</title>
 			</Head>
 			<span
-				className='text-base group font-bold hover:bg-gray-100  text-black transition p-1  rounded mb-8 inline-block cursor-pointer'
+				className='text-base  group font-bold hover:bg-gray-100  text-black transition p-1  rounded mb-8 inline-block cursor-pointer'
 				onClick={goBack}
 			>
 				wen&apos;s blog
