@@ -8,7 +8,7 @@ const Header = () => {
 				<br />
 				<span
 				
-					className='header-text text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 via-blue-400 to-sky-400 '
+					className='text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 via-blue-400 to-sky-400 sky-blur'
 				>
 					一片天空
 				</span>
