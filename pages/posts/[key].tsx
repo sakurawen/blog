@@ -62,7 +62,7 @@ const Posts: NextPage<{ data: Posts }> = ({ data }) => {
 			>
 				wen&apos;s blog
 			</span>
-			<h1 className='text-4xl font-bold leading-sung'>{data.title}</h1>
+			<h1 className='text-4xl font-bold  leading-sung'>{data.title}</h1>
 			<p className='mt-4 mb-8 text-sm text-gray-500'>
 				{dayjs(data.create_time).format('YYYY / MM / DD')}
 			</p>

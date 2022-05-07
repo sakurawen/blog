@@ -3,12 +3,10 @@ import Link from 'next/link';
 const Header = () => {
 	return (
 		<div>
-			<h1 className='text-6xl my-6 font-bold leading-normal text-gray-800 '>
+			<h1 className='text-6xl my-6 font-extrabold leading-normal text-gray-800 '>
 				井底之蛙的
 				<br />
-				<span
-					className='text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 via-blue-400 to-sky-400 sky-blur'
-				>
+				<span className='text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 via-blue-400 to-sky-400 sky-blur'>
 					一片天空
 				</span>
 			</h1>

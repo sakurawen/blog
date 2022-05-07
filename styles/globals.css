@@ -12,7 +12,7 @@ article {
 
 
 .sky-blur {
-	@apply relative after:block after:blur-2xl after:-z-10 z-0 after:scale-125 after:absolute after:top-0 after:left-24 after:whitespace-nowrap  after:bg-clip-text after:bg-gradient-to-tr after:from-lime-600 after:via-blue-400/80 after:to-sky-300;
+	@apply relative after:block after:blur-2xl after:-z-10 z-0 after:scale-125 after:absolute after:top-0 after:left-0 after:whitespace-nowrap  after:bg-clip-text after:bg-gradient-to-tr after:from-blue-900 after:via-blue-400/60 after:to-sky-300/60;
 }
 
 .sky-blur::after {
