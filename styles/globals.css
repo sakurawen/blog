@@ -9,3 +9,9 @@
 article {
 	@apply space-y-4 text-gray-700;
 }
+
+.header-text {
+	transform: 0.3s;
+	text-shadow: 12px 6px 60px rgba(0, 114, 255, 0.078), 20px 11px 120px rgba(0, 114, 255, 0.412),
+		-20px 18px 170px rgba(0, 114, 255, 0.349);
+}

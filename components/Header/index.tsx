@@ -1,12 +1,14 @@
 import Link from 'next/link';
-const Navbar = () => {
+
+const Header = () => {
 	return (
 		<div>
 			<h1 className='text-6xl my-6 font-bold leading-normal text-gray-800 '>
 				井底之蛙的
 				<br />
 				<span
-					className='text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 via-blue-400 to-sky-400 '
+				
+					className='header-text text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 via-blue-400 to-sky-400 '
 				>
 					一片天空
 				</span>
@@ -31,4 +33,4 @@ const Navbar = () => {
 	);
 };
 
-export default Navbar;
+export default Header;
