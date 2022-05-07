@@ -7,7 +7,6 @@ const Header = () => {
 				井底之蛙的
 				<br />
 				<span
-				
 					className='text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 via-blue-400 to-sky-400 sky-blur'
 				>
 					一片天空
