@@ -25,13 +25,14 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 	const key = (ctx.params?.key as string) || '';
 	try {
 		const ret = await postsService.getDetail(key);
+
 		return {
 			props: {
 				data: ret.data,
 			},
 			revalidate: 10,
 		};
-	} catch {
+	} catch  {
 		return {
 			notFound: true,
 			props: {
