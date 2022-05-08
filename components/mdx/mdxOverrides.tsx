@@ -59,7 +59,7 @@ const overrides: MarkdownToJSX.Overrides | undefined = {
 			target: '_blank',
 			rel: 'noreferrer',
 			className:
-				'relative z-10 inline-block after:block after:absolute mx-0.5 px-0.5 after:block after:h-2 after:w-full after:-z-10 after:bottom-1 after:left-0 after:bg-blue-200',
+				'relative z-10 inline-block after:block  after:absolute mx-0.5 px-0.5 after:block after:h-2 after:w-full after:-z-10 after:bottom-1 after:left-0 after:bg-blue-200',
 		},
 	},
 	ul: {
