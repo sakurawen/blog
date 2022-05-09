@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 			},
 			revalidate: 10,
 		};
-	} catch  {
+	} catch {
 		return {
 			notFound: true,
 			props: {
@@ -58,10 +58,24 @@ const Posts: NextPage<{ data: Posts }> = ({ data }) => {
 				<title>{data.title}</title>
 			</Head>
 			<span
-				className='text-base  group font-bold hover:bg-gray-100  text-black transition p-1  rounded mb-8 inline-block cursor-pointer'
+				className='text-base hover:px-2 group font-bold hover:bg-gray-100  text-black transition py-1  rounded mb-8 inline-flex items-center cursor-pointer'
 				onClick={goBack}
 			>
-				wen&apos;s blog
+				<span className='mr-1 w-0 group-hover:w-5 opacity-0 group-hover:opacity-100 transition-all overflow-hidden'>
+					<svg
+						xmlns='http://www.w3.org/2000/svg'
+						className='h-5 w-5 inline-block '
+						viewBox='0 0 20 20'
+						fill='currentColor'
+					>
+						<path
+							fillRule='evenodd'
+							d='M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z'
+							clipRule='evenodd'
+						/>
+					</svg>
+				</span>
+				<span>wen&apos;s blog</span>
 			</span>
 			<h1 className='text-4xl font-bold  leading-sung'>{data.title}</h1>
 			<p className='mt-4 mb-8 text-sm text-gray-500'>
