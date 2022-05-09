@@ -1,12 +1,22 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import NextProgressbar from 'nextjs-progressbar';
+import { motion, AnimatePresence } from 'framer-motion';
 
-function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps, router }: AppProps) {
 	return (
 		<>
 			<NextProgressbar color='#2563eb' />
-			<Component {...pageProps} />
+			<AnimatePresence initial={true}>
+				<motion.div
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					exit={{ opacity: 0 }}
+					key={router.pathname}
+				>
+					<Component {...pageProps} />
+				</motion.div>
+			</AnimatePresence>
 		</>
 	);
 }
