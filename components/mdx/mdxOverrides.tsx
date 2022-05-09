@@ -84,7 +84,9 @@ const overrides: MarkdownToJSX.Overrides | undefined = {
 	},
 	blockquote: {
 		props: {
-			className: 'border-l-4 border-blue-500 pl-4 space-y-2 bg-blue-100 py-2',
+			className: `relative my-4 before:font-sans before:content-blockquote-before before:pointer-events-none before:absolute before:leading-[0] before:left-2 before:top-4 before:inline-block before:text-5xl before:text-blue-500 
+                          after:font-sans  after:content-blockquote-after after:pointer-events-none after:absolute  after:leading-[0] after:-bottom-3 after:right-2 after:inline-block after:text-5xl after:text-blue-500
+      border-blue-500 p-4 space-y-2 bg-blue-50 py-4`,
 		},
 	},
 	code: {
@@ -92,5 +94,4 @@ const overrides: MarkdownToJSX.Overrides | undefined = {
 		props: {},
 	},
 };
-
 export default overrides;

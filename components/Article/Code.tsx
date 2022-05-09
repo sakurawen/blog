@@ -12,7 +12,7 @@ const Code = (props: unknown) => {
 		return (
 			<code
 				{...props}
-				className='bg-blue-100  text-blue-600 font-mono mx-0.5 dark:bg-zinc-700 dark:text-slate-200 px-1 py-0.5 rounded'
+				className=' bg-blue-100   text-blue-600 font-mono mx-0.5 dark:bg-zinc-700 dark:text-slate-200 px-1 py-0.5 rounded'
 			/>
 		);
 	}

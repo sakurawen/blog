@@ -10,7 +10,7 @@ const Header = () => {
 					一片天空
 				</span>
 			</h1>
-			<div className='flex gap-4 text-sm text-gray-600'>
+			<div className='flex gap-4  text-sm text-gray-600'>
 				<Link passHref href={'/'}>
 					<a className='hover:text-black'>Posts</a>
 				</Link>
