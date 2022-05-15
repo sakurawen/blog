@@ -7,7 +7,7 @@ function App({ Component, pageProps, router }: AppProps) {
 	return (
 		<>
 			<NextProgressbar color='#2563eb' />
-			<AnimatePresence initial={true}>
+			<AnimatePresence>
 				<motion.div
 					initial={false}
 					animate={{ opacity: 1 }}
