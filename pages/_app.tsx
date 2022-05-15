@@ -12,7 +12,7 @@ function App({ Component, pageProps, router }: AppProps) {
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					exit={{ opacity: 0 }}
-					key={router.pathname}
+					key={router.route}
 				>
 					<Component {...pageProps} />
 				</motion.div>
