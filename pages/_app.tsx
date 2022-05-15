@@ -9,7 +9,7 @@ function App({ Component, pageProps, router }: AppProps) {
 			<NextProgressbar color='#2563eb' />
 			<AnimatePresence initial={true}>
 				<motion.div
-					initial={{ opacity: 0 }}
+					initial={false}
 					animate={{ opacity: 1 }}
 					exit={{ opacity: 0 }}
 					key={router.route}
