@@ -10,5 +10,4 @@ const ServiceError = () => {
 		</div>
 	);
 };
-
 export default ServiceError;
