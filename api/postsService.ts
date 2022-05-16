@@ -6,7 +6,11 @@ import { request } from 'utils/index';
  * @returns
  */
 export const getAll = () => {
-	return request.get<any, ServiceResponse<Posts[]>>('/posts/all?account=wen');
+	return request.get<any, ServiceResponse<Posts[]>>('/posts/all', {
+		params: {
+			account: 'wen',
+		},
+	});
 };
 
 /**
@@ -27,5 +31,9 @@ export const getDetail = (key: string) => {
  * @returns
  */
 export const getKeys = () => {
-	return request.get<any, ServiceResponse<string[]>>('/posts/keys?account=wen');
+	return request.get<any, ServiceResponse<string[]>>('/posts/keys', {
+		params: {
+			account: 'wen',
+		},
+	});
 };
