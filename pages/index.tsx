@@ -9,6 +9,10 @@ import Header from 'components/Header';
 
 export const getServerSideProps: GetServerSideProps = async () => {
 	const ret = await postsService.getAll();
+	ret.data = ret.data.map((item) => {
+		item.create_time = dayjs(item.create_time).format('YYYY / MM / DD');
+    return item
+	});
 	return {
 		props: {
 			posts: ret.data,
@@ -33,9 +37,7 @@ const Home: NextPage<{
 						<Link key={item.id} href={`/posts/${item.article_key}`} passHref>
 							<a className='group  py-1 block text-gray-700 underline-offset-1 hover:text-gray-900'>
 								<span className='group-hover:underline '>{item.title}</span>
-								<span className='text-xs ml-8 text-gray-400'>
-									{dayjs(item.create_time).format('YYYY / MM / DD')}
-								</span>
+								<span className='text-xs ml-8 text-gray-400'>{item.create_time as string}</span>
 							</a>
 						</Link>
 					);

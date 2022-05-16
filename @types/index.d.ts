@@ -17,7 +17,7 @@ export type Posts = {
 	node_key: string;
 	title: string;
 	content: string;
-	create_time: Date;
+	create_time: Date|string;
 	update_time?: Date;
 	delete_time?: Date;
 	deleted: number;
