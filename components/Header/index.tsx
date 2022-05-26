@@ -5,9 +5,6 @@ const Header = () => {
 		<div>
 			<h1 className='text-5xl font-fusion mt-6 mb-2 font-extrabold leading-normal text-gray-800 '>
 				心酸小温的博客
-				{/* <span className='text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 via-blue-400 to-sky-400 sky-blur'>
-					一片天空
-				</span> */}
 			</h1>
 			<p className='font-fusion mb-4 text-gray-600'>
 				日々私たちが过ごしている日常というのは
