@@ -55,7 +55,7 @@ const Posts: NextPage<{ data: Posts }> = ({ data }) => {
 	return (
 		<Layout>
 			<Head>
-				<title>{data.title}</title>
+				<title>{data.title} | wen&apos;s Blog</title>
 			</Head>
 			<span
 				className='text-base hover:px-2 group font-bold hover:bg-gray-100  text-black transition py-1  rounded mb-8 inline-flex items-center cursor-pointer'
