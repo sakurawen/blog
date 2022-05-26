@@ -9,6 +9,7 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				noto: "'Noto Sans SC', sans-serif;",
+        fusion:"fusion"
 			},
 			content: {
 				'blockquote-before': '"\\201C"',

@@ -31,13 +31,13 @@ const Home: NextPage<{
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<Header />
-			<div className='text-sm mt-6 space-y-1 '>
+			<div className='text-base mt-6 font-fusion space-y-1 '>
 				{posts.map((item) => {
 					return (
 						<Link key={item.id} href={`/posts/${item.article_key}`} passHref>
 							<a className='group  py-1 block text-gray-700 underline-offset-1 hover:text-gray-900'>
 								<span className='group-hover:underline '>{item.title}</span>
-								<span className='text-xs ml-8 text-gray-400'>{item.create_time as string}</span>
+								<span className='text-sm ml-8 text-gray-400'>{item.create_time as string}</span>
 							</a>
 						</Link>
 					);

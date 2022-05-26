@@ -3,14 +3,18 @@ import Link from 'next/link';
 const Header = () => {
 	return (
 		<div>
-			<h1 className='text-6xl my-6 font-extrabold leading-normal text-gray-800 '>
-				井底之蛙的
-				<br />
-				<span className='text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 via-blue-400 to-sky-400 sky-blur'>
+			<h1 className='text-5xl font-fusion mt-6 mb-2 font-extrabold leading-normal text-gray-800 '>
+				心酸小温的博客
+				{/* <span className='text-transparent bg-clip-text bg-gradient-to-tr from-blue-600 via-blue-400 to-sky-400 sky-blur'>
 					一片天空
-				</span>
+				</span> */}
 			</h1>
-			<div className='flex gap-4  text-sm text-gray-600'>
+			<p className='font-fusion mb-4 text-gray-600'>
+				日々私たちが过ごしている日常というのは
+				<br />
+				実は奇迹の连続なのかもしれん。
+			</p>
+			<div className='flex font-fusion gap-4  text-lg text-gray-600'>
 				<Link passHref href={'/'}>
 					<a className='hover:text-black'>Posts</a>
 				</Link>

@@ -58,7 +58,7 @@ const Posts: NextPage<{ data: Posts }> = ({ data }) => {
 				<title>{data.title} | wen&apos;s Blog</title>
 			</Head>
 			<span
-				className='text-base hover:px-2 group font-bold hover:bg-gray-100  text-black transition py-1  rounded mb-8 inline-flex items-center cursor-pointer'
+				className='text-base font-fusion hover:px-2 group font-bold hover:bg-gray-100  text-black transition py-1  rounded mb-8 inline-flex items-center cursor-pointer'
 				onClick={goBack}
 			>
 				<span className='mr-1 w-0 group-hover:w-5 opacity-0 group-hover:opacity-100 transition-all overflow-hidden'>
@@ -75,13 +75,13 @@ const Posts: NextPage<{ data: Posts }> = ({ data }) => {
 						/>
 					</svg>
 				</span>
-				<span>wen&apos;s blog</span>
+				<span>WEN&apos;S BLOG</span>
 			</span>
-			<h1 className='text-4xl font-bold  leading-sung'>{data.title}</h1>
-			<p className='mt-4 mb-8 text-sm text-gray-500'>
+			<h1 className='text-4xl font-bold  font-fusion leading-sung'>{data.title}</h1>
+			<p className='mt-4 font-fusion mb-8 text-sm text-gray-500'>
 				{dayjs(data.create_time).format('YYYY / MM / DD')}
 			</p>
-			<div className='mb-12'>
+			<div className='pb-12'>
 				{compiler(data.content, {
 					wrapper: 'article',
 					forceWrapper: true,

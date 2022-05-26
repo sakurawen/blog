@@ -9,3 +9,11 @@
 article {
 	@apply space-y-4 text-gray-700;
 }
+
+@font-face {
+	font-family: 'fusion';
+	src: url(./fusion-pixel.woff2);
+}
+.font-fusion {
+	font-family: fusion;
+}
