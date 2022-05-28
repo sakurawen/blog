@@ -63,21 +63,26 @@ const Posts: NextPage<{ data: Posts }> = ({ data }) => {
 			>
 				<span className='mr-1 w-0 group-hover:w-5 opacity-0 group-hover:opacity-100 transition-all overflow-hidden'>
 					<svg
+						className='h-5 w-5 inline-block'
 						xmlns='http://www.w3.org/2000/svg'
-						className='h-5 w-5 inline-block '
-						viewBox='0 0 20 20'
-						fill='currentColor'
+						aria-hidden='true'
+						role='img'
+						width='1em'
+						height='1em'
+						preserveAspectRatio='xMidYMid meet'
+						viewBox='0 0 24 24'
 					>
 						<path
-							fillRule='evenodd'
-							d='M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z'
-							clipRule='evenodd'
+							fill='currentColor'
+							d='M20 11v2H8v2H6v-2H4v-2h2V9h2v2h12zM10 7H8v2h2V7zm0 0h2V5h-2v2zm0 10H8v-2h2v2zm0 0h2v2h-2v-2z'
 						/>
 					</svg>
 				</span>
 				<span>WEN&apos;S BLOG</span>
 			</span>
-			<h1 className='text-4xl font-bold  font-fusion leading-sung'>{data.title}</h1>
+			<h1 className='text-4xl font-bold  font-fusion leading-sung'>
+				{data.title}
+			</h1>
 			<p className='mt-4 font-fusion mb-8 text-sm text-gray-500'>
 				{dayjs(data.create_time).format('YYYY / MM / DD')}
 			</p>

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Header = () => {
 	return (
@@ -14,12 +15,16 @@ const Header = () => {
 						実は奇迹の连続なのかもしれん。
 					</p>
 				</div>
-				<img
-					onDragStart={(e) => e.preventDefault()}
-					className='pointer-events-none mr-16 mt-4 select-none sm:block hidden rounded-full  w-32 h-32'
-					src='head.jpg'
-					alt=''
-				/>
+				<div className='sm:block hidden'>
+					<Image
+						onDragStart={(e) => e.preventDefault()}
+						width={144}
+						height={144}
+						className='pointer-events-none mr-16 mt-4 select-none rounded-full'
+						src='/head.jpg'
+						alt=''
+					/>
+				</div>
 			</div>
 			<div className='flex font-fusion gap-4  text-lg text-gray-600'>
 				<Link passHref href={'/'}>
