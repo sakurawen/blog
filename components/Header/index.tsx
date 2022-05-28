@@ -15,7 +15,7 @@ const Header = () => {
 						実は奇迹の连続なのかもしれん。
 					</p>
 				</div>
-				<div className='sm:block hidden'>
+				<div className='sm:block hidden select-none'>
 					<Image
 						onDragStart={(e) => e.preventDefault()}
 						width={144}
