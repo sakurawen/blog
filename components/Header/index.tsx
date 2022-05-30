@@ -7,7 +7,7 @@ const Header = () => {
 			<div className='flex justify-between items-center'>
 				<div>
 					<h1 className='text-5xl font-fusion mt-6 mb-2 font-extrabold leading-normal text-gray-800 '>
-						心酸小温的博客
+						鼠人苦工的博客
 					</h1>
 					<p className='font-fusion mb-4 text-gray-600'>
 						日々私たちが过ごしている日常というのは
