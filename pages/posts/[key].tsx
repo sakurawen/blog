@@ -55,7 +55,7 @@ const Posts: NextPage<{ data: Posts }> = ({ data }) => {
 	return (
 		<Layout>
 			<Head>
-				<title>{data.title} | wen&apos;s Blog</title>
+				<title>{data.title} | 鼠人苦工的博客</title>
 			</Head>
 			<span
 				className='text-base font-fusion hover:px-2 group font-bold hover:bg-gray-100  text-black transition py-1  rounded mb-8 inline-flex items-center cursor-pointer'
@@ -78,7 +78,7 @@ const Posts: NextPage<{ data: Posts }> = ({ data }) => {
 						/>
 					</svg>
 				</span>
-				<span>WEN&apos;S BLOG</span>
+				<span>.. /</span>
 			</span>
 			<h1 className='text-4xl font-bold  font-fusion leading-sung'>
 				{data.title}
