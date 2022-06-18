@@ -95,7 +95,7 @@ const Posts: NextPage<{ data: Posts }> = ({ data }) => {
 					overrides: mdxOverrides,
 				})}
 			</div>
-			<div>
+			<div className='mb-20'>
 				<Giscus
 					repo='sakurawen/blog-comments'
 					repoId='R_kgDOHhXNkw'
