@@ -7,6 +7,7 @@ import { compiler } from 'markdown-to-jsx';
 import dayjs from 'dayjs';
 import mdxOverrides from 'components/mdx/mdxOverrides';
 import { useRouter } from 'next/router';
+import Giscus from '@giscus/react';
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const ret = await postsService.getKeys();
@@ -93,6 +94,20 @@ const Posts: NextPage<{ data: Posts }> = ({ data }) => {
 					forceBlock: true,
 					overrides: mdxOverrides,
 				})}
+			</div>
+			<div>
+				<Giscus
+					repo='sakurawen/blog-comments'
+					repoId='R_kgDOHhXNkw'
+					category='comments'
+					categoryId='DIC_kwDOHhXNk84CPvWs'
+					mapping='url'
+					reactionsEnabled='1'
+					emitMetadata='0'
+					inputPosition='bottom'
+					theme='light_tritanopia'
+					lang='zh-CN'
+				/>
 			</div>
 		</Layout>
 	);
