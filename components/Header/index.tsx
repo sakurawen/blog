@@ -4,18 +4,18 @@ import Image from 'next/image';
 const Header = () => {
 	return (
 		<div>
-			<div className='flex justify-between items-center'>
+			<div className='flex md:flex-row flex-col-reverse justify-between items-center'>
 				<div>
-					<h1 className='text-5xl font-fusion mt-6 mb-2 font-extrabold leading-normal text-gray-800 '>
+					<h1 className='text-4xl md:text-5xl text-center md:text-left font-fusion mt-6 mb-4 font-extrabold leading-normal text-gray-800 '>
 						鼠人苦工的博客
 					</h1>
-					<p className='font-fusion mb-4 text-gray-600'>
+					<p className='font-fusion mb-4 text-center md:text-left text-gray-600'>
 						日々私たちが过ごしている日常というのは
 						<br />
 						実は奇迹の连続なのかもしれん。
 					</p>
 				</div>
-				<div className='sm:block hidden select-none'>
+				<div className='select-none'>
 					<Image
 						onDragStart={(e) => e.preventDefault()}
 						width={144}
@@ -26,7 +26,7 @@ const Header = () => {
 					/>
 				</div>
 			</div>
-			<div className='flex font-fusion gap-4  text-lg text-gray-600'>
+			<div className='flex justify-center md:justify-start font-fusion space-x-8 md:space-x-6 text-lg text-gray-600'>
 				<Link passHref href={'/'}>
 					<a className='hover:text-black'>Posts</a>
 				</Link>
