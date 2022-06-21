@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { createContext } from 'react';
 const c = createContext({name:"jojo"})
 
-const About: NextPage = () => {
+const Resume: NextPage = () => {
 	return (
 		<div>
 			<Head>
@@ -13,4 +13,4 @@ const About: NextPage = () => {
 	);
 };
 
-export default About;
+export default Resume;

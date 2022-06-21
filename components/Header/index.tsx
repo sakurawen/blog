@@ -31,7 +31,7 @@ const Header = () => {
 					<a className='hover:text-black'>Posts</a>
 				</Link>
 				<Link passHref href={'/'}>
-					<a className='hover:text-black'>About</a>
+					<a className='hover:text-black'>Resume</a>
 				</Link>
 				<a
 					className='hover:text-black'

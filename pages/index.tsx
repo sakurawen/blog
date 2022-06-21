@@ -35,8 +35,8 @@ const Home: NextPage<{
 				{posts.map((item) => {
 					return (
 						<Link key={item.id} href={`/posts/${item.article_key}`} passHref>
-							<a className='group px-2 md:px-0 md:py-1 md:text-left text-center  leading-snug  block text-gray-700 underline-offset-1 hover:text-gray-900'>
-								<span className='group-hover:underline block md:inline'>{item.title}</span>
+							<a className='group px-2 md:px-0 md:py-1 md:text-left text-center  leading-snug  block md:flex items-end text-gray-700 underline-offset-1 hover:text-gray-900'>
+								<span className='group-hover:underline md:max-w-[32em] md:overflow-hidden md:text-ellipsis md:whitespace-nowrap block md:inline'>{item.title}</span>
 								<span className='text-sm md:ml-8 ml-0 whitespace-nowrap  text-gray-400'>
 									{item.create_time as string}
 								</span>
