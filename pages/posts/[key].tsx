@@ -59,7 +59,7 @@ const Posts: NextPage<{ data: Posts }> = ({ data }) => {
 				<title>{data.title} | 鼠人苦工的博客</title>
 			</Head>
 			<span
-				className='text-base font-fusion hover:px-2 group font-bold hover:bg-gray-100  text-black transition py-1  rounded mb-8 inline-flex items-center cursor-pointer'
+				className='text-base font-fusion hover:px-2 group font-bold hover:bg-gray-100  text-black transition py-1  rounded mb-8 hidden md:inline-flex items-center cursor-pointer'
 				onClick={goBack}
 			>
 				<span className='mr-1 w-0 group-hover:w-5 opacity-0 group-hover:opacity-100 transition-all overflow-hidden'>
