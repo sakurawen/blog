@@ -26,6 +26,9 @@ importers:
       '@portabletext/react':
         specifier: ^3.0.18
         version: 3.0.18(react@18.3.1)
+      '@sanity/image-url':
+        specifier: '1'
+        version: 1.0.2
       '@sanity/vision':
         specifier: ^3.43.0
         version: 3.43.0(@babel/runtime@7.24.6)(@codemirror/lint@6.8.0)(@codemirror/theme-one-dark@6.1.2)(@lezer/common@1.2.1)(codemirror@6.0.1(@lezer/common@1.2.1))(react-dom@18.3.1(react@18.3.1))(react-is@18.3.1)(react@18.3.1)(styled-components@6.1.11(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
@@ -68,6 +71,9 @@ importers:
       shiki:
         specifier: ^1.6.0
         version: 1.6.0
+      styled-components:
+        specifier: '6'
+        version: 6.1.11(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       usehooks-ts:
         specifier: ^3.1.0
         version: 3.1.0(react@18.3.1)
