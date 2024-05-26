@@ -1,7 +1,7 @@
 import { CalendarDaysIcon, CursorArrowRaysIcon } from '@heroicons/react/24/outline';
 import dayjs from 'dayjs';
 import { Comments } from '~/components/comments';
-import { PostPortableText } from '~/components/portable-text';
+import { PortableText } from '~/components/portable-text';
 import { getPostBySlug } from '~/service/sanity-service';
 import { Action } from './action';
 
@@ -20,7 +20,7 @@ export function Post({ post, view }: { post: Awaited<ReturnType<typeof getPostBy
           <span>{view}次点击</span>
         </span>
       </p>
-      <PostPortableText value={post.content} />
+      <PortableText value={post.content} />
       <Comments className='mt-8' />
     </div>
   );

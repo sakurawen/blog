@@ -1,2 +1,2 @@
 export { PortableTextImage } from './portable-text-image';
-export { PostPortableText } from './post-portable-text';
+export { PortableText } from './portable-text';
