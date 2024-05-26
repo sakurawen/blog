@@ -10,10 +10,7 @@ export async function getPostsList() {
     Array<{
       _id: string;
       title: string;
-      slug:{
-        current:string,
-        _type:string
-      }
+      slug: string;
       description: string;
       publishedAt: string;
     }>
@@ -22,8 +19,41 @@ export async function getPostsList() {
     _id,
     title,
     description,
-    slug,
+    "slug":slug.current,
     publishedAt
   }
   `);
+}
+
+/**
+ * 获取文章
+ * @param slug
+ */
+export async function getPostBySlug(slug: string) {
+  return sanity.fetch<{
+    title: string;
+    publishedAt: string;
+    content:any
+  }>(
+    groq`
+  *[_type=='post' && slug.current == $slug && !(_id in path("drafts.**"))][0]{
+    _id,
+    title,
+    "slug": slug.current,
+    description,
+    publishedAt,
+    content[]{
+      ...,
+      _type == "image" => {
+        "url": asset->url,
+        "lqip": asset->metadata.lqip,
+        "dimensions": asset->metadata.dimensions,
+        ...
+      }
+    },
+    "headings": body[length(style) == 2 && string::startsWith(style, "h")],
+  }
+  `,
+    { slug }
+  );
 }

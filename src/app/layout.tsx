@@ -5,8 +5,8 @@ import clsx from 'clsx';
 import { Background } from '~/components/background';
 
 export const metadata: Metadata = {
-  title: 'Akumanoko',
-  description: 'Akumanoko',
+  title: 'wen\'s blog',
+  description: 'wen\'s blog',
 };
 
 export default function RootLayout({

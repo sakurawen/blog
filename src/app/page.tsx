@@ -49,11 +49,11 @@ export default async function HomePage() {
                 <HoverCard>
                   <Link
                     className='text-lg'
-                    href={`/blog/${post.slug.current}`}>
+                    href={`/blog/${post.slug}`}>
                     {post.title}
                   </Link>
                   <p className='text-zinc-400 text-xs'>{post.description}</p>
-                  <p className='text-zinc-400 text-xs'>{dayjs(post.publishedAt).format('YYYY-MM-DD')}</p>
+                  <p className='text-zinc-400 text-xs'>{dayjs(post.publishedAt).format('YYYY/MM/DD')}</p>
                 </HoverCard>
               </li>
             );

@@ -94,13 +94,11 @@ export function Background() {
   return (
     <>
       <div className='fixed inset-0 -z-10 bg-white dark:bg-stone-900' />
-      <span className='pointer-events-none fixed inset-0 h-full w-full'>
+      <span className='pointer-events-none -z-[1] fixed inset-0 h-full w-full'>
         <Grids grid={10} />
       </span>
 
       <span className='pointer-events-none fixed top-0 block h-[600px] w-full select-none bg-[radial-gradient(103.72%_46.58%_at_50%_0%,rgba(12,12,12,0.03)_0%,rgba(12,12,12,0)_100%)] dark:bg-[radial-gradient(103.72%_46.58%_at_50%_0%,rgba(255,255,255,0.013)_0%,rgba(255,255,255,0)_100%)]' />
-
-      <div className='mask-t pointer-events-none fixed inset-x-0 top-0 z-1 h-[88px] w-full select-none backdrop-blur-[1px]' />
       <div className='mask-b pointer-events-none fixed inset-x-0 bottom-0 z-1 h-[80px] w-full select-none backdrop-blur-[1px]' />
     </>
   );
