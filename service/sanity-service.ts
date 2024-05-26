@@ -1,12 +1,12 @@
 import { groq } from 'next-sanity';
 import { getDate } from '~/lib/date';
-import { sanity } from '~/lib/sanity';
+import { client } from '~/sanity/lib/client';
 
 /**
  * 获取文章列表
  */
 export async function getPostsList() {
-  return sanity.fetch<
+  return client.fetch<
     Array<{
       _id: string;
       title: string;
@@ -30,7 +30,7 @@ export async function getPostsList() {
  * @param slug
  */
 export async function getPostBySlug(slug: string) {
-  return sanity.fetch<{
+  return client.fetch<{
     title: string;
     publishedAt: string;
     content: any;

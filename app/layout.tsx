@@ -1,9 +1,9 @@
-import type { Metadata } from 'next';
-import './globals.css';
-import { harmonySans } from './font';
-import clsx from 'clsx';
-import { Background } from '~/components/background';
 import { ClerkProvider } from '@clerk/nextjs';
+import clsx from 'clsx';
+import type { Metadata } from 'next';
+import { Background } from '~/components/background';
+import { harmonySans } from '~/lib/font';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: "wen's blog",
