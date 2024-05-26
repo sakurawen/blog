@@ -33,7 +33,9 @@ export async function getPostBySlug(slug: string) {
   return sanity.fetch<{
     title: string;
     publishedAt: string;
-    content:any
+    content: any;
+    description: string;
+    slug: string;
   }>(
     groq`
   *[_type=='post' && slug.current == $slug && !(_id in path("drafts.**"))][0]{

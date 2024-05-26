@@ -5,6 +5,7 @@ import { Comments } from '~/components/comments';
 import { PostPortableText } from '~/components/portable-text';
 import { getPostBySlug } from '~/service/sanity-service';
 import { Action } from './action';
+
 export function Post({ post, view }: { post: Awaited<ReturnType<typeof getPostBySlug>>; view: number }) {
   return (
     <div className='mx-auto relative max-w-2xl px-4 pt-24  pb-24 md:px-0'>
