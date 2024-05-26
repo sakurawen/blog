@@ -1,9 +1,12 @@
 import { PortableText, type PortableTextComponents } from '@portabletext/react';
 import { PortableTextImage } from './portable-text-image';
 import { PortableTextLink } from './portable-text-link';
+import { PortableTextCodeBlock } from './portable-text-code-block';
+
 const components: PortableTextComponents = {
   types: {
     image: PortableTextImage,
+    codeBlock: PortableTextCodeBlock,
   },
   marks: {
     link: PortableTextLink,

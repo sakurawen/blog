@@ -1,4 +1,3 @@
-'use client';
 import { CalendarDaysIcon, CursorArrowRaysIcon } from '@heroicons/react/24/outline';
 import dayjs from 'dayjs';
 import { Comments } from '~/components/comments';
