@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import type { Metadata } from 'next';
 import { Background } from '~/components/background';
 import { harmonySans } from '~/lib/font';
+import { Analytics } from "@vercel/analytics/react"
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function RootLayout({
           <Background />
           {children}
           <div className='bg-[url(/noise.png)] opacity-[0.025] pointer-events-none absolute inset-0 bg-repeat bg-[182px,182px]' />
+          <Analytics />
         </body>
       </html>
     </ClerkProvider>
