@@ -5,7 +5,7 @@ const config = defineConfig({
   schema: './db/schemas/*',
   out: './db/migrations',
   dbCredentials: {
-    url: process.env.PG_DATABASE_URL as string,
+    url: process.env.DATABASE_URL as string,
   },
 });
 
