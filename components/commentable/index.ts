@@ -1,0 +1,2 @@
+export {Commentable} from "./commentable"
+
