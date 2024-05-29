@@ -5,6 +5,7 @@ import { Background } from '~/components/background';
 import { harmonySans } from '~/lib/font';
 import { Analytics } from "@vercel/analytics/react"
 import './globals.css';
+import { zhCN } from '~/lib/clerk-localizations';
 
 export const metadata: Metadata = {
   title: "wen's blog",
@@ -17,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider localization={zhCN}>
       <html
         lang='en'
         suppressHydrationWarning>

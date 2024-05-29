@@ -1,15 +1,20 @@
 'use client';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { throttle } from 'lodash-es';
-export function Action() {
+import { SignInButton } from '~/components/ui/sign-in-button';
+import { UserButton } from '~/components/ui/user-button';
+
+export function Header() {
   const [scrollTop, setScrollTop] = useState(0);
   const [prevScrollTop, setPrevScrollTop] = useState(scrollTop);
+
   useEffect(() => {
     return () => {
       setPrevScrollTop(scrollTop);
     };
   }, [scrollTop]);
+
   useEffect(() => {
     function scroll() {
       const top = document.documentElement.scrollTop;
@@ -23,17 +28,24 @@ export function Action() {
   }, []);
 
   const arrow = scrollTop > prevScrollTop ? 'down' : 'up';
+
   return (
     <div
-      className='bg-white/80 transition-all ring-1 ring-zinc-50  ring-inset shadow backdrop-blur rounded-full  fixed left-1/2 -translate-x-1/2'
+      className='transition-all flex items-center justify-between w-full sticky top-6 mb-16'
       style={{
         top: arrow === 'up' ? 24 : -80,
       }}>
-      <Link
-        className='inline-block py-2 px-12  rounded-full hover:bg-zinc-100/80'
-        href='/'>
-        首页
-      </Link>
+      <div>
+        <Link
+          className='inline-block py-1 px-2.5 backdrop-blur shadow bg-white/80 hover:bg-zinc-50 rounded-lg'
+          href='/'>
+          首 页
+        </Link>
+      </div>
+      <div>
+        <SignInButton />
+        <UserButton />
+      </div>
     </div>
   );
 }
