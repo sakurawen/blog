@@ -43,8 +43,8 @@ export function Header() {
         </Link>
       </div>
       <div>
-        <SignInButton />
-        <UserButton />
+        {/* <SignInButton /> */}
+        {/* <UserButton /> */}
       </div>
     </div>
   );
