@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import { PortableText } from '~/components/portable-text';
 import { getPostBySlug } from '~/service/sanity-service';
 import { Header } from './header';
+import { Comments } from '~/components/comments';
 
 export function Post({ post, view }: { post: Awaited<ReturnType<typeof getPostBySlug>>; view: number }) {
   return (
@@ -20,6 +21,7 @@ export function Post({ post, view }: { post: Awaited<ReturnType<typeof getPostBy
         </span>
       </p>
       <PortableText value={post.content} />
+      <Comments className='mt-16' />
     </div>
   );
 }
