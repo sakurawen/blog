@@ -1,0 +1,1 @@
+export { Commentable } from './commentable';
