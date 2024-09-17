@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { BilibiliIcon, GitHubIcon, MailIcon, TwitterIcon } from '~/components/icons';
+import { BilibiliIcon, GitHubIcon, MailIcon, TwitterIcon } from '~/components/legacy/icons';
 
 const socials = [
   {

@@ -1,8 +1,8 @@
 import dayjs from 'dayjs';
 import Link from 'next/link';
 
-import { Header } from '~/components/header';
-import { HoverCard } from '~/components/hover-card';
+import { Header } from '~/components/legacy/header';
+import { HoverCard } from '~/components/legacy/hover-card';
 import * as githubService from '~/service/github-service';
 import * as sanityService from '~/service/sanity-service';
 

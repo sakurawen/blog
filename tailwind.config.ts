@@ -13,6 +13,8 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  // eslint-disable-next-line ts/no-require-imports
+  plugins: [require('@tailwindcss/typography'), require('tailwind-scrollbar'), require('tailwindcss-animate'), require('tailwindcss-animated')],
 };
+
 export default config;

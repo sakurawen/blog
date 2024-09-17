@@ -1,8 +1,8 @@
 import { CalendarDaysIcon, CursorArrowRaysIcon } from '@heroicons/react/24/outline';
 import dayjs from 'dayjs';
 
-import { Comments } from '~/components/comments';
-import { PortableText } from '~/components/portable-text';
+import { Comments } from '~/components/legacy/comments';
+import { PortableText } from '~/components/legacy/portable-text';
 import type { getPostBySlug } from '~/service/sanity-service';
 
 import { Header } from './header';

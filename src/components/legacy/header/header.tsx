@@ -1,10 +1,10 @@
 'use client';
 import { useIsClient } from 'foxact/use-is-client';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Balancer } from 'react-wrap-balancer';
 import { Novatrix } from 'uvcanvas';
 
-import { Social } from '~/components/social';
+import { Social } from '~/components/legacy/social';
 
 export function Header() {
   const isClient = useIsClient();
@@ -15,7 +15,7 @@ export function Header() {
     <div className='relative mx-auto  h-96 overflow-hidden'>
       <Novatrix />
       <div className='absolute bottom-0 left-0  z-10 w-full'>
-        <motion.div
+        <m.div
           className='p-3'
           initial={{
             y: 20,
@@ -41,15 +41,15 @@ export function Header() {
               .
             </Balancer>
           </p>
-        </motion.div>
+        </m.div>
         <div className='bg-gradient-to-t from-white to-transparent px-3 pb-6'>
-          <motion.div
+          <m.div
             transition={{ delay: 0.1 }}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
           >
             <Social />
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </div>
