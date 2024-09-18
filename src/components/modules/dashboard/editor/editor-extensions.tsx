@@ -10,6 +10,9 @@ export const extensions = [
   }),
   Placeholder.configure({
     placeholder: ({ node }) => {
+      if (node.type.name === 'codeBlock') {
+        return '';
+      }
       if (node.type.name === 'heading') {
         return 'Heading';
       }
