@@ -5,5 +5,5 @@ export function Material(props: PropsWithChildren<{
   className?: string
 }>) {
   const { className, children } = props;
-  return <div className={cn('material bg-white shadow rounded-lg p-2', className)}>{children}</div>;
+  return <div className={cn('material bg-white shadow-sm border rounded-lg p-2', className)}>{children}</div>;
 }

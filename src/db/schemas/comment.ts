@@ -1,18 +1,18 @@
-import { index, json, pgTable, serial, timestamp, varchar } from 'drizzle-orm/pg-core';
+import { boolean, index, json, pgTable, serial, timestamp, varchar } from 'drizzle-orm/pg-core';
+import { nanoid } from 'nanoid';
+import { posts } from './post';
 
 export const comments = pgTable(
   'comments',
   {
-    id: serial('id').primaryKey(),
-    userId: varchar('user_id', { length: 255 }).notNull(),
+    id: varchar('id', { length: 256 }).primaryKey().$defaultFn(nanoid),
+    userId: varchar('user_id', { length: 256 }).notNull(),
     userInfo: json('user_info'),
-    postSlug: varchar('post_slug', { length: 255 }).notNull(),
-    paragraphId: varchar('paragraph_id', { length: 255 }),
+    postId: varchar('post_id', { length: 256 }).references(() => posts.id),
+    paragraphId: varchar('paragraph_id', { length: 256 }),
     content: json('content'),
     createdAt: timestamp('created_at').defaultNow(),
     updatedAt: timestamp('updated_at').defaultNow(),
+    deleted: boolean('deleted').default(false),
   },
-  table => ({
-    postSlugKey: index('post_slug_key').on(table.postSlug),
-  }),
 );

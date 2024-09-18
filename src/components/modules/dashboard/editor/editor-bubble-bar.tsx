@@ -1,169 +1,20 @@
 'use client';
+import type { Editor } from '@tiptap/react';
 import { Icon } from '@iconify/react';
 import * as Toggle from '@radix-ui/react-toggle';
-import * as Toolbar from '@radix-ui/react-toolbar';
-import { BubbleMenu, useCurrentEditor } from '@tiptap/react';
+import { BubbleMenu } from '@tiptap/react';
 import { Material } from '~/components/ui/material';
+import { EditorActions } from './editor-actions';
 
-export function EditorBubbleBar() {
-  const { editor } = useCurrentEditor();
-
-  if (!editor) {
-    return null;
-  }
-
-  function handleToggleHeading(level: 1 | 2 | 3 | 4 | 5 | 6) {
-    editor?.chain().focus().toggleHeading({ level }).run();
-  }
-
-  function handleToggleTextAlign(align: 'left' | 'right' | 'center' | 'justify') {
-    editor?.chain().focus().setTextAlign(align).run();
-  }
-
-  function handleToggleBold() {
-    editor?.chain().focus().toggleBold().run();
-  }
-
-  function handleToggleItalic() {
-    editor?.chain().focus().toggleItalic().run();
-  }
-
-  function handleToggleStrike() {
-    editor?.chain().focus().toggleStrike().run();
-  }
-
-  function handleToggleHighlight() {
-    editor?.chain().focus().toggleHighlight().run();
-  }
-
+export function EditorBubbleBar({ editor }: { editor: Editor | null }) {
   return (
-    <BubbleMenu editor={null} className='w-fit'>
-      <Toolbar.Root>
-
-        <Material className='flex space-x-2 w-full p-1'>
-          <Toggle.Root
-            className='data-[state=on]:bg-zinc-200 hover:bg-zinc-100 p-1.5 rounded'
-            pressed={editor?.isActive({ textAlign: 'left' })}
-            onClick={() => {
-              handleToggleTextAlign('left');
-            }}
-          >
-            <Icon icon='lucide:align-left' />
-          </Toggle.Root>
-          <Toggle.Root
-            className='data-[state=on]:bg-zinc-200 hover:bg-zinc-100 p-1.5 rounded'
-            pressed={editor?.isActive({ textAlign: 'center' })}
-            onClick={() => {
-              handleToggleTextAlign('center');
-            }}
-          >
-            <Icon icon='lucide:align-center' />
-          </Toggle.Root>
-          <Toggle.Root
-            className='data-[state=on]:bg-zinc-200 hover:bg-zinc-100 p-1.5 rounded'
-            pressed={editor?.isActive({ textAlign: 'right' })}
-            onClick={() => {
-              handleToggleTextAlign('right');
-            }}
-          >
-            <Icon icon='lucide:align-right' />
-          </Toggle.Root>
-          <Toggle.Root
-            className='data-[state=on]:bg-zinc-200 hover:bg-zinc-100 p-1.5 rounded'
-            pressed={editor?.isActive({ textAlign: 'justify' })}
-            onClick={() => {
-              handleToggleTextAlign('justify');
-            }}
-          >
-            <Icon icon='lucide:align-justify' />
-          </Toggle.Root>
-
-          <Toggle.Root
-            className='data-[state=on]:bg-zinc-200 hover:bg-zinc-100 p-1.5 rounded'
-            pressed={editor?.isActive('bold')}
-            onClick={handleToggleBold}
-          >
-            <Icon icon='lucide:bold' />
-          </Toggle.Root>
-          <Toggle.Root
-            className='data-[state=on]:bg-zinc-200 hover:bg-zinc-100 p-1.5 rounded'
-            pressed={editor?.isActive('strike')}
-            onClick={handleToggleStrike}
-          >
-            <Icon icon='lucide:strikethrough' />
-          </Toggle.Root>
-          <Toggle.Root
-            className='data-[state=on]:bg-zinc-200 hover:bg-zinc-100 p-1.5 rounded'
-            pressed={editor?.isActive('italic')}
-            onClick={handleToggleItalic}
-          >
-            <Icon icon='lucide:italic' />
-          </Toggle.Root>
-          <Toggle.Root
-            className='data-[state=on]:bg-zinc-200 hover:bg-zinc-100 p-1.5 rounded'
-            pressed={editor?.isActive('highlight')}
-            onClick={handleToggleHighlight}
-          >
-            <Icon icon='lucide:highlighter' />
-          </Toggle.Root>
-          <Toggle.Root
-            className='data-[state=on]:bg-zinc-200 hover:bg-zinc-100 p-1.5 rounded'
-            pressed={editor?.isActive('heading', { level: 1 })}
-            onClick={() => {
-              handleToggleHeading(1);
-            }}
-          >
-            <Icon icon='lucide:heading-1' />
-          </Toggle.Root>
-          <Toggle.Root
-            className='data-[state=on]:bg-zinc-200 hover:bg-zinc-100 p-1.5 rounded'
-            pressed={editor?.isActive('heading', { level: 2 })}
-            onClick={() => {
-              handleToggleHeading(2);
-            }}
-          >
-            <Icon icon='lucide:heading-2' />
-          </Toggle.Root>
-          <Toggle.Root
-            className='data-[state=on]:bg-zinc-200 hover:bg-zinc-100 p-1.5 rounded'
-            pressed={editor?.isActive('heading', { level: 3 })}
-            onClick={() => {
-              handleToggleHeading(3);
-            }}
-          >
-            <Icon icon='lucide:heading-3' />
-          </Toggle.Root>
-          <Toggle.Root
-            className='data-[state=on]:bg-zinc-200 hover:bg-zinc-100 p-1.5 rounded'
-            pressed={editor?.isActive('heading', { level: 4 })}
-            onClick={() => {
-              handleToggleHeading(4);
-            }}
-          >
-            <Icon icon='lucide:heading-4' />
-          </Toggle.Root>
-          <Toggle.Root
-            className='data-[state=on]:bg-zinc-200 hover:bg-zinc-100 p-1.5 rounded'
-            pressed={editor?.isActive('heading', { level: 5 })}
-            onClick={() => {
-              handleToggleHeading(5);
-            }}
-          >
-            <Icon icon='lucide:heading-5' />
-          </Toggle.Root>
-          <Toggle.Root
-            className='data-[state=on]:bg-zinc-200 hover:bg-zinc-100 p-1.5 rounded'
-            pressed={editor?.isActive('heading', { level: 6 })}
-            onClick={() => {
-              handleToggleHeading(6);
-            }}
-          >
-            <Icon icon='lucide:heading-6' />
-          </Toggle.Root>
-
-        </Material>
-      </Toolbar.Root>
-
+    <BubbleMenu
+      editor={editor}
+      className='w-fit'
+    >
+      <Material className='flex space-x-2 w-full p-1'>
+        <EditorActions editor={editor} />
+      </Material>
     </BubbleMenu>
   );
 }

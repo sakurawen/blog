@@ -9,3 +9,11 @@
 .shiki .line > span {
   @apply text-[var(--shiki-light)] dark:text-[var(--shiki-dark)];
 }
+
+.is-empty::before {
+  color: #ddd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
