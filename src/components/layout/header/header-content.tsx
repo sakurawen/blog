@@ -1,30 +1,36 @@
 'use client';
+import { Icon } from '@iconify/react';
 import { m, useMotionTemplate, useMotionValue } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '~/lib/cn';
-import { NavLink } from './navbar-link';
+import { AnimatedLink } from './animated-link';
 
 const menu: Menu[] = [
   {
     title: '首页',
     path: '/',
+    icon: <Icon icon='lucide:tree-palm' />,
+
   },
   {
     title: '文稿',
     path: '/posts',
+    icon: <Icon icon='lucide:signpost-big' />,
   },
   {
     title: '思考',
     path: '/thinking',
+    icon: <Icon icon='lucide:lightbulb' />,
   },
   {
     title: '时间线',
     path: '/timeline',
+    icon: <Icon icon='lucide:clock' />,
   },
 ];
 
-export function NavbarMenu() {
+export function HeaderContent() {
   const pathname = usePathname();
 
   const mouseX = useMotionValue(0);
@@ -46,28 +52,43 @@ export function NavbarMenu() {
       layout='size'
       className={cn(
         'relative',
-        'flex mx-auto group relative rounded-full shadow bg-white/70 backdrop-blur px-4',
+        'mx-auto group relative rounded-full shadow bg-white/70 backdrop-blur  duration-200',
         'ring-1 ring-zinc-900/5',
       )}
       onMouseMove={handleMouseMove}
     >
       <m.div layout style={{ background }} className='pointer-events-none absolute -inset-px rounded-full opacity-0 transition-opacity duration-500 group-hover:opacity-100' aria-hidden />
-      {
-        menu.map((i) => {
-          return (
-            <NavLink
-              className='py-2 px-4 transition-colors hover:text-primary'
-              href={i.path}
-              key={i.path}
-              isActive={
-                pathname === i.path
-              }
-            >
-              {i.title}
-            </NavLink>
-          );
-        })
-      }
+      <div className='flex px-4'>
+        {
+          menu.map((i) => {
+            const isActive = pathname === i.path;
+            return (
+              <HeaderMenuItem menu={i} isActive={isActive} key={i.path} />
+            );
+          })
+        }
+      </div>
     </m.nav>
+  );
+}
+
+function HeaderMenuItem({ menu, isActive }: { menu: Menu, isActive: boolean }) {
+  return (
+    <AnimatedLink
+      className='py-2 px-4 transition-[padding] hover:text-primary '
+      href={menu.path}
+      isActive={isActive}
+    >
+      <span className='relative flex  items-center'>
+        {isActive && (
+          <m.span layoutId='header-menu-icon' className='text-base mr-2 size-4 flex items-center'>
+            {menu.icon}
+          </m.span>
+        )}
+        <m.span layout>
+          {menu.title}
+        </m.span>
+      </span>
+    </AnimatedLink>
   );
 }
