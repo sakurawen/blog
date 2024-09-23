@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+   --primary: 221.2 83.2% 53.3%;
+   --spotlight:214.3 94.6% 92.7%
+}
+
 .shiki {
   @apply bg-[#f9f9f9] dark:bg-[#18181b] p-2 rounded-md shadow my-1;
 }

@@ -6,6 +6,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: 'hsl(var(--primary))',
+        spotlight: 'hsl(var(--spotlight))',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':

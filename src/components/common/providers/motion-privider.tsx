@@ -1,10 +1,10 @@
 'use client';
+import { domMax, LazyMotion } from 'framer-motion';
 import type { PropsWithChildren } from 'react';
-import { domAnimation, LazyMotion } from 'framer-motion';
 
 export function MotionProvider({ children }: PropsWithChildren) {
   return (
-    <LazyMotion features={domAnimation}>
+    <LazyMotion features={domMax}>
       {children}
     </LazyMotion>
   );

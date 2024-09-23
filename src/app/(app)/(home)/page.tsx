@@ -8,7 +8,6 @@ import * as sanityService from '~/service/sanity-service';
 
 /**
  * 首页
- * @returns
  */
 export default async function HomePage() {
   const [posts, projects] = await Promise.all([sanityService.getPostsList(), githubService.getPinnedProject()]);

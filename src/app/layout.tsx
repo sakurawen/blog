@@ -5,10 +5,10 @@ import { Analytics } from '@vercel/analytics/react';
 import clsx from 'clsx';
 import { Toaster } from 'sonner';
 
-import { Background } from '~/components/legacy/background';
+import { ThemeProvider } from '~/components/common/providers/theme-proivider';
 import { zhCN } from '~/lib/clerk-localizations';
 import { harmonySans } from '~/lib/font';
-import { MotionProvider } from '~/providers/motion-privider';
+import { MotionProvider } from '~/components/common/providers/motion-privider';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -29,9 +29,10 @@ export default function RootLayout({
       >
         <body className={clsx('relative min-h-screen', harmonySans.className)}>
           <MotionProvider>
-            <Background />
-            {children}
-            <div className='pointer-events-none absolute inset-0 bg-[url(/noise.png)] bg-[182px,182px] bg-repeat opacity-[0.025]' />
+            <ThemeProvider>
+              {children}
+              <div className='pointer-events-none absolute inset-0 bg-[url(/noise.png)] bg-[182px,182px] bg-repeat opacity-[0.025]' />
+            </ThemeProvider>
           </MotionProvider>
           <Toaster />
           <Analytics />
