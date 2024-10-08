@@ -43,6 +43,7 @@
     "drizzle-orm": "^0.33.0",
     "foxact": "^0.2.38",
     "framer-motion": "^11.5.4",
+    "jotai": "^2.10.0",
     "lodash-es": "^4.17.21",
     "nanoid": "^5.0.7",
     "next": "14.2.4",

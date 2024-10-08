@@ -1,3 +1,5 @@
+import { PageContainer } from '~/components/layout/page-container';
+
 export default function Thinking() {
-  return <div>thinking page</div>;
+  return <PageContainer>thinking page</PageContainer>;
 }

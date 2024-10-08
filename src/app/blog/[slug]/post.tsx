@@ -9,7 +9,7 @@ import { Header } from './header';
 
 export function Post({ post, view }: { post: Awaited<ReturnType<typeof getPostBySlug>>, view: number }) {
   return (
-    <div className='relative mx-auto max-w-2xl px-4 pb-24  pt-16 md:px-0'>
+    <div className='relative mx-auto container px-4 pb-24  pt-16 md:px-0'>
       <Header />
       <h1 className='mb-6 text-4xl font-bold'>{post.title}</h1>
       <p className='mb-4 space-x-4'>

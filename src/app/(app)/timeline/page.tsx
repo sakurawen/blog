@@ -1,3 +1,5 @@
+import { PageContainer } from '~/components/layout/page-container';
+
 export default function Timeline() {
-  return <div>timeline page</div>;
+  return <PageContainer>timeline page</PageContainer>;
 }

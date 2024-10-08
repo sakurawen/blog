@@ -1,3 +1,5 @@
+import { PageContainer } from '~/components/layout/page-container';
+
 export default function PostsList() {
-  return <div>wuhu</div>;
+  return <PageContainer>wuhu</PageContainer>;
 }

@@ -1,7 +1,6 @@
 'use client';
 import { Icon } from '@iconify/react';
 import { m, useMotionTemplate, useMotionValue } from 'framer-motion';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '~/lib/cn';
 import { AnimatedLink } from './animated-link';
@@ -32,7 +31,6 @@ const menu: Menu[] = [
 
 export function HeaderContent() {
   const pathname = usePathname();
-
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const radius = useMotionValue(0);
@@ -52,7 +50,7 @@ export function HeaderContent() {
       layout='size'
       className={cn(
         'relative',
-        'mx-auto group relative rounded-full shadow bg-white/70 backdrop-blur  duration-200',
+        'mx-auto group relative rounded-full group duration-200 ring-1  shadow bg-white/60 backdrop-blur',
         'ring-1 ring-zinc-900/5',
       )}
       onMouseMove={handleMouseMove}
