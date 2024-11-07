@@ -1,7 +1,6 @@
 'use client';
 import type { ComponentProps } from 'react';
 import { m } from 'framer-motion';
-import { useSetAtom } from 'jotai';
 import Link from 'next/link';
 import { cn } from '~/lib/cn';
 
@@ -15,7 +14,7 @@ export function AnimatedLink({ className, href, children, isActive, ...restProps
               <m.span
                 layoutId='animate-link-underline'
                 key='underline'
-                className=' absolute transition-colors opacity-0 group-hover:opacity-100 inset-x-1 h-px -bottom-px bg-gradient-to-r from-primary/0 via-primary/70 to-primary/0'
+                className=' absolute transition-colors  inset-x-1 h-px -bottom-px bg-gradient-to-r from-primary/0 via-primary/70 to-primary/0'
               />
             )
           : null

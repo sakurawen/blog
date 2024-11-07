@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
-   --primary: 221.2 83.2% 53.3%;
-   --spotlight:214.3 94.6% 92.7%
+:root {
+  --primary: 221.2 83.2% 53.3%;
+  --spotlight: 214.3 94.6% 92.7%;
 }
 
 .shiki {
@@ -13,6 +13,9 @@
 
 .shiki .line > span {
   @apply text-[var(--shiki-light)] dark:text-[var(--shiki-dark)];
+}
+* {
+  @apply selection:bg-[#c0e5f3];
 }
 
 .is-empty::before {

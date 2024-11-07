@@ -5,11 +5,12 @@ import { Analytics } from '@vercel/analytics/react';
 import clsx from 'clsx';
 import { Toaster } from 'sonner';
 
+import { MotionProvider } from '~/components/common/providers/motion-privider';
 import { ThemeProvider } from '~/components/common/providers/theme-proivider';
 import { zhCN } from '~/lib/clerk-localizations';
 import { harmonySans } from '~/lib/font';
-import { MotionProvider } from '~/components/common/providers/motion-privider';
 import './globals.css';
+import 'react-notion-x/src/styles.css';
 
 export const metadata: Metadata = {
   title: 'wen\'s blog',

@@ -15,7 +15,7 @@ export function Hero() {
           <Social className='mt-4' />
         </div>
         <div>
-          <Image src='/image/avatar.jpg' width={360} height={360} className='rounded-full shadow-xl ring-1 ring-zinc-200' alt='avatar' />
+          <Image src='/image/avatar.jpg' width={320} height={320} className='rounded-full shadow-xl ring-1 ring-zinc-200' alt='avatar' />
         </div>
       </div>
     </div>

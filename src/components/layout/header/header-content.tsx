@@ -18,7 +18,7 @@ const menu: Menu[] = [
     icon: <Icon icon='lucide:signpost-big' />,
   },
   {
-    title: '思考',
+    title: '随想',
     path: '/thinking',
     icon: <Icon icon='lucide:lightbulb' />,
   },
@@ -51,7 +51,7 @@ export function HeaderContent() {
       className={cn(
         'relative',
         'mx-auto group relative rounded-full group duration-200 ring-1  shadow bg-white/60 backdrop-blur',
-        'ring-1 ring-zinc-900/5',
+        'ring-1 ring-zinc-800/5',
       )}
       onMouseMove={handleMouseMove}
     >
