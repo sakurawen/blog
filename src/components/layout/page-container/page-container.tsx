@@ -1,6 +1,6 @@
 'use client';
 import type { PropsWithChildren } from 'react';
-import { m } from 'framer-motion';
+import { m } from 'motion/react';
 
 export function PageContainer({ children, className }: PropsWithChildren<{ className?: string }>) {
   return (

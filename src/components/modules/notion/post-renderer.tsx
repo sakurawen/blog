@@ -42,15 +42,16 @@ const components = {
   Pdf,
 };
 
-const mapPageUrl = (pageId: string) => `/posts/${pageId}`;
+const mapPageUrl = (pageId: string) => `/blog/${pageId}`;
 
 export function PostRenderer({ ...props }: ComponentProps<typeof NotionRenderer >) {
+  const { className, ...restProps } = props;
   return (
     <NotionRenderer
-      bodyClassName={clsx(harmonySans.className, 'prose !px-0')}
+      bodyClassName={clsx(harmonySans.className, className)}
       mapPageUrl={mapPageUrl}
       components={components}
-      {...props}
+      {...restProps}
     />
   );
 }

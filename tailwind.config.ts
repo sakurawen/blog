@@ -7,8 +7,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: 'hsl(var(--primary))',
-        spotlight: 'hsl(var(--spotlight))',
+        primary: 'var(--primary)',
+        spotlight: 'var(--spotlight)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

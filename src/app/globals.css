@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --primary: 221.2 83.2% 53.3%;
-  --spotlight: 214.3 94.6% 92.7%;
+  --primary: #c0e5f3;
 }
 
 .shiki {

@@ -1,4 +1,4 @@
-import { AnimatePresence, LayoutGroup } from 'framer-motion';
+import { AnimatePresence, LayoutGroup } from 'motion/react';
 import { HeaderContent } from './header-content';
 
 export function Header() {

@@ -1,6 +1,6 @@
 'use client';
 import { Icon } from '@iconify/react';
-import { m, useMotionTemplate, useMotionValue } from 'framer-motion';
+import { AnimatePresence, m, useMotionTemplate, useMotionValue } from 'motion/react';
 import { usePathname } from 'next/navigation';
 import { cn } from '~/lib/cn';
 import { AnimatedLink } from './animated-link';
@@ -13,19 +13,9 @@ const menu: Menu[] = [
 
   },
   {
-    title: '文稿',
-    path: '/posts',
+    title: '博客',
+    path: '/blog',
     icon: <Icon icon='lucide:signpost-big' />,
-  },
-  {
-    title: '随想',
-    path: '/thinking',
-    icon: <Icon icon='lucide:lightbulb' />,
-  },
-  {
-    title: '时间线',
-    path: '/timeline',
-    icon: <Icon icon='lucide:clock' />,
   },
 ];
 
@@ -43,7 +33,7 @@ export function HeaderContent() {
     radius.set(Math.hypot(width, height) / 2.5);
   }
 
-  const background = useMotionTemplate`radial-gradient(${radius}px circle at ${mouseX}px ${mouseY}px, hsl(var(--spotlight)) 0%, transparent 65%)`;
+  const background = useMotionTemplate`radial-gradient(${radius}px circle at ${mouseX}px ${mouseY}px, #e5f7fd 0%, transparent 65%)`;
 
   return (
     <m.nav
@@ -73,20 +63,25 @@ export function HeaderContent() {
 function HeaderMenuItem({ menu, isActive }: { menu: Menu, isActive: boolean }) {
   return (
     <AnimatedLink
-      className='py-2 px-4 transition-[padding] hover:text-primary '
+      className='py-2 px-4 transition-[padding] hover:text-zinc-900 '
       href={menu.path}
       isActive={isActive}
     >
-      <span className='relative flex  items-center'>
-        {isActive && (
-          <m.span layoutId='header-menu-icon' className='text-base mr-2 size-4 flex items-center'>
-            {menu.icon}
-          </m.span>
-        )}
-        <m.span layout>
+      <m.span layout className='relative flex  items-center'>
+        <m.span
+          animate={isActive ? 'active' : 'unActive'}
+          variants={{
+            active: { scale: 1, height: 16, width: 16 },
+            unActive: { scale: 0, height: 0, width: 0 },
+          }}
+          className='text-base mr-2  flex items-center'
+        >
+          {menu.icon}
+        </m.span>
+        <m.span>
           {menu.title}
         </m.span>
-      </span>
+      </m.span>
     </AnimatedLink>
   );
 }
