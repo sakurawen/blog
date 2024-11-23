@@ -1,6 +1,6 @@
 'use client';
 import { Icon } from '@iconify/react';
-import { AnimatePresence, m, useMotionTemplate, useMotionValue } from 'motion/react';
+import { m, useMotionTemplate, useMotionValue } from 'motion/react';
 import { usePathname } from 'next/navigation';
 import { cn } from '~/lib/cn';
 import { AnimatedLink } from './animated-link';
@@ -37,7 +37,6 @@ export function HeaderContent() {
 
   return (
     <m.nav
-      layout='size'
       className={cn(
         'relative',
         'mx-auto group relative rounded-full group duration-200 ring-1  shadow bg-white/60 backdrop-blur',
