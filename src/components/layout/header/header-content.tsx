@@ -44,11 +44,17 @@ export function HeaderContent() {
       )}
       onMouseMove={handleMouseMove}
     >
-      <m.div layout style={{ background }} className='pointer-events-none absolute -inset-px rounded-full opacity-0 transition-opacity duration-500 group-hover:opacity-100' aria-hidden />
+      <m.div style={{ background }} className='pointer-events-none absolute -inset-px rounded-full opacity-0 transition-opacity duration-500 group-hover:opacity-100' aria-hidden />
       <div className='flex px-4'>
         {
           menu.map((i) => {
-            const isActive = pathname === i.path;
+            let isActive = false;
+            if (i.path === '/') {
+              isActive = i.path === pathname;
+            }
+            else {
+              isActive = pathname.includes(i.path);
+            }
             return (
               <HeaderMenuItem menu={i} isActive={isActive} key={i.path} />
             );
@@ -66,7 +72,7 @@ function HeaderMenuItem({ menu, isActive }: { menu: Menu, isActive: boolean }) {
       href={menu.path}
       isActive={isActive}
     >
-      <m.span layout className='relative flex  items-center'>
+      <span className='relative flex  items-center'>
         <m.span
           animate={isActive ? 'active' : 'unActive'}
           variants={{
@@ -77,10 +83,10 @@ function HeaderMenuItem({ menu, isActive }: { menu: Menu, isActive: boolean }) {
         >
           {menu.icon}
         </m.span>
-        <m.span>
+        <span>
           {menu.title}
-        </m.span>
-      </m.span>
+        </span>
+      </span>
     </AnimatedLink>
   );
 }
