@@ -6,7 +6,6 @@ import { url } from '~/lib/url';
 
 /**
  * 用户按钮
- * @returns
  */
 export function UserButton() {
   const pathname = usePathname();

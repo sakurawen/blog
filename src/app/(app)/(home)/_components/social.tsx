@@ -1,4 +1,6 @@
+'use client';
 import { Icon } from '@iconify/react';
+import { AnimatePresence, m } from 'motion/react';
 import Link from 'next/link';
 import { cn } from '~/lib/cn';
 
@@ -29,19 +31,27 @@ const socials = [
 
 export function Social({ className }: { className?: string }) {
   return (
-    <div className={cn('flex space-x-4', className)}>
-      {socials.map((i) => {
-        return (
-          <Link
-            key={i.url}
-            href={i.url}
-            target='_blank'
-            className='inline-block p-1 rounded transition-colors opacity-65 hover:opacity-100 hover:bg-black/10'
-          >
-            {i.icon}
-          </Link>
-        );
-      })}
+    <div className={cn('flex h-8 space-x-4', className)}>
+      <AnimatePresence>
+        {socials.map((s, index) => {
+          return (
+            <m.div
+              transition={{ delay: index * 0.05 }}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              key={s.url}
+            >
+              <Link
+                href={s.url}
+                target='_blank'
+                className='inline-block p-1 rounded transition-colors opacity-65 hover:opacity-100 hover:bg-black/10'
+              >
+                {s.icon}
+              </Link>
+            </m.div>
+          );
+        })}
+      </AnimatePresence>
     </div>
   );
 }
