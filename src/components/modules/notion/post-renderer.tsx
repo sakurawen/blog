@@ -16,30 +16,11 @@ const Collection = dynamic(() =>
     m => m.Collection,
   ), { ssr: false });
 
-const Equation = dynamic(() =>
-  import('react-notion-x/build/third-party/equation').then(m => m.Equation), { ssr: false });
-
-const Pdf = dynamic(
-  () => import('react-notion-x/build/third-party/pdf').then(m => m.Pdf),
-  {
-    ssr: false,
-  },
-);
-
-const Modal = dynamic(
-  () => import('react-notion-x/build/third-party/modal').then(m => m.Modal),
-  {
-    ssr: false,
-  },
-);
 const components = {
   Code,
   nextImage: Image,
   nextLink: Link,
   Collection,
-  Equation,
-  Modal,
-  Pdf,
 };
 
 const mapPageUrl = (pageId: string) => `/blog/${pageId}`;
