@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+import { PostLoader } from '~/components/modules/notion/post-loader';
 import { PostRenderer } from '~/components/modules/notion/post-renderer';
 import { notion } from '~/lib/notion';
 
@@ -9,10 +11,16 @@ function getPost(id: string) {
 
 export default async function Post({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const data = await getPost(id);
   return (
     <div className='pt-24 max-w-2xl mx-auto sm:px-0 px-4'>
-      <PostRenderer recordMap={data} fullPage disableHeader className='prose !max-w-full !px-0' />
+      <Suspense fallback={<PostLoader />}>
+        <PostContent id={id} />
+      </Suspense>
     </div>
   );
+}
+
+async function PostContent({ id }: { id: string }) {
+  const data = await getPost(id);
+  return <PostRenderer recordMap={data} fullPage disableHeader className='prose !max-w-full !px-0' />;
 }
