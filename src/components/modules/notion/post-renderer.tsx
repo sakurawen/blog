@@ -18,9 +18,11 @@ const Collection = dynamic(() =>
 
 const components = {
   Code,
+  Collection,
+  Link,
+  Image,
   nextImage: Image,
   nextLink: Link,
-  Collection,
 };
 
 const mapPageUrl = (pageId: string) => `/blog/${pageId}`;

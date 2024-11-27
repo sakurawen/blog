@@ -1,26 +1,38 @@
 import { Suspense } from 'react';
+import { PageContainer } from '~/components/layout/page-container';
+import { Comment } from '~/components/modules/comment';
 import { PostLoader } from '~/components/modules/notion/post-loader';
 import { PostRenderer } from '~/components/modules/notion/post-renderer';
 import { notion } from '~/lib/notion';
-
-export const dynamic = 'force-dynamic';
 
 function getPost(id: string) {
   return notion.getPage(id);
 }
 
+export const dynamic = 'force-dynamic';
+
 export default async function Post({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   return (
-    <div className='pt-24 max-w-2xl mx-auto sm:px-0 px-4'>
+    <PageContainer className='pt-24 max-w-2xl mx-auto sm:px-0 px-4'>
       <Suspense fallback={<PostLoader />}>
         <PostContent id={id} />
       </Suspense>
-    </div>
+    </PageContainer>
   );
 }
 
 async function PostContent({ id }: { id: string }) {
   const data = await getPost(id);
-  return <PostRenderer recordMap={data} fullPage disableHeader className='prose !max-w-full !px-0' />;
+  return (
+    <PostRenderer
+      pageFooter={
+        <Comment />
+      }
+      recordMap={data}
+      fullPage
+      disableHeader
+      className='prose max-w-full! px-0!'
+    />
+  );
 }

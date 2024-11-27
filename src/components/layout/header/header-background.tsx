@@ -14,7 +14,7 @@ export function HeaderBackground(props: PropsWithChildren) {
     const { left, top, width, height } = currentTarget.getBoundingClientRect();
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
-    radius.set(Math.hypot(width, height) / 9);
+    radius.set(Math.hypot(width, height) / 2.5);
   }
 
   return (

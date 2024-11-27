@@ -8,20 +8,19 @@ export const dynamic = 'force-dynamic';
 
 export default async function PostsList() {
   return (
-    <PageContainer>
-      <div className='pt-24 max-w-3xl mx-auto'>
-        <Suspense fallback={<PostListLoader />}>
-          <PostList />
-        </Suspense>
-      </div>
+    <PageContainer className='pt-24 max-w-3xl mx-auto'>
+      <Suspense fallback={<PostListLoader />}>
+        <PostList />
+      </Suspense>
     </PageContainer>
   );
 }
 
+async function getPosts() {
+  return notion.getPage('13594a15d705807d8333de34903d6065');
+}
+
 async function PostList() {
-  async function getPosts() {
-    return notion.getPage('13594a15d705807d8333de34903d6065');
-  }
   const recordMap = await getPosts();
   return <PostRenderer recordMap={recordMap} />;
 }

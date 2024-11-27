@@ -1,26 +1,27 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: var(--primary);
+  --color-spotlight: var(--spotlight);
+
+  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+  --background-image-gradient-conic: conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops));
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 :root {
   --primary: #c0e5f3;
 }
 
-.shiki {
-  @apply bg-[#f9f9f9] dark:bg-[#18181b] p-2 rounded-md shadow my-1;
-}
-
-.shiki .line > span {
-  @apply text-[var(--shiki-light)] dark:text-[var(--shiki-dark)];
-}
 * {
   @apply selection:bg-[#c0e5f3];
-}
-
-.is-empty::before {
-  color: #ddd;
-  content: attr(data-placeholder);
-  float: left;
-  height: 0;
-  pointer-events: none;
 }

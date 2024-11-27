@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import { m } from 'motion/react';
 import { usePathname } from 'next/navigation';
 import { AnimatedLink } from './animated-link';
+import { HeaderBackground } from './header-background';
 
 const menu: Menu[] = [
   {
@@ -23,23 +24,25 @@ export function HeaderContent() {
   const pathname = usePathname();
 
   return (
-    <nav>
-      <div className='flex px-4'>
-        {
-          menu.map((i) => {
-            let isActive = false;
-            if (i.path === '/') {
-              isActive = i.path === pathname;
-            }
-            else {
-              isActive = pathname.includes(i.path);
-            }
-            return (
-              <HeaderMenuItem menu={i} isActive={isActive} key={i.path} />
-            );
-          })
-        }
-      </div>
+    <nav className='rounded-full overflow-hidden border '>
+      <HeaderBackground>
+        <div className='flex px-4'>
+          {
+            menu.map((i) => {
+              let isActive = false;
+              if (i.path === '/') {
+                isActive = i.path === pathname;
+              }
+              else {
+                isActive = pathname.includes(i.path);
+              }
+              return (
+                <HeaderMenuItem menu={i} isActive={isActive} key={i.path} />
+              );
+            })
+          }
+        </div>
+      </HeaderBackground>
     </nav>
   );
 }
@@ -47,7 +50,7 @@ export function HeaderContent() {
 function HeaderMenuItem({ menu, isActive }: { menu: Menu, isActive: boolean }) {
   return (
     <AnimatedLink
-      className='py-4 px-4 hover:text-zinc-900 '
+      className='py-3 px-4 hover:text-zinc-900 '
       href={menu.path}
       isActive={isActive}
     >
@@ -59,7 +62,7 @@ function HeaderMenuItem({ menu, isActive }: { menu: Menu, isActive: boolean }) {
         {isActive
           ? (
               <m.span
-                layoutId={isActive ? 'nav-icon' : undefined}
+                layoutId='icon'
                 className=' mr-2 absolute   h-4 w-4 flex items-center  left-0 '
               >
                 {menu.icon}
