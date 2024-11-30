@@ -24,7 +24,7 @@ export function HeaderContent() {
   const pathname = usePathname();
 
   return (
-    <nav className='rounded-full overflow-hidden border '>
+    <nav className='rounded-full overflow-hidden  shadow-sm'>
       <HeaderBackground>
         <div className='flex px-4'>
           {
@@ -50,7 +50,7 @@ export function HeaderContent() {
 function HeaderMenuItem({ menu, isActive }: { menu: Menu, isActive: boolean }) {
   return (
     <AnimatedLink
-      className='py-3 px-4 hover:text-zinc-900 '
+      className='py-2 px-2.5 hover:text-zinc-900 '
       href={menu.path}
       isActive={isActive}
     >

@@ -8,30 +8,30 @@ const socials = [
   {
     name: 'Twitter',
     url: 'https://twitter.com/wenhouman',
-    icon: <Icon className='size-6 ' icon='ri:twitter-x-fill' />,
+    icon: <Icon className='size-7 ' icon='ri:twitter-x-fill' />,
   },
   {
     name: 'github',
     url: 'https://github.com/sakurawen',
-    icon: <Icon className='size-6 ' icon='ri:github-line' />,
+    icon: <Icon className='size-7 ' icon='ri:github-line' />,
 
   },
   {
     name: 'bilibili',
     url: 'https://space.bilibili.com/2940875',
-    icon: <Icon className='size-6 ' icon='ri:bilibili-line' />,
+    icon: <Icon className='size-7 ' icon='ri:bilibili-line' />,
 
   },
   {
     name: 'email',
     url: 'mailto://wisakura@outlook.com',
-    icon: <Icon className='size-6 ' icon='ri:mail-line' />,
+    icon: <Icon className='size-7 ' icon='ri:mail-line' />,
   },
 ];
 
 export function Social({ className }: { className?: string }) {
   return (
-    <div className={cn('flex h-8 space-x-4', className)}>
+    <div className={cn('flex h-8 space-x-5', className)}>
       <AnimatePresence>
         {socials.map((s, index) => {
           return (
@@ -44,7 +44,7 @@ export function Social({ className }: { className?: string }) {
               <Link
                 href={s.url}
                 target='_blank'
-                className='inline-block p-1 rounded-sm transition-colors opacity-65 hover:opacity-100 hover:bg-black/10'
+                className='inline-block p-1.5 rounded-sm transition-colors opacity-65 hover:opacity-100 hover:bg-black/10'
               >
                 {s.icon}
               </Link>

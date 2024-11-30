@@ -7,10 +7,10 @@ import { Toaster } from 'sonner';
 
 import { MotionProvider } from '~/components/common/providers/motion-privider';
 import { ThemeProvider } from '~/components/common/providers/theme-proivider';
-import { zhCN } from '~/lib/clerk-localizations';
+import { ScrollArea } from '~/components/layout/scroll-area';
 import { harmonySans } from '~/lib/font';
-import './globals.css';
 import 'react-notion-x/src/styles.css';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: 'wen\'s blog',
@@ -23,15 +23,17 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <ClerkProvider localization={zhCN}>
+    <ClerkProvider>
       <html
         lang='en'
         suppressHydrationWarning
       >
-        <body className={clsx('relative min-h-screen', harmonySans.className)}>
+        <body className={clsx(harmonySans.className)}>
           <MotionProvider>
             <ThemeProvider>
-              {children}
+              <ScrollArea className='h-screen'>
+                {children}
+              </ScrollArea>
               <div className='pointer-events-none absolute inset-0 bg-[url(/noise.png)] bg-[182px,182px] bg-repeat opacity-[0.025]' />
             </ThemeProvider>
           </MotionProvider>
