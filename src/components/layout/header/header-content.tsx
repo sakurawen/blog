@@ -3,8 +3,8 @@ import { Icon } from '@iconify/react';
 import clsx from 'clsx';
 import { m } from 'motion/react';
 import { usePathname } from 'next/navigation';
+import { LinearBackground } from '~/components/ui/linear-background';
 import { AnimatedLink } from './animated-link';
-import { HeaderBackground } from './header-background';
 
 const menu: Menu[] = [
   {
@@ -25,7 +25,7 @@ export function HeaderContent() {
 
   return (
     <nav className='rounded-full overflow-hidden  shadow-sm'>
-      <HeaderBackground>
+      <LinearBackground className='bg-white/60 py-1'>
         <div className='flex px-4'>
           {
             menu.map((i) => {
@@ -42,7 +42,7 @@ export function HeaderContent() {
             })
           }
         </div>
-      </HeaderBackground>
+      </LinearBackground>
     </nav>
   );
 }

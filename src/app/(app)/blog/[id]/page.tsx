@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
 import { PageContainer } from '~/components/layout/page-container';
-import { Comment } from '~/components/modules/comment';
 import { PostLoader } from '~/components/modules/notion/post-loader';
 import { PostRenderer } from '~/components/modules/notion/post-renderer';
 import { notion } from '~/lib/notion';
+import { Comment } from './_components/comment/comment';
 
 function getPost(id: string) {
   return notion.getPage(id);
@@ -27,7 +27,7 @@ async function PostContent({ id }: { id: string }) {
   return (
     <PostRenderer
       pageFooter={
-        <Comment />
+        <Comment id={id} />
       }
       recordMap={data}
       fullPage

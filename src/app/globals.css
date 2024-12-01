@@ -2,6 +2,8 @@
 
 @theme {
   --color-primary: var(--primary);
+  --color-primary-deep: var(--primary-deep);
+  --color-primary-fade: var(--primary-fade);
   --color-spotlight: var(--spotlight);
 
   --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
@@ -19,6 +21,8 @@
 }
 
 :root {
+  --primary-fade: #e4f3fa;
+  --primary-deep: #8fd3ea;
   --primary: #c0e5f3;
 }
 
