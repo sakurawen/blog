@@ -1,4 +1,3 @@
-import { getAllPagesInSpace } from 'notion-utils';
 import { Suspense } from 'react';
 import { PageContainer } from '~/components/layout/page-container';
 import { PostListLoader } from '~/components/modules/notion/post-loader';
