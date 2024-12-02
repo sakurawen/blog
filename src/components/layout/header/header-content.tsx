@@ -24,7 +24,7 @@ export function HeaderContent() {
   const pathname = usePathname();
 
   return (
-    <nav className='header-content shadow  rounded-full'>
+    <nav className='header-content shadow-xs  rounded-full'>
       <LinearBackground className='bg-white/80 py-1 rounded-full overflow-hidden border border-zinc-200'>
         <div className='flex px-4'>
           {

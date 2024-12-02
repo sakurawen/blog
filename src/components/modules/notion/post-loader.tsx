@@ -4,10 +4,7 @@ export function PostListLoader() {
   return (
     <div>
       <ContentLoader viewBox='0 0 400 20' className='w-full  px-4 pb-6'>
-        <rect x='0' y='0' rx='5' ry='5' width='200' height='20' />
-      </ContentLoader>
-      <ContentLoader viewBox='0 0 400 20' className='w-full px-4'>
-        <rect x='0' y='0' rx='5' ry='5' width='800' height='1' />
+        <rect x='0' y='0' rx='5' ry='5' width='100' height='20' />
       </ContentLoader>
       <div className='flex flex-wrap '>
         <PostCardLoader />

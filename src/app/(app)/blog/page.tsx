@@ -1,3 +1,4 @@
+import { getAllPagesInSpace } from 'notion-utils';
 import { Suspense } from 'react';
 import { PageContainer } from '~/components/layout/page-container';
 import { PostListLoader } from '~/components/modules/notion/post-loader';
@@ -17,7 +18,7 @@ export default async function PostsList() {
 }
 
 async function getPosts() {
-  return notion.getPage('13594a15d705807d8333de34903d6065');
+  return notion.getPage('13694a15d705804f9a2df0f1e1168011');
 }
 
 async function PostList() {

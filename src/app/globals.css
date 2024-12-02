@@ -29,3 +29,19 @@
 * {
   @apply selection:bg-[#c0e5f3];
 }
+
+.notion-collection-card {
+  @apply shadow-xs border border-zinc-200 rounded-xl;
+}
+
+.notion-gallery-grid {
+  @apply pt-0 border-t-0;
+}
+
+.notion-page-title > .notion-page-icon-inline.notion-page-icon-image {
+  @apply hidden;
+}
+
+.notion-page-cover-wrapper > .notion-page-cover {
+  @apply object-cover shadow-xl ring ring-zinc-200 rounded-xl;
+}
