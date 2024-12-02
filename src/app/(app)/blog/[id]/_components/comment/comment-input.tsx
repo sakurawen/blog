@@ -9,9 +9,7 @@ import { Textarea } from '~/components/ui/textarea';
 interface CommentsInputProps {
   id: string
 }
-export function CommentsInput(props: CommentsInputProps) {
-  const { id } = props;
-
+export function CommentsInput(_: CommentsInputProps) {
   const [commentForm, setCommentForm] = useState({
     userComment: '',
     url: '',
