@@ -21,7 +21,7 @@ export function LinearBackground(props: PropsWithChildren<{
   }
 
   return (
-    <div onMouseMove={handleMouseMove} className={cn('linear-background mx-auto group  relative  group   backdrop-blur', className)}>
+    <div onMouseMove={handleMouseMove} className={cn('linear-background mx-auto group  relative  group   backdrop-blur-md', className)}>
       <m.div style={{ background }} className='pointer-events-none absolute -inset-px  opacity-0 transition-opacity duration-500 group-hover:opacity-100' aria-hidden />
       {children}
     </div>
