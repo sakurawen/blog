@@ -30,6 +30,7 @@
   @apply selection:bg-[#c0e5f3];
 }
 
+/* custom notion render style */
 .notion-collection-card {
   @apply shadow-xs border border-zinc-200 rounded-xl;
 }
