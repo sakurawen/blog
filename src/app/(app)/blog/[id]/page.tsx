@@ -14,7 +14,7 @@ export const dynamic = 'force-dynamic';
 export default async function Post({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   return (
-    <PageContainer className='pt-24 max-w-2xl mx-auto sm:px-0 px-4'>
+    <PageContainer className='pt-24 max-w-3xl mx-auto sm:px-0 px-4'>
       <Suspense fallback={<PostLoader />}>
         <PostContent id={id} />
       </Suspense>
@@ -32,7 +32,7 @@ async function PostContent({ id }: { id: string }) {
       recordMap={data}
       fullPage
       disableHeader
-      className='prose max-w-full! px-0!'
+      className='!w-full  px-0!'
     />
   );
 }

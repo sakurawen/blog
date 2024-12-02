@@ -22,5 +22,5 @@ async function getPosts() {
 
 async function PostList() {
   const recordMap = await getPosts();
-  return <PostRenderer recordMap={recordMap} />;
+  return <PostRenderer className='!w-auto' recordMap={recordMap} />;
 }

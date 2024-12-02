@@ -24,7 +24,7 @@ export function CommentsInput(_: CommentsInputProps) {
   }
   return (
     <div className='comment-input rounded-xl'>
-      <div className='flex gap-4'>
+      <div className='flex gap-4 flex-col sm:flex-row '>
         <Input className='flex-1' placeholder='昵称:' />
         <Input className='flex-1' placeholder='邮箱:' />
         <Input className='flex-1' placeholder='网址:' />
