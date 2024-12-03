@@ -13,13 +13,18 @@ export function Header() {
         <div className='nav-end flex items-center justify-end'>
           <SignedOut>
             <SignInButton mode='modal'>
-              <div className='size-7 rounded-full shadow-md  bg-white/80 backdrop-blur-md hover:bg-zinc-100 border border-zinc-200 text-zinc-500  flex items-center justify-center'>
+              <div className='size-7 rounded-full shadow-md ring-2 ring-zinc-100 hover:text-zinc-950 bg-white/80 backdrop-blur-md hover:bg-zinc-100   text-zinc-500  flex items-center justify-center'>
                 <Icon icon='lucide:user-round' />
               </div>
             </SignInButton>
           </SignedOut>
           <SignedIn>
-            <UserButton />
+            <UserButton appearance={{
+              elements: {
+                userButtonBox: 'shadow-md ring-2 ring-zinc-100 rounded-full',
+              },
+            }}
+            />
           </SignedIn>
         </div>
       </div>
