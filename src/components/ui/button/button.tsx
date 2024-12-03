@@ -7,8 +7,8 @@ const buttonStyle = cva({
   base: 'inline-flex items-center rounded-md text-sm  cursor-pointer py-1.5 px-4 disabled:point-event-none disabled:cursor-not-allowed disabled:opacity-60',
   variants: {
     variant: {
-      primary: 'transition border border-primary  bg-primary-fade hover:bg-primary active:bg-primary-deep',
-      default: 'transition border border-zinc-100 bg-zinc-50 hover:bg-zinc-100 active:bg-zinc-200',
+      primary: 'transition border border-zinc-200 text-white  bg-zinc-800 hover:bg-zinc-900 active:bg-zinc-600',
+      default: 'transition border border-zinc-200 bg-zinc-100 hover:bg-zinc-100 active:bg-zinc-200',
       text: 'transition text-zinc-600 hover:text-zinc-950 hover:scale-105 active:scale-95',
     },
   },

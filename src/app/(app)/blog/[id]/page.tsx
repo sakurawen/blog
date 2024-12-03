@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
-import { PageContainer } from '~/components/layout/page-container';
 import { PostLoader } from '~/components/modules/notion/post-loader';
 import { PostRenderer } from '~/components/modules/notion/post-renderer';
+import { PageContainer } from '~/components/ui/page-container';
 import { notion } from '~/lib/notion';
 import { Comment } from './_components/comment/comment';
 

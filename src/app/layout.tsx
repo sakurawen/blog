@@ -1,13 +1,11 @@
 import type { Metadata } from 'next';
-
 import { ClerkProvider } from '@clerk/nextjs';
 import { Analytics } from '@vercel/analytics/react';
 import clsx from 'clsx';
 import { Toaster } from 'sonner';
-
-import { MotionProvider } from '~/components/common/providers/motion-privider';
-import { ThemeProvider } from '~/components/common/providers/theme-proivider';
-import { ScrollArea } from '~/components/layout/scroll-area';
+import { MotionProvider } from '~/components/providers/motion-provider';
+import { ThemeProvider } from '~/components/providers/theme-provider';
+import { ScrollArea } from '~/components/ui/scroll-area';
 import { harmonySans } from '~/lib/font';
 import 'react-notion-x/src/styles.css';
 import './globals.css';

@@ -1,4 +1,5 @@
 'use client';
+import { useUser } from '@clerk/nextjs';
 import { Icon } from '@iconify/react';
 import { produce } from 'immer';
 import { type ChangeEvent, useState } from 'react';
@@ -10,11 +11,11 @@ interface CommentsInputProps {
   id: string
 }
 export function CommentsInput(_: CommentsInputProps) {
+  const _user = useUser();
   const [commentForm, setCommentForm] = useState({
     userComment: '',
     url: '',
     email: '',
-
   });
 
   function handleUserCommentChange(e: ChangeEvent<HTMLTextAreaElement>) {

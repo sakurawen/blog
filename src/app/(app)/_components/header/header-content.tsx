@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { m } from 'motion/react';
 import { usePathname } from 'next/navigation';
 import { LinearBackground } from '~/components/ui/linear-background';
-import { AnimatedLink } from './animated-link';
+import { HeaderLink } from './header-link';
 
 const menu: Menu[] = [
   {
@@ -49,8 +49,8 @@ export function HeaderContent() {
 
 function HeaderMenuItem({ menu, isActive }: { menu: Menu, isActive: boolean }) {
   return (
-    <AnimatedLink
-      className='py-2 px-2.5 hover:text-zinc-900 '
+    <HeaderLink
+      className='py-2 px-2.5 hover:text-zinc-950'
       href={menu.path}
       isActive={isActive}
     >
@@ -73,6 +73,6 @@ function HeaderMenuItem({ menu, isActive }: { menu: Menu, isActive: boolean }) {
           {menu.title}
         </span>
       </span>
-    </AnimatedLink>
+    </HeaderLink>
   );
 }

@@ -17,7 +17,7 @@ export function Comment(props: CommentProps) {
   );
 }
 
-function ComingMask({ children }: PropsWithChildren) {
+export function ComingMask({ children }: PropsWithChildren) {
   return (
     <div className='pointer-events-none relative w-full select-none border border-zinc-50 rounded-md p-2'>
       <div className='absolute z-10 top-0 left-0 h-full w-full bg-white/60'>

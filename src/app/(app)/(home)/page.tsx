@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { PageContainer } from '~/components/layout/page-container';
+import { PageContainer } from '~/components/ui/page-container';
 import { Social } from './_components/social';
 
 export default function Home() {

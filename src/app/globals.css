@@ -32,7 +32,7 @@
 
 /* custom notion render style */
 .notion-collection-card {
-  @apply shadow-xs border border-zinc-200 rounded-xl;
+  @apply shadow-xs border border-zinc-200 rounded-xl cursor-default;
 }
 
 .notion-gallery-grid {
@@ -45,4 +45,13 @@
 
 .notion-page-cover-wrapper > .notion-page-cover {
   @apply object-cover shadow-xl ring ring-zinc-200 rounded-xl;
+}
+
+.notion-page-cover-wrapper {
+  height: auto !important;
+  max-height: unset !important;
+}
+.notion-page-cover-wrapper > img {
+  height: auto !important;
+  max-height: unset !important;
 }

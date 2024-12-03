@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from 'react';
-import { Header } from '~/components/layout/header';
+import { Header } from './_components/header';
 
 export default function AppLayout({ children }: PropsWithChildren) {
   return (
