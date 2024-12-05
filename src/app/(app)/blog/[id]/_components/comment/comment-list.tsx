@@ -13,7 +13,7 @@ interface CommentProps {
 }
 export async function CommentList(_: CommentProps) {
   return (
-    <div className='comment-list w-full'>
+    <div className='comment-list w-full '>
 
     </div>
   );

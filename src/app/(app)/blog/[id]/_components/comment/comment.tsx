@@ -1,6 +1,7 @@
-import type { PropsWithChildren } from 'react';
+import { SignOutButton } from '~/components/modules/auth/sign-out-button/sign-out-button';
 import { CommentsInput } from './comment-input';
 import { CommentList } from './comment-list';
+import { CommentSignInMask } from './comment-sign-in-mask';
 
 interface CommentProps {
   id: string
@@ -8,24 +9,14 @@ interface CommentProps {
 export function Comment(props: CommentProps) {
   const { id } = props;
   return (
-    <ComingMask>
-      <div className='comment w-full '>
+    <div className='comment w-full '>
+      <CommentSignInMask>
         <CommentsInput id={id} />
-        <CommentList id={id} />
+      </CommentSignInMask>
+      <CommentList id={id} />
+      <div className='text-center pt-24'>
+        <SignOutButton />
       </div>
-    </ComingMask>
-  );
-}
-
-export function ComingMask({ children }: PropsWithChildren) {
-  return (
-    <div className='pointer-events-none relative w-full select-none border border-zinc-50 rounded-md p-2'>
-      <div className='absolute z-10 top-0 left-0 h-full w-full bg-white/60'>
-        <div className='h-full w-full flex justify-center items-center'>
-          comments coming soon...
-        </div>
-      </div>
-      {children}
     </div>
   );
 }
