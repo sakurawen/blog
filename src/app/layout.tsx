@@ -6,12 +6,14 @@ import { MotionProvider } from '~/components/providers/motion-provider';
 import { ThemeProvider } from '~/components/providers/theme-provider';
 import { ScrollArea } from '~/components/ui/scroll-area';
 import { harmonySans } from '~/lib/font';
-import 'react-notion-x/src/styles.css';
+import { initDayjs } from './init';
 import './globals.css';
 
+initDayjs();
+
 export const metadata: Metadata = {
-  title: 'wen\'s blog',
-  description: 'wen\'s blog',
+  title: 'akumanoko',
+  description: 'akumanoko',
 };
 
 export default function RootLayout({
@@ -33,7 +35,7 @@ export default function RootLayout({
             <div className='pointer-events-none absolute inset-0 bg-[url(/noise.png)] bg-[182px,182px] bg-repeat opacity-[0.025]' />
           </ThemeProvider>
         </MotionProvider>
-        <Toaster />
+        <Toaster position='top-center' />
         <Analytics />
       </body>
     </html>

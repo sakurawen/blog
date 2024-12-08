@@ -15,6 +15,13 @@
       "when": 1733319258606,
       "tag": "0001_curly_exodus",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1733659740097,
+      "tag": "0002_useful_killer_shrike",
+      "breakpoints": true
     }
   ]
 }

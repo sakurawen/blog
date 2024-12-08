@@ -114,15 +114,11 @@
   @apply hidden;
 }
 
-.notion-page-cover-wrapper > .notion-page-cover {
-  @apply object-cover shadow-xl ring ring-zinc-200 rounded-xl;
+.notion-page-cover-wrapper > img.notion-page-cover {
+  @apply object-cover shadow-xl ring ring-zinc-200 rounded-xl !h-auto !max-h-[unset];
 }
 
 .notion-page-cover-wrapper {
-  height: auto !important;
-  max-height: unset !important;
-}
-.notion-page-cover-wrapper > img {
   height: auto !important;
   max-height: unset !important;
 }
