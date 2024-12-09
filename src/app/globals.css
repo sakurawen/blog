@@ -103,11 +103,11 @@
 
 /* custom notion render style */
 .notion-collection-card {
-  @apply shadow-xs border border-zinc-200 rounded-xl cursor-default;
+  @apply !shadow-xs !border !border-zinc-200 !rounded-xl !cursor-default;
 }
 
 .notion-gallery-grid {
-  @apply pt-0 border-t-0;
+  @apply !pt-0 !border-t-0;
 }
 
 .notion-page-title > .notion-page-icon-inline.notion-page-icon-image {

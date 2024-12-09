@@ -1,6 +1,5 @@
 import { getTableColumns } from 'drizzle-orm';
 import { revalidatePath } from 'next/cache';
-import { SignOutButton } from '~/components/modules/auth/sign-out-button/sign-out-button';
 import { db } from '~/db/client';
 import { comments } from '~/db/schemas';
 import { CommentsInput } from './comment-input';
@@ -23,9 +22,6 @@ export function Comment(props: CommentProps) {
       <CommentSignInMask>
         <CommentsInput id={id} createComment={createPostComment} />
       </CommentSignInMask>
-      <div className='text-center pt-24'>
-        <SignOutButton />
-      </div>
     </div>
   );
 }
