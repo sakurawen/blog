@@ -9,8 +9,8 @@ export function HeaderLink(props: React.ComponentProps<typeof Link>) {
   return (
     <Link
       className={cn(
-        pathname === restProps.href ? 'text-zinc-950 bg-zinc-50' : 'text-zinc-500',
-        'cursor-default py-1.5 px-4 text-sm  hover:text-zinc-950 hover:bg-zinc-50 inline-flex items-center justify-center ',
+        pathname === restProps.href ? 'text-zinc-950 ' : 'text-zinc-500',
+        'cursor-default py-1.5 px-4 text-sm  hover:text-zinc-950  inline-flex items-center justify-center ',
         className,
       )}
       {...restProps}
