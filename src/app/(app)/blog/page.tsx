@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function PostsList() {
   return (
-    <PageContainer className='pt-24 max-w-2xl mx-auto'>
+    <PageContainer className='pt-24 max-w-3xl mx-auto'>
       <Suspense fallback={<PostListLoader />}>
         <PostList />
       </Suspense>
