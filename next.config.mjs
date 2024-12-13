@@ -4,6 +4,9 @@ import withMdx from '@next/mdx';
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   output: 'standalone',
+  experimental: {
+    reactCompiler: true,
+  },
   images: {
     remotePatterns: [
       {

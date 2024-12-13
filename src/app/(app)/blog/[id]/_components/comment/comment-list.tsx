@@ -21,9 +21,9 @@ export async function CommentList({ id }: CommentProps) {
   return (
     <div className='comment-list w-full'>
       {
-        data.map((comment) => {
+        data.map((comment, index) => {
           return (
-            <CommentListItem key={comment.id} comment={comment} />
+            <CommentListItem index={index} key={comment.id} comment={comment} />
           );
         })
       }
@@ -32,12 +32,13 @@ export async function CommentList({ id }: CommentProps) {
 }
 
 type Comment = Awaited<ReturnType<typeof getCommentList>>[number];
-function CommentListItem({ comment }: { comment: Comment }) {
+function CommentListItem({ comment, index }: { comment: Comment, index: number }) {
+  const createAt = dayjs(comment.createAt);
   function formatNow(date?: Date | null) {
     if (!date) {
       return '-';
     }
-    return dayjs(date).fromNow();
+    return createAt.fromNow();
   }
   return (
     <div className='comment-list-item gap-4 flex items-end !mb-4'>
@@ -46,8 +47,14 @@ function CommentListItem({ comment }: { comment: Comment }) {
       </div>
       <div>
         <div className='pl-1 space-x-2'>
-          <span className='font-bold'>{comment.user?.name}</span>
-          <span className='text-xs'>{formatNow(comment.createAt)}</span>
+          <span className='text-sm font-bold'>{comment.user?.name}</span>
+          <span className='text-zinc-500 text-[10px]'>
+            #
+            {index + 1}
+            {' '}
+            {createAt.format('YYYY-MM-DD HH:mm:ss')}
+          </span>
+          <span className='text-zinc-500 text-[10px]'>{formatNow(comment.createAt)}</span>
         </div>
         <p className='inline-block text-sm bg-zinc-100 rounded-t-xl rounded-br-xl p-2'>{comment.content}</p>
       </div>

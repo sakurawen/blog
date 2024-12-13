@@ -135,3 +135,10 @@
   height: auto !important;
   max-height: unset !important;
 }
+
+.notion-page-content-inner {
+  @apply leading-loose;
+}
+.notion-text {
+  @apply !my-1;
+}
