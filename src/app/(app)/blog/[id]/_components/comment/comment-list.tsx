@@ -20,13 +20,15 @@ export async function CommentList({ id }: CommentProps) {
   const data = await getCommentList(id);
   return (
     <div className='comment-list w-full'>
-      {
-        data.map((comment, index) => {
-          return (
-            <CommentListItem index={index} key={comment.id} comment={comment} />
-          );
-        })
-      }
+      <div>
+        {
+          data.map((comment, index) => {
+            return (
+              <CommentListItem index={index} key={comment.id} comment={comment} />
+            );
+          })
+        }
+      </div>
     </div>
   );
 }
