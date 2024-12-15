@@ -50,7 +50,7 @@ const DropdownMenuSubContent = ({ ref, className, ...props }: React.ComponentPro
 DropdownMenuSubContent.displayName
   = DropdownMenuPrimitive.SubContent.displayName;
 
-const DropdownMenuContent = ({ ref, className, sideOffset = 4, ...props }: React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content> & { ref: React.RefObject<React.ComponentRef<typeof DropdownMenuPrimitive.Content>> }) => (
+const DropdownMenuContent = ({ ref, className, sideOffset = 4, ...props }: React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content> & { ref?: React.RefObject<React.ComponentRef<typeof DropdownMenuPrimitive.Content>> }) => (
   <DropdownMenuPrimitive.Portal>
     <DropdownMenuPrimitive.Content
       ref={ref}
@@ -67,7 +67,7 @@ DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName;
 
 const DropdownMenuItem = ({ ref, className, inset, ...props }: React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
   inset?: boolean
-} & { ref: React.RefObject<React.ComponentRef<typeof DropdownMenuPrimitive.Item>> }) => (
+} & { ref?: React.RefObject<React.ComponentRef<typeof DropdownMenuPrimitive.Item>> }) => (
   <DropdownMenuPrimitive.Item
     ref={ref}
     className={cn(

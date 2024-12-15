@@ -8,7 +8,7 @@
     "db:push": "drizzle-kit push",
     "dev": "next dev --turbopack",
     "dev:turbo": "next dev --turbo",
-    "lint": "eslint --fix",
+    "lint": "eslint . --fix ",
     "start": "next start"
   },
   "dependencies": {
