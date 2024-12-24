@@ -22,6 +22,13 @@
       "when": 1733659740097,
       "tag": "0002_useful_killer_shrike",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1734276398349,
+      "tag": "0003_stiff_black_knight",
+      "breakpoints": true
     }
   ]
 }
