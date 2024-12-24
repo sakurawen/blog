@@ -2,19 +2,20 @@ import { Suspense } from 'react';
 import { PostLoader } from '~/components/modules/notion/post-loader';
 import { PostRenderer } from '~/components/modules/notion/post-renderer';
 import { PageContainer } from '~/components/ui/page-container';
+
 import { notion } from '~/lib/notion';
 import { Comment } from './_components/comment/comment';
+
+export const dynamic = 'force-dynamic';
 
 function getPost(id: string) {
   return notion.getPage(id);
 }
 
-export const dynamic = 'force-dynamic';
-
 export default async function Post({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   return (
-    <PageContainer className='pt-24 max-w-3xl mx-auto sm:px-0 px-4'>
+    <PageContainer className='pt-20 max-w-3xl mx-auto  px-4'>
       <Suspense fallback={<PostLoader />}>
         <PostContent id={id} />
       </Suspense>
