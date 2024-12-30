@@ -6,6 +6,7 @@ import { MotionProvider } from '~/components/providers/motion-provider';
 import { ThemeProvider } from '~/components/providers/theme-provider';
 import { ScrollArea } from '~/components/ui/scroll-area';
 import { harmonySans } from '~/lib/font';
+import { ClientInit } from './client-init';
 import { initDayjs } from './init';
 import './globals.css';
 
@@ -31,6 +32,7 @@ export default function RootLayout({
           <ThemeProvider>
             <ScrollArea className='h-screen'>
               {children}
+              <ClientInit />
             </ScrollArea>
             <div className='pointer-events-none absolute inset-0 bg-[url(/noise.png)] bg-[182px,182px] bg-repeat opacity-[0.025]' />
           </ThemeProvider>

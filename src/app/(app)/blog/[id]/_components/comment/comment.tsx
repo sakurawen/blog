@@ -6,11 +6,23 @@ import { CommentsInput } from './comment-input';
 import { CommentList } from './comment-list';
 import { CommentSignInMask } from './comment-sign-in-mask';
 
+async function getCommentList(postId: string) {
+  return db.query.comments.findMany({
+    where(fields, { eq }) {
+      return eq(fields.postId, postId);
+    },
+    with: {
+      user: true,
+    },
+  });
+}
+
 interface CommentProps {
   id: string
 }
-export function Comment(props: CommentProps) {
+export async function Comment(props: CommentProps) {
   const { id } = props;
+  const commentList = await getCommentList(id);
   async function createPostComment(create: typeof comments.$inferInsert) {
     'use server';
     revalidatePath(`/blog/${id}`);
@@ -18,7 +30,7 @@ export function Comment(props: CommentProps) {
   }
   return (
     <div className='comment w-full '>
-      <CommentList id={id} />
+      <CommentList list={commentList} />
       <CommentSignInMask>
         <CommentsInput id={id} createComment={createPostComment} />
       </CommentSignInMask>

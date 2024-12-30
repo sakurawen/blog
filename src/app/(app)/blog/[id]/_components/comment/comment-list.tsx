@@ -1,30 +1,23 @@
+'use client';
+import type { InferUserFromClient } from 'better-auth';
+import type { getCommentList } from './actions';
 import dayjs from 'dayjs';
 import Image from 'next/image';
-import { db } from '~/db/client';
-
-async function getCommentList(postId: string) {
-  return db.query.comments.findMany({
-    where(fields, { eq }) {
-      return eq(fields.postId, postId);
-    },
-    with: {
-      user: true,
-    },
-  });
-}
+import { authClient } from '~/lib/auth-client';
+import { cn } from '~/lib/cn';
 
 interface CommentProps {
-  id: string
+  list: Awaited<ReturnType<typeof getCommentList>>
 }
-export async function CommentList({ id }: CommentProps) {
-  const data = await getCommentList(id);
+export function CommentList({ list }: CommentProps) {
+  const { data } = authClient.useSession();
   return (
-    <div className='comment-list w-full'>
+    <div className={cn('comment-list w-full !my-12')}>
       <div>
         {
-          data.map((comment, index) => {
+          list.map((comment, index) => {
             return (
-              <CommentListItem index={index} key={comment.id} comment={comment} />
+              <CommentListItem user={data?.user} index={index} key={comment.id} comment={comment} />
             );
           })
         }
@@ -34,7 +27,9 @@ export async function CommentList({ id }: CommentProps) {
 }
 
 type Comment = Awaited<ReturnType<typeof getCommentList>>[number];
-function CommentListItem({ comment, index }: { comment: Comment, index: number }) {
+
+function CommentListItem({ comment, index, user }: { comment: Comment, index: number, user?: InferUserFromClient<any> }) {
+  const isSelfComment = comment.userId === user?.id;
   const createAt = dayjs(comment.createAt);
   function formatNow(date?: Date | null) {
     if (!date) {
@@ -43,22 +38,30 @@ function CommentListItem({ comment, index }: { comment: Comment, index: number }
     return createAt.fromNow();
   }
   return (
-    <div className='comment-list-item gap-4 flex items-end !mb-4'>
-      <div>
+    <div className={cn('comment-list-item gap-4 flex items-end !mb-4  ', { 'flex-row-reverse': isSelfComment })}>
+      <div className='shrink-0'>
         <Image width={32} height={32} className='rounded-full' src={comment.user?.image || ''} alt='avatar' />
       </div>
-      <div>
-        <div className='pl-1 space-x-2'>
+      <div className={cn({
+        'text-right': isSelfComment,
+      })}
+      >
+        <div className='pl-1 space-x-2 '>
           <span className='text-sm font-bold'>{comment.user?.name}</span>
           <span className='text-zinc-500 text-[10px]'>
             #
             {index + 1}
             {' '}
-            {createAt.format('YYYY-MM-DD HH:mm:ss')}
+            {createAt?.format('YYYY-MM-DD HH:mm:ss')}
           </span>
           <span className='text-zinc-500 text-[10px]'>{formatNow(comment.createAt)}</span>
         </div>
-        <p className='inline-block text-sm bg-zinc-100 rounded-t-xl rounded-br-xl p-2'>{comment.content}</p>
+        <p className={cn('inline-block text-left text-sm bg-zinc-100 p-2', [
+          isSelfComment ? 'rounded-t-xl rounded-bl-xl' : 'rounded-t-xl rounded-br-xl',
+        ])}
+        >
+          {comment.content}
+        </p>
       </div>
     </div>
   );
