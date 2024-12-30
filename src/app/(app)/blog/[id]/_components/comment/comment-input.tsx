@@ -14,7 +14,13 @@ interface CommentsInputProps {
 export function CommentsInput({ id, createComment }: CommentsInputProps) {
   const { data } = authClient.useSession();
   const [state, action, isPending] = useActionState(async (_: any, form: FormData) => {
-    const comment = form.get('comment') as string || '';
+    const comment = form.get('comment') as string;
+    if (comment.trim().length === 0) {
+      toast.info('请输入评论');
+      return {
+        comment,
+      };
+    }
     if (!data?.user) {
       toast.info('请登陆后评论');
       return {
