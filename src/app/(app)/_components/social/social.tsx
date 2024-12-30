@@ -24,7 +24,7 @@ const socials = [
   },
   {
     name: 'email',
-    url: 'mailto://wisakura@outlook.com',
+    url: `mailto:${process.env.NEXT_PUBLIC_EMAIL}`,
     icon: <Icon className='size-6' icon='ri:mail-line' />,
   },
 ];

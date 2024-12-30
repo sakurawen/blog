@@ -140,5 +140,5 @@
   @apply leading-loose;
 }
 .notion-text {
-  @apply !my-1;
+  @apply !mt-1;
 }

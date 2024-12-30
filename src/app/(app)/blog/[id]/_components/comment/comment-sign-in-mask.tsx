@@ -15,7 +15,14 @@ export function CommentSignInMask({ children }: PropsWithChildren) {
         <div className='h-full w-full flex justify-center items-center'>
           <div>
             <div className='text-sm text-center pb-4'>
-              使用社交媒体账户登录评论
+              <p className='!mb-2'>
+                使用社交账户登录评论
+              </p>
+              <p className='text-xs'>
+                如果你没有以下社交帐户，你可以给我
+                <a className='text-black underline' href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`} target='_blank'>写信</a>
+                交流
+              </p>
             </div>
             <div className='flex p items-center justify-center gap-4'>
               <Button onClick={githubSignIn}>
