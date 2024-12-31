@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <PageContainer className='home overflow-hidden hero container min-h-screen mx-auto flex items-center justify-center'>
       <div className='flex flex-col w-full justify-center  items-center space-y-12'>
-        <Image src='/image/avatar.png' width={260} height={260} className=' pointer-events-none' alt='avatar' />
+        <Image src='/image/avatar.jpg' width={260} height={260} className='object-contain shrink-0 pointer-events-none rounded-full' alt='avatar' />
         <div className='text-center '>
           <h1 className='text-3xl mb-4'>
             Hello ,I'm
