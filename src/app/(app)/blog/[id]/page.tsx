@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import * as notionUtils from 'notion-utils';
 import { Suspense } from 'react';
 import { PostLoader } from '~/components/modules/notion/post-loader';
@@ -16,9 +17,16 @@ export async function generateMetadata({ params }: PageProps) {
   const { id } = await params;
   const post = await getPost(id);
   const title = notionUtils.getPageTitle(post);
+  const block = post.block[id].value;
+  const description = notionUtils.getPageProperty('description', block, post);
   return {
     title: `${title} - akumanoko`,
-  };
+    openGraph: {
+      title,
+      description,
+      images: `https://www.notion.so${block.format.page_cover}`,
+    },
+  } as Metadata;
 }
 
 function getPost(id: string) {
