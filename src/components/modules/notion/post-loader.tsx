@@ -2,7 +2,7 @@ import ContentLoader, { Code } from 'react-content-loader';
 
 export function PostListLoader() {
   return (
-    <div>
+    <div className='mt-4'>
       <ContentLoader viewBox='0 0 400 20' className='w-full  px-4 pb-6'>
         <rect x='0' y='0' rx='5' ry='5' width='100' height='20' />
       </ContentLoader>
@@ -30,7 +30,7 @@ export function PostCardLoader() {
 
 export function PostLoader() {
   return (
-    <>
+    <div>
       <ContentLoader viewBox='0 0 500 320'className='w-full'>
         <rect x='3' y='3' rx='10' ry='10' width='500' height='280' />
       </ContentLoader>
@@ -38,6 +38,6 @@ export function PostLoader() {
       <Code />
       <Code />
       <Code />
-    </>
+    </div>
   );
 }
