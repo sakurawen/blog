@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: PageProps) {
     openGraph: {
       title,
       description,
-      images: `https://www.notion.so${block.format.page_cover}`,
+      images: `https://www.notion.so/image/${encodeURIComponent(block.format.page_cover)}?table=block&id=${id}&cache=v2`,
     },
   } as Metadata;
 }
