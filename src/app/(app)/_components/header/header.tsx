@@ -6,21 +6,21 @@ const menu: Menu[] = [
   {
     title: '首页',
     path: '/',
-    icon: <Icon icon='lucide:tree-palm' />,
+    icon: <Icon className='size-5' icon='ri-home-line' />,
 
   },
   {
     title: '博客',
     path: '/blog',
-    icon: <Icon icon='lucide:signpost-big' />,
+    icon: <Icon className='size-5' icon='ri:blogger-line' />,
   },
 ];
 export function Header() {
   return (
     <header className='fixed w-full z-2 top-0 '>
-      <div className='max-w-3xl py-2.5 bg-white/90 backdrop-blur-md pl-1 sm:pr-0 pr-4 mx-auto'>
-        <div className='flex items-center justify-between'>
-          <div className='flex  items-center w-full'>
+      <div className='max-w-3xl py-2.5 bg-white  pl-1 sm:pr-0 pr-4 mx-auto'>
+        <div className='flex items-center justify-center mx-auto'>
+          <div className='flex  items-center '>
             {menu.map((m) => {
               return (
                 <HeaderLink href={m.path} key={m.path}>

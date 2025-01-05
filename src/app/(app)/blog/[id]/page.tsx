@@ -36,7 +36,7 @@ function getPost(id: string) {
 export default async function Post({ params }: PageProps) {
   const { id } = await params;
   return (
-    <PageContainer className='pt-13 sm:pt-20 max-w-3xl mx-auto  px-4'>
+    <PageContainer className='pt-16 sm:pt-20 max-w-3xl mx-auto  px-4'>
       <Suspense fallback={<PostLoader />}>
         <PostContent id={id} />
       </Suspense>

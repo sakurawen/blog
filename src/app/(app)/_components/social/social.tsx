@@ -44,7 +44,7 @@ export function Social({ className }: { className?: string }) {
               <Link
                 href={s.url}
                 target='_blank'
-                className='inline-block p-1.5 cursor-default rounded-md transition-colors opacity-65 hover:opacity-100 hover:bg-zinc-200/60'
+                className='inline-block p-1.5 cursor-default rounded-md transition-colors   hover:bg-zinc-200/60'
               >
                 {s.icon}
               </Link>
