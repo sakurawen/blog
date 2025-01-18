@@ -142,3 +142,10 @@
 .notion-text {
   @apply !mt-1;
 }
+
+.notion-collection-card-cover {
+  height: unset !important;
+}
+.notion-collection-card-cover > img {
+  aspect-ratio: 16/9;
+}

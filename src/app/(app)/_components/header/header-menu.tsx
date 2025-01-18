@@ -14,8 +14,8 @@ export function HeaderMenu() {
   }
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className='focus-within:outline-none'>
-        <div className='cursor-default py-1.5 px-4 text-[15px]    inline-flex items-center justify-center ' onClick={handleSignOut}>
+      <DropdownMenuTrigger className='focus-within:outline-none rounded-md hover:bg-zinc-100'>
+        <div className='cursor-default  py-0.5 px-2.5 text-[15px] flex items-center justify-center ' onClick={handleSignOut}>
           <Image className='rounded-full mr-2' width={20} height={20} src={data.user.image || ''} alt='user avatar' />
           <span>{data.user.name}</span>
         </div>

@@ -1,16 +1,29 @@
 'use client';
+import type { LinkProps } from 'next/link';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { cn } from '~/lib/cn';
 
-export function HeaderLink(props: React.ComponentProps<typeof Link>) {
-  const { className, ...restProps } = props;
+export function HeaderLink({
+  className,
+  href,
+  ...restProps
+}: LinkProps & React.ComponentProps<'a'>) {
+  const pathname = usePathname();
+  let isActive = false;
+  if (pathname === href) {
+    isActive = true;
+  }
+  else if (pathname !== '/' && href !== '/' && href.includes(pathname)) {
+    isActive = true;
+  }
   return (
     <Link
-      className={cn(
-        'cursor-default text-[15px] hover:bg-zinc-100 transition-colors rounded-lg text-zinc-950 py-1.5 px-3 sm:px-4    hover:text-zinc-950  inline-flex items-center justify-center ',
-        className,
-      )}
       {...restProps}
+      href={href}
+      className={cn(className, {
+        'bg-zinc-100': isActive,
+      })}
     />
   );
 }
