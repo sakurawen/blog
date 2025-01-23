@@ -101,19 +101,6 @@
   @apply selection:bg-[#c0e5f3];
 }
 
-.header-border {
-  position: relative;
-  z-index: -1;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    var(--color-zinc-100) 20%,
-    var(--color-zinc-100) 80%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-
 /* custom notion render style */
 .notion-collection-card {
   @apply !shadow-xs !border !border-zinc-200 !rounded-xl !cursor-default;
