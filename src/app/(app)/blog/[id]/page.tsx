@@ -1,14 +1,12 @@
 import type { Metadata } from 'next';
-import { Icon } from '@iconify/react';
-import Link from 'next/link';
 import * as notionUtils from 'notion-utils';
 import { Suspense } from 'react';
 import { PostLoader } from '~/components/modules/notion/post-loader';
 import { PostRenderer } from '~/components/modules/notion/post-renderer';
-import { Button } from '~/components/ui/button';
 import { PageContainer } from '~/components/ui/page-container';
 import { notion } from '~/lib/notion';
 import { Comment } from './_components/comment/comment';
+import { PostHeader } from './_components/header';
 
 export const dynamic = 'force-dynamic';
 
@@ -40,13 +38,7 @@ export default async function Post({ params }: PageProps) {
   const { id } = await params;
   return (
     <PageContainer className='pt-12  px-4 max-w-2xl mx-auto'>
-      <div className='mb-12'>
-        <Link href='/blog'>
-          <Button className='px-6 py-2 rounded-full text-xl '>
-            <Icon icon='ri:arrow-left-line' />
-          </Button>
-        </Link>
-      </div>
+      <PostHeader />
       <Suspense fallback={<PostLoader />}>
         <PostContent id={id} />
       </Suspense>
