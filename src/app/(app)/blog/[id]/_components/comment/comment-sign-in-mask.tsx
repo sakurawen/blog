@@ -10,7 +10,7 @@ export function CommentSignInMask({ children }: PropsWithChildren) {
     return children;
   }
   return (
-    <div className=' relative w-full  border border-zinc-50 rounded-md p-2'>
+    <div className=' relative w-full  border border-gray-50 rounded-md p-2'>
       <div className='absolute z-10 top-0 left-0 h-full w-full bg-white/20 backdrop-blur-sm'>
         <div className='h-full w-full flex justify-center items-center'>
           <div>

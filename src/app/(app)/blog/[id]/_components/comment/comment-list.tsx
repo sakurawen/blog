@@ -48,15 +48,15 @@ function CommentListItem({ comment, index, user }: { comment: Comment, index: nu
       >
         <div className='pl-1 space-x-2 '>
           <span className='text-sm font-bold'>{comment.user?.name}</span>
-          <span className='text-zinc-500 text-[10px]'>
+          <span className='text-gray-500 text-[10px]'>
             #
             {index + 1}
             {' '}
             {createAt?.format('YYYY-MM-DD HH:mm:ss')}
           </span>
-          <span className='text-zinc-500 text-[10px]'>{formatNow(comment.createAt)}</span>
+          <span className='text-gray-500 text-[10px]'>{formatNow(comment.createAt)}</span>
         </div>
-        <p className={cn('inline-block text-left text-sm bg-zinc-100 p-2', [
+        <p className={cn('inline-block text-left text-sm bg-gray-100 p-2', [
           isSelfComment ? 'rounded-t-xl rounded-bl-xl' : 'rounded-t-xl rounded-br-xl',
         ])}
         >
