@@ -14,13 +14,14 @@ export function PostHeader() {
   return (
     <>
       <div className='fixed top-0 z-2 left-0  w-full '>
-        <div className={cn('mx-auto max-w-2xl py-2 px-4  bg-white/90 backdrop-blur-md transition-all origin-top opacity-0 -translate-y-full', inView || !isClient ? 'opacity-0 invisible -translate-y-full' : 'visible opacity-100 translate-y-0')}>
-          <Link href='/blog' className='py-2 pr-2'>
-            <Icon className='inline' icon='ri:arrow-left-line' />
+        <div className={cn('mx-auto max-w-2xl flex relative items-center justify-between py-2 px-4  bg-white/90 backdrop-blur-md transition-all origin-top opacity-0 -translate-y-full', inView || !isClient ? 'opacity-0 invisible -translate-y-full' : 'visible opacity-100 translate-y-0')}>
+          <Link href='/blog' className='p-1 invisible md:visible'>
+            <Icon className='text-xl' icon='ri:arrow-left-line' />
           </Link>
-          <span className='text-xs text-gray-700'>
-            {isClient ? document?.title : ''}
+          <span className='text-sm '>
+            {isClient ? document?.title.replace('- akumanoko', '') : ''}
           </span>
+          <span></span>
         </div>
       </div>
       <div className='mb-12' ref={ref}>
