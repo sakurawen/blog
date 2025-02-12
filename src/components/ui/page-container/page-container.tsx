@@ -5,7 +5,7 @@ import { cn } from '~/lib/cn';
 
 export function PageContainer({ children, className }: PropsWithChildren<{ className?: string }>) {
   return (
-    <m.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} className={cn('page-container', className)}>
+    <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={cn('page-container', className)}>
       {children}
     </m.div>
   );
