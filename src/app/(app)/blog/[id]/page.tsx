@@ -10,7 +10,7 @@ import { Comment } from './_components/comment/comment';
 import { PostHeader } from './_components/header';
 
 export const dynamicParams = true;
-export const revalidate = 60 * 5;
+export const revalidate = 300;
 
 export async function generateStaticParams() {
   const page = await getPosts();
