@@ -5,10 +5,25 @@ import { PostLoader } from '~/components/modules/notion/post-loader';
 import { PostRenderer } from '~/components/modules/notion/post-renderer';
 import { PageContainer } from '~/components/ui/page-container';
 import { notion } from '~/lib/notion';
+import { getPosts } from '../../_lib/notion';
 import { Comment } from './_components/comment/comment';
 import { PostHeader } from './_components/header';
 
-export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
+export const revalidate = 60 * 5;
+
+export async function generateStaticParams() {
+  const page = await getPosts();
+  const { block } = page;
+  const params = [];
+  for (const blockId in block) {
+    const blockData = block[blockId];
+    if (blockData.value.type === 'page') {
+      params.push({ id: blockId });
+    }
+  }
+  return params;
+}
 
 interface PageProps {
   params: Promise<{ id: string }>

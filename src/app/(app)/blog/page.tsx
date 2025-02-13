@@ -5,7 +5,7 @@ import { PostListLoader } from '~/components/modules/notion/post-loader';
 import { PostRenderer } from '~/components/modules/notion/post-renderer';
 import { Button } from '~/components/ui/button';
 import { PageContainer } from '~/components/ui/page-container';
-import { notion } from '~/lib/notion';
+import { getPosts } from '../_lib/notion';
 
 export const dynamic = 'force-dynamic';
 
@@ -24,10 +24,6 @@ export default async function PostsList() {
       </Suspense>
     </PageContainer>
   );
-}
-
-async function getPosts() {
-  return notion.getPage('13694a15d705804f9a2df0f1e1168011');
 }
 
 async function PostList() {
