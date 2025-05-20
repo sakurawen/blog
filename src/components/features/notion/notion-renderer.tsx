@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import type { ComponentProps } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';

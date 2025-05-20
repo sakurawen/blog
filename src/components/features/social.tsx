@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import { Icon } from '@iconify/react';
 import { AnimatePresence, m } from 'motion/react';
 import Link from 'next/link';

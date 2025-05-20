@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import useSWR from 'swr';
 import { getComments } from './actions';
 import { CommentsInput } from './comments-input';

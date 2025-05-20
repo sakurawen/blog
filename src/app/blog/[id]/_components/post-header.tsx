@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import { Icon } from '@iconify/react';
 import { useIsClient } from 'foxact/use-is-client';
 import { useInView } from 'motion/react';

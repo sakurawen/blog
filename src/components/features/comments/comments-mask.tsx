@@ -27,7 +27,7 @@ export function CommentsMask({ children }: PropsWithChildren) {
               </p>
               <p className='text-xs'>
                 如果你没有以下社交帐户，你可以给我
-                <a className='text-black underline' href='mailto:wisakura@outlook.com' >写信</a>
+                <a className='text-black underline' href='mailto:wisakura@outlook.com'>写信</a>
                 交流
               </p>
             </div>

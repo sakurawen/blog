@@ -2,6 +2,7 @@ import { antfu } from '@antfu/eslint-config';
 
 export default antfu({
   react: true,
+  ignores: ['prisma/**', 'src/generated/**'],
   rules: {
     '@typescript-eslint/no-redeclare': 'off',
     'style/quotes': ['warn', 'single'],
