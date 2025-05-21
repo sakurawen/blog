@@ -1,3 +1,4 @@
+'use client';
 import type { InferUserFromClient } from 'better-auth';
 import type { CommentWithUser } from './comments-type';
 import dayjs from 'dayjs';

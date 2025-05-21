@@ -1,3 +1,4 @@
+'use client';
 import { Icon } from '@iconify/react';
 import { useActionState } from 'react';
 import { toast } from 'sonner';
@@ -45,9 +46,6 @@ export function CommentsInput({ id }: CommentsInputProps) {
       return {
         comment,
       };
-    }
-    finally {
-      mutate(id);
     }
   }, { comment: '' });
 
