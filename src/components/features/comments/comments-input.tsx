@@ -2,7 +2,6 @@
 import { Icon } from '@iconify/react';
 import { useActionState } from 'react';
 import { toast } from 'sonner';
-import { useSWRConfig } from 'swr';
 import { Button } from '~/components/theme/button';
 import { Textarea } from '~/components/theme/textarea';
 import { authClient } from '~/lib/auth-client';
@@ -13,7 +12,6 @@ interface CommentsInputProps {
 }
 export function CommentsInput({ id }: CommentsInputProps) {
   const { data } = authClient.useSession();
-  const { mutate } = useSWRConfig();
   const [state, action, isPending] = useActionState(async (_: any, form: FormData) => {
     const comment = form.get('comment') as string;
     if (comment.trim().length === 0) {
