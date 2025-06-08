@@ -29,7 +29,7 @@ export async function createComment(data: {
   const comment = await prisma.comment.create({
     data: {
       ...data,
-      createAt: new Date(),
+      createdAt: new Date(),
       userId: session.user.id,
     },
   });
