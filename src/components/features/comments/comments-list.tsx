@@ -28,12 +28,12 @@ export function CommentsList({ list }: CommentListProps) {
 
 function CommentsListItem({ comment, index, user }: { comment: CommentWithUser, index: number, user?: InferUserFromClient<any> }) {
   const isSelfComment = comment.userId === user?.id;
-  const createAt = dayjs(comment.createAt);
+  const createdAt = dayjs(comment.createdAt);
   function formatNow(date?: Date | null) {
     if (!date) {
       return '-';
     }
-    return createAt.fromNow();
+    return createdAt.fromNow();
   }
   return (
     <div className={cn('comment-list-item gap-4 flex items-end !mb-4  ', { 'flex-row-reverse': isSelfComment })}>
@@ -50,9 +50,9 @@ function CommentsListItem({ comment, index, user }: { comment: CommentWithUser, 
             #
             {index + 1}
             {' '}
-            {createAt?.format('YYYY-MM-DD HH:mm:ss')}
+            {createdAt?.format('YYYY-MM-DD HH:mm:ss')}
           </span>
-          <span className='text-gray-500 text-[10px]'>{formatNow(comment.createAt)}</span>
+          <span className='text-gray-500 text-[10px]'>{formatNow(comment.createdAt)}</span>
         </div>
         <p className={cn('inline-block text-left text-sm bg-gray-100 p-2', [
           isSelfComment ? 'rounded-t-xl rounded-bl-xl' : 'rounded-t-xl rounded-br-xl',
