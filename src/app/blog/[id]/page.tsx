@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   };
 }
 
-export default async function Post({ params }: { params: Promise<{ id: string }> }) {
+export default async function Blog({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   return (
     <PageContainer className='pt-12  px-4 max-w-2xl mx-auto'>
