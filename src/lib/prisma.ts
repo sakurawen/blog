@@ -1,4 +1,10 @@
 import { PrismaClient } from '~/generated/prisma';
-import 'server-only';
 
-export const prisma = new PrismaClient();
+let prismaClient: PrismaClient;
+
+export function prisma() {
+  if (!prismaClient) {
+    prismaClient = new PrismaClient();
+  }
+  return prismaClient;
+}

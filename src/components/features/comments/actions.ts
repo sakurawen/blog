@@ -5,7 +5,7 @@ import { auth } from '~/lib/auth';
 import { prisma } from '~/lib/prisma';
 
 export async function getComments(postId: string) {
-  const comments = await prisma.comment.findMany({
+  const comments = await prisma().comment.findMany({
     where: {
       postId,
     },
@@ -26,7 +26,7 @@ export async function createComment(data: {
   if (!session) {
     throw new Error('Unauthorized');
   }
-  const comment = await prisma.comment.create({
+  const comment = await prisma().comment.create({
     data: {
       ...data,
       createdAt: new Date(),
