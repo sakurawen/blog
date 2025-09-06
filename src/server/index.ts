@@ -17,4 +17,4 @@ export const app = new Hono<Env>().use(
   }),
 ).on(['POST', 'GET'], '/api/auth/*', (c) => {
   return auth.handler(c.req.raw);
-}).use(prismaMiddleware, betterAuthMiddleware);
+}).use(prismaMiddleware, betterAuthMiddleware).basePath('/api');
