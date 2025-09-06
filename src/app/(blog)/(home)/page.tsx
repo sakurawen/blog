@@ -2,13 +2,14 @@ import Link from 'next/link';
 import { Social } from '~/components/features/social';
 import { Button } from '~/components/theme/button';
 import { PageContainer } from '~/components/theme/page-container';
+import { env } from '~/lib/env';
 
 export default function Home() {
   return (
     <PageContainer className='home overflow-hidden container  mx-auto '>
       <div className='min-h-screen flex flex-col w-full justify-center space-y-8 items-center '>
         <div className='size-24 rounded-full bg-zinc-50'>
-          <img src='https://avatars.githubusercontent.com/u/35162226?v=4' className='w-full shadow-xl object-contain shrink-0 pointer-events-none rounded-full' alt='avatar' />
+          <img src={env.NEXT_PUBLIC_AVATAR_URL} className='w-full shadow-xl object-contain shrink-0 pointer-events-none rounded-full' alt='avatar' />
         </div>
         <div className='flex flex-col items-center justify-center space-y-8'>
           <div className='text-center '>

@@ -1,4 +1,5 @@
 import { PrismaClient } from '~/generated/prisma';
+import 'server-only';
 
 let prismaClient: PrismaClient;
 

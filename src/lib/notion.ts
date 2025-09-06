@@ -1,6 +1,7 @@
 import { NotionAPI } from 'notion-client';
+import { env } from './env';
 import 'server-only';
 
 export const notionClient = new NotionAPI({
-  authToken: process.env.NOTION_KEY,
+  authToken: env.NOTION_KEY,
 });
