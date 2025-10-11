@@ -7,7 +7,7 @@ export default async function StudioLayout({ children }: PropsWithChildren) {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
-  if (!session?.user) {
+  if (session?.user.role !== 'admin') {
     redirect('/');
   }
   return (

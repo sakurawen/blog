@@ -1,15 +1,15 @@
 import { betterAuth } from 'better-auth';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
 import { nextCookies } from 'better-auth/next-js';
+import { admin } from 'better-auth/plugins';
 import { PrismaClient } from '~/generated/prisma';
 import { env } from './env';
-import 'server-only';
 
 const prisma = new PrismaClient();
 
 export const auth = betterAuth({
   database: prismaAdapter(prisma, { provider: 'postgresql' }),
-  plugins: [nextCookies()],
+  plugins: [nextCookies(), admin({ adminUserIds: [env.ADMIN_ID] })],
   emailAndPassword: {
     enabled: true,
   },

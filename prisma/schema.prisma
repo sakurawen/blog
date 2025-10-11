@@ -26,6 +26,11 @@ model User {
   accounts      Account[]
   Comments      Comment[]
 
+  role       String?
+  banned     Boolean?  @default(false)
+  banReason  String?
+  banExpires DateTime?
+
   @@unique([email])
   @@map("users")
 }
@@ -40,6 +45,8 @@ model Session {
   userAgent String?  @map("user_agent")
   userId    String   @map("user_id")
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  impersonatedBy String?
 
   @@unique([token])
   @@map("sessions")

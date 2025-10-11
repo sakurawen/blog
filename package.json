@@ -10,7 +10,8 @@
     "postinstall": "prisma generate",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
-    "prisma:studio": "prisma studio"
+    "prisma:studio": "prisma studio",
+    "auth:generate": "npx @better-auth/cli generate"
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.16",
