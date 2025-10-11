@@ -1,6 +1,6 @@
 'use client';
 
-import type { ChainedCommands, type Editor } from '@tiptap/react';
+import type { ChainedCommands, Editor } from '@tiptap/react';
 import * as React from 'react';
 
 // --- Icons ---

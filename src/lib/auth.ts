@@ -9,7 +9,7 @@ const prisma = new PrismaClient();
 
 export const auth = betterAuth({
   database: prismaAdapter(prisma, { provider: 'postgresql' }),
-  plugins: [nextCookies(), admin({ adminUserIds: [env.ADMIN_ID] })],
+  plugins: [nextCookies(), admin()],
   emailAndPassword: {
     enabled: true,
   },
