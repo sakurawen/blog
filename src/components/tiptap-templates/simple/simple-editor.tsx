@@ -25,7 +25,6 @@ import { HorizontalRule } from '~/components/tiptap-node/horizontal-rule-node/ho
 import { ImageUploadNode } from '~/components/tiptap-node/image-upload-node/image-upload-node-extension';
 import content from '~/components/tiptap-templates/simple/data/content.json';
 // --- Components ---
-import { ThemeToggle } from '~/components/tiptap-templates/simple/theme-toggle';
 // --- UI Primitives ---
 import { Button } from '~/components/tiptap-ui-primitive/button';
 import { Spacer } from '~/components/tiptap-ui-primitive/spacer';
@@ -150,9 +149,6 @@ function MainToolbarContent({
 
       {isMobile && <ToolbarSeparator />}
 
-      <ToolbarGroup>
-        <ThemeToggle />
-      </ToolbarGroup>
     </>
   );
 }
@@ -253,7 +249,7 @@ export function SimpleEditor() {
   }, [isMobile, mobileView]);
 
   return (
-    <div className='simple-editor-wrapper'>
+    <div className='editor-wrapper'>
       <EditorContext value={{ editor }}>
         <Toolbar
           ref={toolbarRef}

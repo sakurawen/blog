@@ -24,8 +24,8 @@
       display: none;
     }
 
-    &:empty + .tiptap-separator,
-    .tiptap-separator + &:empty {
+    &:empty+.tiptap-separator,
+    .tiptap-separator+&:empty {
       display: none;
     }
   }
@@ -33,7 +33,7 @@
   &[data-variant="fixed"] {
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 8;
     width: 100%;
     min-height: var(--tt-toolbar-height);
     background: var(--tt-toolbar-bg-color);
@@ -70,10 +70,7 @@
     --tt-toolbar-border-width: 1px;
 
     padding: 0.188rem;
-    border-radius: calc(
-      var(--tt-toolbar-padding) + var(--tt-radius-lg) +
-        var(--tt-toolbar-border-width)
-    );
+    border-radius: calc(var(--tt-toolbar-padding) + var(--tt-radius-lg) + var(--tt-toolbar-border-width));
     border: var(--tt-toolbar-border-width) solid var(--tt-toolbar-border-color);
     background-color: var(--tt-toolbar-bg-color);
     box-shadow: var(--tt-shadow-elevated-md);
