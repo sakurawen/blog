@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Social } from '~/components/features/social';
-import { Button } from '~/components/theme/button';
-import { PageContainer } from '~/components/theme/page-container';
+import { Button } from '~/components/ui/button';
+import { PageContainer } from '~/components/ui/page-container';
 import { env } from '~/lib/env';
 
 export default function Home() {
@@ -22,7 +22,7 @@ export default function Home() {
           </div>
           <Social />
           <Link href='/blog'>
-            <Button size='lg' className='px-8 rounded-full'>Blog</Button>
+            <Button size='lg' variant='secondary' className='px-8 rounded-full'>Blog</Button>
           </Link>
         </div>
       </div>

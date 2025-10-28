@@ -1,7 +1,7 @@
 'use client';
 import type { PropsWithChildren } from 'react';
 import { Icon } from '@iconify/react';
-import { Button } from '~/components/theme/button';
+import { Button } from '~/components/ui/button';
 import { authClient } from '~/lib/auth-client';
 
 export function CommentsMask({ children }: PropsWithChildren) {

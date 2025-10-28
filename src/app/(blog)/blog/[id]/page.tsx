@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import { Comments } from '~/components/features/comments';
 import { PostLoader } from '~/components/features/notion/notion-loader';
 import { NotionRenderer } from '~/components/features/notion/notion-renderer';
-import { PageContainer } from '~/components/theme/page-container';
+import { PageContainer } from '~/components/ui/page-container';
 import { PostHeader } from './_components/post-header';
 import { getBlog } from './actions';
 
@@ -39,7 +39,7 @@ async function PostContent({ id }: { id: string }) {
         recordMap={data as ExtendedRecordMap}
         fullPage
         disableHeader
-        className='!w-full  px-0! pb-0!'
+        className='w-full!  px-0! pb-0!'
       />
     </>
   );

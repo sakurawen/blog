@@ -148,6 +148,7 @@ function MainToolbarContent({
       <Spacer />
 
       {isMobile && <ToolbarSeparator />}
+
     </>
   );
 }
@@ -187,7 +188,7 @@ function MobileToolbarContent({
   );
 }
 
-export function Editor() {
+export function SimpleEditor() {
   const isMobile = useIsMobile();
   const { height } = useWindowSize();
   const [mobileView, setMobileView] = React.useState<

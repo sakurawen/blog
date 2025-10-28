@@ -4,7 +4,7 @@ import { useIsClient } from 'foxact/use-is-client';
 import { useInView } from 'motion/react';
 import Link from 'next/link';
 import { useRef } from 'react';
-import { Button } from '~/components/theme/button';
+import { Button } from '~/components/ui/button';
 import { cn } from '~/lib/utils';
 
 export function PostHeader() {
@@ -28,7 +28,7 @@ export function PostHeader() {
       </div>
       <div className='mb-12' ref={ref}>
         <Link href='/blog'>
-          <Button size='icon' className=' rounded-full text-xl '>
+          <Button size='icon' variant='secondary' className=' rounded-full text-xl '>
             <Icon icon='ri:arrow-left-line' />
           </Button>
         </Link>

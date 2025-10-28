@@ -1,8 +1,8 @@
 'use client';
 import type { InferUserFromClient } from 'better-auth';
 import type { CommentWithUser } from './comments-type';
-import dayjs from 'dayjs';
 import { authClient } from '~/lib/auth-client';
+import { dayjs } from '~/lib/dayjs';
 import { cn } from '~/lib/utils';
 
 interface CommentListProps {
@@ -12,7 +12,7 @@ interface CommentListProps {
 export function CommentsList({ list }: CommentListProps) {
   const { data } = authClient.useSession();
   return (
-    <div className={cn('comment-list w-full !my-12')}>
+    <div className={cn('comment-list w-full my-12!')}>
       <div>
         {
           list.map((comment, index) => {
@@ -36,7 +36,7 @@ function CommentsListItem({ comment, index, user }: { comment: CommentWithUser, 
     return createdAt.fromNow();
   }
   return (
-    <div className={cn('comment-list-item gap-4 flex items-end !mb-4  ', { 'flex-row-reverse': isSelfComment })}>
+    <div className={cn('comment-list-item gap-4 flex items-end mb-4! ', { 'flex-row-reverse': isSelfComment })}>
       <div className='shrink-0'>
         <img className='rounded-full size-8' src={comment.user?.image || ''} alt='avatar' />
       </div>

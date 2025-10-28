@@ -1,9 +1,9 @@
 'use client';
-import { Icon } from '@iconify/react';
+import { ArrowUpIcon } from 'lucide-react';
 import { useActionState } from 'react';
 import { toast } from 'sonner';
-import { Button } from '~/components/theme/button';
-import { Textarea } from '~/components/theme/textarea';
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupTextarea } from '~/components/ui/input-group';
+import { Separator } from '~/components/ui/separator';
 import { authClient } from '~/lib/auth-client';
 import { createComment } from './actions';
 
@@ -51,13 +51,21 @@ export function CommentsInput({ id }: CommentsInputProps) {
     <div className='comment-input rounded-xl'>
       <div className='pt-4 relative'>
         <form action={action}>
-          <Textarea name='comment' defaultValue={state.comment} disabled={isPending} className='block w-full py-2.5 resize-none' rows={8} placeholder='评论文章是免费的...' />
-          <div className='comment-actions absolute right-1.5 bottom-1.5'>
-            <Button variant='ghost' type='submit' disabled={isPending}>
-              <Icon icon='lucide:send' className='mr-1' />
-              提 交
-            </Button>
-          </div>
+          <InputGroup>
+            <InputGroupTextarea name='comment' defaultValue={state.comment} disabled={isPending} placeholder='评论文章是免费的...' />
+            <InputGroupAddon align='block-end'>
+              <Separator className='flex-1' orientation='vertical' />
+              <InputGroupButton
+                type='submit'
+                disabled={isPending}
+                variant='default'
+                className='rounded-full'
+                size='icon-sm'
+              >
+                <ArrowUpIcon className='size-5' />
+              </InputGroupButton>
+            </InputGroupAddon>
+          </InputGroup>
         </form>
       </div>
     </div>
