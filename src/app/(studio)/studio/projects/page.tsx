@@ -1,3 +1,5 @@
+import { AdminContainer } from '~/components/admin/admin-container';
+
 export default function Projects() {
-  return <div>projects</div>;
+  return <AdminContainer>projects</AdminContainer>;
 }

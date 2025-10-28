@@ -1,3 +1,5 @@
+import { AdminContainer } from '~/components/admin/admin-container';
+
 export default function Dashboard() {
-  return <div className=''>wuhu</div>;
+  return <AdminContainer className=''>wuhu</AdminContainer>;
 }

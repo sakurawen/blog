@@ -129,7 +129,9 @@ export function useElementRect({
 
     const handleUpdate = () => updateRect();
 
+    // eslint-disable-next-line react-web-api/no-leaked-event-listener
     window.addEventListener('scroll', handleUpdate, { passive: true });
+    // eslint-disable-next-line react-web-api/no-leaked-event-listener
     window.addEventListener('resize', handleUpdate, { passive: true });
 
     cleanup.push(() => {

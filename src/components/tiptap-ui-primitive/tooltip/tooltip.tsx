@@ -188,7 +188,8 @@ export function TooltipTrigger({ ref: propRef, children, asChild = false, ...pro
   );
 }
 
-export function TooltipContent({ ref: propRef, style, children, portal = true, portalProps = {}, ...props }: TooltipContentProps & { ref?: React.RefObject<HTMLDivElement | null> }) {
+const defaultPortalProps = {};
+export function TooltipContent({ ref: propRef, style, children, portal = true, portalProps = defaultPortalProps, ...props }: TooltipContentProps & { ref?: React.RefObject<HTMLDivElement | null> }) {
   const context = useTooltipContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
 
