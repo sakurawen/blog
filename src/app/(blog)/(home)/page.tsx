@@ -13,7 +13,7 @@ export default function Home() {
         </div>
         <div className='flex flex-col items-center justify-center space-y-8'>
           <div className='text-center '>
-            <h1 className='text-xl mb-4'>
+            <h1 className='text-xl mb-4 text-gray-800'>
               Wen's Blog
             </h1>
             <p className='text-base max-w-xs text-balance text-gray-600'>

@@ -51,7 +51,7 @@ export function CommentsInput({ id }: CommentsInputProps) {
     <div className='comment-input rounded-xl'>
       <div className='pt-4 relative'>
         <form action={action}>
-          <InputGroup>
+          <InputGroup className='[--radius:16px]'>
             <InputGroupTextarea name='comment' defaultValue={state.comment} disabled={isPending} placeholder='评论文章是免费的...' />
             <InputGroupAddon align='block-end'>
               <Separator className='flex-1' orientation='vertical' />
