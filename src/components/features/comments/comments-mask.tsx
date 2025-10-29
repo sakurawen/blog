@@ -23,7 +23,7 @@ export function CommentsMask({ children }: PropsWithChildren) {
         <div className='h-full w-full flex justify-center items-center'>
           <div>
             <div className='text-sm text-center pb-4'>
-              <p className='!mb-2'>
+              <p className='mb-2!'>
                 使用社交账户登录评论
               </p>
               <p className='text-xs'>
@@ -34,7 +34,7 @@ export function CommentsMask({ children }: PropsWithChildren) {
             </div>
             <div className='flex p items-center justify-center gap-4'>
               <Button onClick={githubSignIn}>
-                <Icon className='mr-1' icon='devicon:github' />
+                <Icon className='mr-1 size-4.5' fill='#fff' icon='ri:github-fill' />
                 Github
               </Button>
             </div>

@@ -16,6 +16,9 @@
   "dependencies": {
     "@floating-ui/react": "^0.27.16",
     "@prisma/client": "^6.18.0",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-separator": "^1.1.7",
+    "@radix-ui/react-slot": "^1.2.3",
     "@t3-oss/env-nextjs": "^0.13.8",
     "@tanstack/react-form": "^1.23.8",
     "@tiptap/extension-highlight": "^3.9.0",
