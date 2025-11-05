@@ -31,7 +31,7 @@ export default async function Blog({ params }: { params: Promise<{ id: string }>
 async function PostContent({ id }: { id: string }) {
   const data = await getBlog(id);
   return (
-    <>
+    <div style={{ '--bg-color': 'var(--background)' } as React.CSSProperties}>
       <NotionRenderer
         footer={
           <Comments id={id} />
@@ -41,6 +41,6 @@ async function PostContent({ id }: { id: string }) {
         disableHeader
         className='w-full!  px-0! pb-0!'
       />
-    </>
+    </div>
   );
 }

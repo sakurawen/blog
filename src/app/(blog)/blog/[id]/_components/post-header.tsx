@@ -14,7 +14,7 @@ export function PostHeader() {
   return (
     <>
       <div className='fixed top-0 z-2 left-0  w-full '>
-        <div className={cn('mx-auto max-w-2xl flex relative items-center justify-between py-0.5 px-4  bg-white/90 backdrop-blur-md transition-all origin-top opacity-0 -translate-y-full', inView || !isClient ? 'opacity-0 invisible -translate-y-full' : 'visible opacity-100 translate-y-0')}>
+        <div className={cn('mx-auto max-w-2xl flex relative items-center justify-between py-0.5 px-4  bg-background/90 backdrop-blur-md transition-all origin-top opacity-0 -translate-y-full', inView || !isClient ? 'opacity-0 invisible -translate-y-full' : 'visible opacity-100 translate-y-0')}>
           <Link href='/blog' className='p-1 invisible md:visible'>
             <Button size='icon' className='rounded-full' variant='ghost'>
               <Icon className='text-xl size-4' icon='ri:arrow-left-line' />
