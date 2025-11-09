@@ -22,7 +22,7 @@ export default function Home() {
           </div>
           <Social />
           <Link href='/blog'>
-            <Button size='lg' variant='secondary' className='px-8 rounded-full'>Blog</Button>
+            <Button size='lg' variant='default' className='px-8 rounded-full'>Blog</Button>
           </Link>
         </div>
       </div>
