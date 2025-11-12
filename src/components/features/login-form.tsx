@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react';
 import { useForm } from '@tanstack/react-form';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
-import { email, z } from 'zod';
+import { z } from 'zod';
 import { Button } from '~/components/ui/button';
 import {
   Field,

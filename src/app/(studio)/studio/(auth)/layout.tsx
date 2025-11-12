@@ -4,7 +4,6 @@ import { redirect } from 'next/navigation';
 import { ScrollArea } from '~/components/ui/scroll-area';
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '~/components/ui/sidebar';
 import { auth } from '~/lib/auth';
-import { AppLogout } from './_components/app-logout';
 import { AppSidebar } from './_components/app-sidebar';
 import { AppThemeToggle } from './_components/app-theme-toggle';
 
@@ -25,7 +24,6 @@ export default async function StudioLayout({ children }: PropsWithChildren) {
           </div>
           <div className='flex items-center gap-2'>
             <AppThemeToggle />
-            <AppLogout />
           </div>
         </header>
         <div className=''>

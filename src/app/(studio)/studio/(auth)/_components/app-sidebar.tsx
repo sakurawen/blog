@@ -1,86 +1,91 @@
 'use client';
-import { Folder, Home, LayoutDashboard, PencilLine } from 'lucide-react';
+import { useAtom } from 'jotai';
+import { ChevronRight, CitrusIcon } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { menuOpenStateAtom } from '~/atoms/sidebar';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '~/components/ui/collapsible';
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
-  SidebarGroup,
-  SidebarGroupLabel,
   SidebarHeader,
-  SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
 } from '~/components/ui/sidebar';
-import { useSession } from '~/lib/auth-client';
-
-const menus: Array<{
-  icon: React.ReactNode
-  label: string
-  href: string
-}> = [
-  {
-    label: 'Posts',
-    href: '/studio/posts',
-    icon: <PencilLine />,
-  },
-  {
-    label: 'Projects',
-    href: '/studio/projects',
-    icon: <Folder />,
-  },
-];
+import { menus } from '~/const/menu';
+import { NavUser } from './app-sidebar-user';
 
 export function AppSidebar() {
-  const { data } = useSession();
+  const pathname = usePathname();
+  const [menuOpenState, setMenuOpenState] = useAtom(menuOpenStateAtom);
+
+  const handleOpenChange = (label: string, isOpen: boolean) => {
+    setMenuOpenState(prev => ({
+      ...prev,
+      [label]: isOpen,
+    }));
+  };
+
   return (
     <Sidebar collapsible='offcanvas' variant='inset'>
       <SidebarHeader>
         <SidebarMenuButton size='lg' asChild>
           <a href='#'>
-            <div className='bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg'>
-              <Home className='size-4' />
+            <div className='bg-primary/5  flex aspect-square size-8 items-center justify-center rounded-md'>
+              <CitrusIcon className='size-5 text-primary' />
             </div>
-            <div className='grid flex-1 text-left text-sm leading-tight'>
-              <span className='truncate font-medium'>{data?.user.name}</span>
-              <span className='truncate text-xs'>{data?.user.role}</span>
+            <div className=' flex-1 text-left font-bold text-sm leading-tight'>
+              BLOG
             </div>
           </a>
         </SidebarMenuButton>
       </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Platform</SidebarGroupLabel>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton asChild>
-                <Link href='/studio'>
-                  <LayoutDashboard />
-                  Dashboard
-                </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroup>
-        <SidebarGroup>
-          <SidebarGroupLabel>Resource</SidebarGroupLabel>
-          <SidebarMenu>
-            {menus.map((menu) => {
-              return (
-                <SidebarMenuItem key={menu.label}>
-                  <SidebarMenuButton asChild>
-                    <Link href={menu.href}>
-                      {menu.icon}
-                      {menu.label}
-                    </Link>
+        {menus.map((menuGroup) => {
+          const isOpen = menuOpenState[menuGroup.label] ?? false;
+          return (
+            <Collapsible
+              key={menuGroup.label}
+              asChild
+              className='group/collapsible'
+              open={isOpen}
+              onOpenChange={open => handleOpenChange(menuGroup.label, open)}
+            >
+              <SidebarMenuItem>
+                <CollapsibleTrigger asChild>
+                  <SidebarMenuButton tooltip={menuGroup.label}>
+                    {menuGroup.icon}
+                    {menuGroup.label}
+                    <ChevronRight className='ml-auto transition-all  group-data-[state=open]/collapsible:rotate-90' />
                   </SidebarMenuButton>
-                </SidebarMenuItem>
-              );
-            })}
-          </SidebarMenu>
-        </SidebarGroup>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <SidebarMenuSub>
+                    {menuGroup.children.map((menu) => {
+                      return (
+                        <SidebarMenuSubItem key={menu.label}>
+                          <SidebarMenuSubButton asChild isActive={pathname === menu.href}>
+                            <Link href={menu.href}>
+                              {menu.label}
+                            </Link>
+                          </SidebarMenuSubButton>
+                        </SidebarMenuSubItem>
+                      );
+                    })}
+                  </SidebarMenuSub>
+                </CollapsibleContent>
+              </SidebarMenuItem>
+            </Collapsible>
+          );
+        })}
       </SidebarContent>
-      <SidebarFooter />
+      <SidebarFooter>
+        <NavUser />
+      </SidebarFooter>
     </Sidebar>
   );
 }
