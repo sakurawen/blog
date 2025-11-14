@@ -107,11 +107,17 @@ export function LoginForm({
           }}
         />
         <Field>
-          <Button disabled={form.state.isSubmitting} type='submit'>
-            {
-              form.state.isSubmitting ? 'Loading...' : 'Login'
-            }
-          </Button>
+          <form.Subscribe>
+            {(state) => {
+              return (
+                <Button disabled={state.isSubmitting} type='submit'>
+                  {
+                    state.isSubmitting ? 'Loading...' : 'Login'
+                  }
+                </Button>
+              );
+            }}
+          </form.Subscribe>
         </Field>
         <FieldSeparator>Or continue with</FieldSeparator>
         <Field>

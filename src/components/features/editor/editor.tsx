@@ -248,40 +248,37 @@ export function Editor() {
   }, [isMobile, mobileView]);
 
   return (
-    <div className='editor-wrapper'>
-      <EditorContext value={{ editor }}>
-        <Toolbar
-          ref={toolbarRef}
-          style={{
-            ...(isMobile
-              ? {
-                  bottom: `calc(100% - ${height - rect.y}px)`,
-                }
-              : {}),
-          }}
-        >
-          {mobileView === 'main'
-            ? (
-                <MainToolbarContent
-                  onHighlighterClick={() => setMobileView('highlighter')}
-                  onLinkClick={() => setMobileView('link')}
-                  isMobile={isMobile}
-                />
-              )
-            : (
-                <MobileToolbarContent
-                  type={mobileView === 'highlighter' ? 'highlighter' : 'link'}
-                  onBack={() => setMobileView('main')}
-                />
-              )}
-        </Toolbar>
-
+    <EditorContext value={{ editor }}>
+      <Toolbar
+        ref={toolbarRef}
+        style={(isMobile
+          ? {
+              bottom: `calc(100% - ${height - rect.y}px)`,
+            }
+          : {})}
+      >
+        {mobileView === 'main'
+          ? (
+              <MainToolbarContent
+                onHighlighterClick={() => setMobileView('highlighter')}
+                onLinkClick={() => setMobileView('link')}
+                isMobile={isMobile}
+              />
+            )
+          : (
+              <MobileToolbarContent
+                type={mobileView === 'highlighter' ? 'highlighter' : 'link'}
+                onBack={() => setMobileView('main')}
+              />
+            )}
+      </Toolbar>
+      <div className='editor-wrapper '>
         <EditorContent
           editor={editor}
           role='presentation'
           className='simple-editor-content'
         />
-      </EditorContext>
-    </div>
+      </div>
+    </EditorContext>
   );
 }

@@ -1,13 +1,13 @@
 :root {
-  --tiptap-image-upload-active: var(--tt-brand-color-500);
+  --tiptap-image-upload-active: var(--primary);
   --tiptap-image-upload-progress-bg: var(--tt-brand-color-50);
-  --tiptap-image-upload-icon-bg: var(--tt-brand-color-500);
+  --tiptap-image-upload-icon-bg: var(--primary);
 
   --tiptap-image-upload-text-color: var(--tt-gray-light-a-700);
   --tiptap-image-upload-subtext-color: var(--tt-gray-light-a-400);
   --tiptap-image-upload-border: var(--tt-gray-light-a-300);
   --tiptap-image-upload-border-hover: var(--tt-gray-light-a-400);
-  --tiptap-image-upload-border-active: var(--tt-brand-color-500);
+  --tiptap-image-upload-border-active: var(--primary);
 
   --tiptap-image-upload-icon-doc-bg: var(--tt-gray-light-a-200);
   --tiptap-image-upload-icon-doc-border: var(--tt-gray-light-300);
@@ -17,7 +17,7 @@
 .dark {
   --tiptap-image-upload-active: var(--tt-brand-color-400);
   --tiptap-image-upload-progress-bg: var(--tt-brand-color-900);
-  --tiptap-image-upload-icon-bg: var(--tt-brand-color-400);
+  --tiptap-image-upload-icon-bg: var(--primary);
 
   --tiptap-image-upload-text-color: var(--tt-gray-dark-a-700);
   --tiptap-image-upload-subtext-color: var(--tt-gray-dark-a-400);
@@ -44,8 +44,10 @@
     display: inline-flex;
     align-items: flex-start;
     justify-content: center;
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
     user-select: none;
   }
 
@@ -116,18 +118,14 @@
 
     &.drag-active {
       border-color: var(--tiptap-image-upload-border-active);
-      background-color: rgba(
-        var(--tiptap-image-upload-active-rgb, 0, 123, 255),
-        0.05
-      );
+      background-color: rgba(var(--tiptap-image-upload-active-rgb, 0, 123, 255),
+          0.05);
     }
 
     &.drag-over {
       border-color: var(--tiptap-image-upload-border-active);
-      background-color: rgba(
-        var(--tiptap-image-upload-active-rgb, 0, 123, 255),
-        0.1
-      );
+      background-color: rgba(var(--tiptap-image-upload-active-rgb, 0, 123, 255),
+          0.1);
     }
   }
 
@@ -137,8 +135,10 @@
     justify-content: center;
     flex-direction: column;
     gap: 0.25rem;
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
     user-select: none;
   }
 

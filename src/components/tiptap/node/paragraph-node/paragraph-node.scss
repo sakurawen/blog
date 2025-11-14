@@ -1,6 +1,6 @@
 .tiptap.ProseMirror {
   --tt-collaboration-carets-label: var(--tt-gray-light-900);
-  --link-text-color: var(--tt-brand-color-500);
+  --link-text-color: var(--primary);
   --thread-text: var(--tt-gray-light-900);
   --placeholder-color: var(--tt-gray-light-a-400);
   --thread-bg-color: var(--tt-color-yellow-inc-2);
@@ -10,7 +10,7 @@
 
   .dark & {
     --tt-collaboration-carets-label: var(--tt-gray-dark-100);
-    --link-text-color: var(--tt-brand-color-400);
+    --link-text-color: var(--primary);
     --thread-text: var(--tt-gray-dark-900);
     --placeholder-color: var(--tt-gray-dark-a-400);
     --thread-bg-color: var(--tt-color-yellow-dec-2);
@@ -21,7 +21,7 @@
 
 /* Ensure each top-level node has relative positioning 
    so absolutely positioned placeholders work correctly */
-.tiptap.ProseMirror > * {
+.tiptap.ProseMirror>* {
   position: relative;
 }
 
@@ -78,6 +78,7 @@
      TEXT DECORATION
      ===================== */
 .tiptap.ProseMirror {
+
   // Text decoration inheritance for spans
   a span {
     text-decoration: underline;
@@ -154,7 +155,7 @@
 .tiptap.ProseMirror {
   [data-type="mention"] {
     display: inline-block;
-    color: var(--tt-brand-color-500);
+    color: var(--primary);
   }
 }
 
@@ -162,6 +163,7 @@
      THREADS
      ===================== */
 .tiptap.ProseMirror {
+
   // Base styles for inline threads
   .tiptap-thread.tiptap-thread--unresolved.tiptap-thread--inline {
     transition:
@@ -228,22 +230,16 @@
 /* =====================
      PLACEHOLDER
      ===================== */
-.is-empty:not(.with-slash)[data-placeholder]:has(
-    > .ProseMirror-trailingBreak:only-child
-  )::before {
+.is-empty:not(.with-slash)[data-placeholder]:has(> .ProseMirror-trailingBreak:only-child)::before {
   content: attr(data-placeholder);
 }
 
-.is-empty.with-slash[data-placeholder]:has(
-    > .ProseMirror-trailingBreak:only-child
-  )::before {
+.is-empty.with-slash[data-placeholder]:has(> .ProseMirror-trailingBreak:only-child)::before {
   content: "Write, type '/' for commands…";
   font-style: italic;
 }
 
-.is-empty[data-placeholder]:has(
-    > .ProseMirror-trailingBreak:only-child
-  ):before {
+.is-empty[data-placeholder]:has(> .ProseMirror-trailingBreak:only-child):before {
   pointer-events: none;
   height: 0;
   position: absolute;

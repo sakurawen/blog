@@ -26,11 +26,9 @@ export default async function StudioLayout({ children }: PropsWithChildren) {
             <AppThemeToggle />
           </div>
         </header>
-        <div className=''>
-          <ScrollArea className='h-[calc(100vh-66px)] p-2'>
-            {children}
-          </ScrollArea>
-        </div>
+        <ScrollArea className='max-h-[calc(100vh-66px)] p-2'>
+          {children}
+        </ScrollArea>
       </SidebarInset>
     </SidebarProvider>
   );

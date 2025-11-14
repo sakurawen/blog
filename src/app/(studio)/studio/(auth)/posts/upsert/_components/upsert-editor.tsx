@@ -2,5 +2,9 @@
 import { Editor } from '~/components/features/editor';
 
 export function UpsertEditor(_: { id?: string }) {
-  return <Editor />;
+  return (
+    <div>
+      <Editor />
+    </div>
+  );
 }
