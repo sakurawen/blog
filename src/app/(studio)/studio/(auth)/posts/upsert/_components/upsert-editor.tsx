@@ -22,64 +22,68 @@ export function UpsertEditor(_: { id?: string }) {
     },
   });
   return (
-    <div>
-      <div className='px-1 pt-1 pb-2 border-b border-(--tt-toolbar-border-color)'>
-        <form>
-          <FieldSet>
-            <FieldGroup className='grid grid-cols-1 md:grid-cols-2'>
-              <form.Field name='title'>
-                {(field) => {
-                  const isValid = field.state.meta.isValid;
-                  return (
-                    <Field data-invalid={isValid}>
-                      <FieldLabel>Title</FieldLabel>
-                      <InputGroup>
-                        <InputGroupInput value={field.state.value} onChange={e => field.handleChange(e.target.value)} />
-                      </InputGroup>
-                      {
-                        isValid && <FieldError errors={field.state.meta.errors} />
-                      }
-                    </Field>
-                  );
-                }}
-              </form.Field>
-              <form.Field name='slug'>
-                {(field) => {
-                  const isValid = field.state.meta.isValid;
-                  return (
-                    <Field data-invalid={isValid}>
-                      <FieldLabel>Slug</FieldLabel>
-                      <InputGroup>
-                        <InputGroupInput />
-                      </InputGroup>
-                      {
-                        isValid && <FieldError errors={field.state.meta.errors} />
-                      }
-                    </Field>
-                  );
-                }}
-              </form.Field>
-              <form.Field name='description'>
-                {(field) => {
-                  const isValid = field.state.meta.isValid;
-                  return (
-                    <Field data-invalid={isValid} className='row-span-2'>
-                      <FieldLabel>Description</FieldLabel>
-                      <InputGroup>
-                        <InputGroupTextarea />
-                      </InputGroup>
-                      {
-                        isValid && <FieldError errors={field.state.meta.errors} />
-                      }
-                    </Field>
-                  );
-                }}
-              </form.Field>
-            </FieldGroup>
-          </FieldSet>
-        </form>
+    <div className='flex flex-col md:flex-row h-[calc(100vh-82px)] overflow-hidden'>
+      <div className='editor-form w-full md:w-xs overflow-y-auto md:order-2 border-b md:border-b-0 md:border-l border-(--tt-toolbar-border-color)'>
+        <div className='md:sticky md:top-0 p-2 bg-[--tt-background-color]'>
+          <form>
+            <FieldSet>
+              <FieldGroup>
+                <form.Field name='title'>
+                  {(field) => {
+                    const isValid = field.state.meta.isValid;
+                    return (
+                      <Field data-invalid={isValid}>
+                        <FieldLabel>Title</FieldLabel>
+                        <InputGroup>
+                          <InputGroupInput placeholder='请输入标题' value={field.state.value} onChange={e => field.handleChange(e.target.value)} />
+                        </InputGroup>
+                        {
+                          isValid && <FieldError errors={field.state.meta.errors} />
+                        }
+                      </Field>
+                    );
+                  }}
+                </form.Field>
+                <form.Field name='slug'>
+                  {(field) => {
+                    const isValid = field.state.meta.isValid;
+                    return (
+                      <Field data-invalid={isValid}>
+                        <FieldLabel>Slug</FieldLabel>
+                        <InputGroup>
+                          <InputGroupInput placeholder='请输入slug' />
+                        </InputGroup>
+                        {
+                          isValid && <FieldError errors={field.state.meta.errors} />
+                        }
+                      </Field>
+                    );
+                  }}
+                </form.Field>
+                <form.Field name='description'>
+                  {(field) => {
+                    const isValid = field.state.meta.isValid;
+                    return (
+                      <Field data-invalid={isValid} className='row-span-2'>
+                        <FieldLabel>Description</FieldLabel>
+                        <InputGroup>
+                          <InputGroupTextarea placeholder='请输入placeholder' />
+                        </InputGroup>
+                        {
+                          isValid && <FieldError errors={field.state.meta.errors} />
+                        }
+                      </Field>
+                    );
+                  }}
+                </form.Field>
+              </FieldGroup>
+            </FieldSet>
+          </form>
+        </div>
       </div>
-      <Editor />
+      <div className='flex-1 overflow-y-auto md:order-1'>
+        <Editor />
+      </div>
     </div>
   );
 }

@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { Separator } from '~/components/tiptap/ui-primitive/separator';
-import { ScrollArea } from '~/components/ui/scroll-area';
 import { useComposedRef } from '~/hooks/use-composed-ref';
 import { useMenuNavigation } from '~/hooks/use-menu-navigation';
 import { cn } from '~/lib/tiptap-utils';

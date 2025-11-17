@@ -2,6 +2,7 @@
 import type { Node as TiptapNode } from '@tiptap/pm/model';
 import type { Editor } from '@tiptap/react';
 import { NodeSelection, Selection, TextSelection } from '@tiptap/pm/state';
+import { hono } from '~/lib/hono';
 
 export const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 
@@ -297,17 +298,69 @@ export async function handleImageUpload(file: File, onProgress?: (event: { progr
     );
   }
 
-  // For demo/testing: Simulate upload progress. In production, replace the following code
-  // with your own upload implementation.
-  for (let progress = 0; progress <= 100; progress += 10) {
+  // Check if upload was aborted before starting
+  if (abortSignal?.aborted) {
+    throw new Error('Upload cancelled');
+  }
+
+  try {
+    // Report initial progress
+    onProgress?.({ progress: 0 });
+
+    // 1. Get presigned URL
+    const response = await hono.api.s3['presigned-url'].$post({
+      json: {
+        fileName: file.name,
+        fileType: file.type,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to get upload URL');
+    }
+
+    const data = await response.json();
+
+    if (!data.success) {
+      const errorMsg = 'error' in data && typeof data.error === 'string' ? data.error : 'Failed to get upload URL';
+      throw new Error(errorMsg);
+    }
+
+    const { uploadUrl, fileUrl } = data;
+
+    // Check abort signal again
     if (abortSignal?.aborted) {
       throw new Error('Upload cancelled');
     }
-    await new Promise(resolve => setTimeout(resolve, 500));
-    onProgress?.({ progress });
-  }
 
-  return '/images/tiptap-ui-placeholder-image.jpg';
+    onProgress?.({ progress: 30 });
+
+    // 2. Upload file to R2 using presigned URL
+    const uploadResponse = await fetch(uploadUrl, {
+      method: 'PUT',
+      body: file,
+      headers: {
+        'Content-Type': file.type,
+      },
+      signal: abortSignal,
+    });
+
+    if (!uploadResponse.ok) {
+      throw new Error('File upload failed');
+    }
+
+    // Report completion
+    onProgress?.({ progress: 100 });
+
+    // 3. Return the file URL
+    return fileUrl;
+  }
+  catch (error) {
+    if (error instanceof Error && error.name === 'AbortError') {
+      throw new Error('Upload cancelled');
+    }
+    throw error;
+  }
 }
 
 interface ProtocolOptions {

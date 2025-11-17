@@ -53,7 +53,6 @@ import { ListDropdownMenu } from '~/components/tiptap/ui/list-dropdown-menu';
 import { MarkButton } from '~/components/tiptap/ui/mark-button';
 import { TextAlignButton } from '~/components/tiptap/ui/text-align-button';
 import { UndoRedoButton } from '~/components/tiptap/ui/undo-redo-button';
-import { ScrollArea } from '~/components/ui/scroll-area';
 
 import { useCursorVisibility } from '~/hooks/use-cursor-visibility';
 // --- Hooks ---
