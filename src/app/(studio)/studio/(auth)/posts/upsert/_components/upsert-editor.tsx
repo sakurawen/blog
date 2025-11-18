@@ -1,6 +1,7 @@
 'use client';
 import { useForm } from '@tanstack/react-form';
 import { z } from 'zod';
+import { BannerUpload } from '~/components/features/banner-upload';
 import { Editor } from '~/components/features/editor';
 import { Button } from '~/components/ui/button';
 import { Field, FieldError, FieldGroup, FieldLabel, FieldSet } from '~/components/ui/field';
@@ -12,6 +13,7 @@ const postFormSchema = z.object({
   title: z.string().min(1, 'Title is required'),
   description: z.string().min(1, 'Description is required'),
   slug: z.string().min(1, 'Slug is required'),
+  banner: z.url(),
 });
 
 export function UpsertEditor(_: { id?: string }) {
@@ -21,12 +23,13 @@ export function UpsertEditor(_: { id?: string }) {
       title: '',
       description: '',
       slug: '',
+      banner: '',
     },
     validators: {
       onSubmit: postFormSchema,
     },
-    async onSubmit({ value }) {
-      console.log(value, editor.getHTML());
+    async onSubmit() {
+      // TODO: Implement post submission with form values and editor.getHTML()
     },
   });
   return (
@@ -41,6 +44,21 @@ export function UpsertEditor(_: { id?: string }) {
           >
             <FieldSet>
               <FieldGroup>
+                <form.Field name='banner'>
+                  {(field) => {
+                    return (
+                      <Field>
+                        <FieldLabel>Banner</FieldLabel>
+                        <BannerUpload
+                          value={field.state.value}
+                          onChange={value => field.handleChange(value)}
+                          onError={error => console.error('Banner upload error:', error)}
+                        />
+                        <FieldError errors={field.state.meta.errors} />
+                      </Field>
+                    );
+                  }}
+                </form.Field>
                 <form.Field name='title'>
                   {(field) => {
                     const inValid = field.state.meta.isTouched && !field.state.meta.isValid;
