@@ -28,7 +28,10 @@ export type PostMinAggregateOutputType = {
   id: string | null
   title: string | null
   description: string | null
+  summary: string | null
+  banner: string | null
   htmlContent: string | null
+  textContent: string | null
   slug: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -38,7 +41,10 @@ export type PostMaxAggregateOutputType = {
   id: string | null
   title: string | null
   description: string | null
+  summary: string | null
+  banner: string | null
   htmlContent: string | null
+  textContent: string | null
   slug: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -48,8 +54,11 @@ export type PostCountAggregateOutputType = {
   id: number
   title: number
   description: number
-  banners: number
+  summary: number
+  banner: number
   htmlContent: number
+  textContent: number
+  jsonContent: number
   slug: number
   createdAt: number
   updatedAt: number
@@ -61,7 +70,10 @@ export type PostMinAggregateInputType = {
   id?: true
   title?: true
   description?: true
+  summary?: true
+  banner?: true
   htmlContent?: true
+  textContent?: true
   slug?: true
   createdAt?: true
   updatedAt?: true
@@ -71,7 +83,10 @@ export type PostMaxAggregateInputType = {
   id?: true
   title?: true
   description?: true
+  summary?: true
+  banner?: true
   htmlContent?: true
+  textContent?: true
   slug?: true
   createdAt?: true
   updatedAt?: true
@@ -81,8 +96,11 @@ export type PostCountAggregateInputType = {
   id?: true
   title?: true
   description?: true
-  banners?: true
+  summary?: true
+  banner?: true
   htmlContent?: true
+  textContent?: true
+  jsonContent?: true
   slug?: true
   createdAt?: true
   updatedAt?: true
@@ -165,8 +183,11 @@ export type PostGroupByOutputType = {
   id: string
   title: string
   description: string
-  banners: string[]
-  htmlContent: string
+  summary: string
+  banner: string
+  htmlContent: string | null
+  textContent: string | null
+  jsonContent: runtime.JsonValue | null
   slug: string
   createdAt: Date
   updatedAt: Date
@@ -197,8 +218,11 @@ export type PostWhereInput = {
   id?: Prisma.StringFilter<"Post"> | string
   title?: Prisma.StringFilter<"Post"> | string
   description?: Prisma.StringFilter<"Post"> | string
-  banners?: Prisma.StringNullableListFilter<"Post">
-  htmlContent?: Prisma.StringFilter<"Post"> | string
+  summary?: Prisma.StringFilter<"Post"> | string
+  banner?: Prisma.StringFilter<"Post"> | string
+  htmlContent?: Prisma.StringNullableFilter<"Post"> | string | null
+  textContent?: Prisma.StringNullableFilter<"Post"> | string | null
+  jsonContent?: Prisma.JsonNullableFilter<"Post">
   slug?: Prisma.StringFilter<"Post"> | string
   createdAt?: Prisma.DateTimeFilter<"Post"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Post"> | Date | string
@@ -209,8 +233,11 @@ export type PostOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  banners?: Prisma.SortOrder
-  htmlContent?: Prisma.SortOrder
+  summary?: Prisma.SortOrder
+  banner?: Prisma.SortOrder
+  htmlContent?: Prisma.SortOrderInput | Prisma.SortOrder
+  textContent?: Prisma.SortOrderInput | Prisma.SortOrder
+  jsonContent?: Prisma.SortOrderInput | Prisma.SortOrder
   slug?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -225,8 +252,11 @@ export type PostWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.PostWhereInput | Prisma.PostWhereInput[]
   title?: Prisma.StringFilter<"Post"> | string
   description?: Prisma.StringFilter<"Post"> | string
-  banners?: Prisma.StringNullableListFilter<"Post">
-  htmlContent?: Prisma.StringFilter<"Post"> | string
+  summary?: Prisma.StringFilter<"Post"> | string
+  banner?: Prisma.StringFilter<"Post"> | string
+  htmlContent?: Prisma.StringNullableFilter<"Post"> | string | null
+  textContent?: Prisma.StringNullableFilter<"Post"> | string | null
+  jsonContent?: Prisma.JsonNullableFilter<"Post">
   createdAt?: Prisma.DateTimeFilter<"Post"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Post"> | Date | string
   postTags?: Prisma.PostTagListRelationFilter
@@ -236,8 +266,11 @@ export type PostOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  banners?: Prisma.SortOrder
-  htmlContent?: Prisma.SortOrder
+  summary?: Prisma.SortOrder
+  banner?: Prisma.SortOrder
+  htmlContent?: Prisma.SortOrderInput | Prisma.SortOrder
+  textContent?: Prisma.SortOrderInput | Prisma.SortOrder
+  jsonContent?: Prisma.SortOrderInput | Prisma.SortOrder
   slug?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -253,8 +286,11 @@ export type PostScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Post"> | string
   title?: Prisma.StringWithAggregatesFilter<"Post"> | string
   description?: Prisma.StringWithAggregatesFilter<"Post"> | string
-  banners?: Prisma.StringNullableListFilter<"Post">
-  htmlContent?: Prisma.StringWithAggregatesFilter<"Post"> | string
+  summary?: Prisma.StringWithAggregatesFilter<"Post"> | string
+  banner?: Prisma.StringWithAggregatesFilter<"Post"> | string
+  htmlContent?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  textContent?: Prisma.StringNullableWithAggregatesFilter<"Post"> | string | null
+  jsonContent?: Prisma.JsonNullableWithAggregatesFilter<"Post">
   slug?: Prisma.StringWithAggregatesFilter<"Post"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Post"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Post"> | Date | string
@@ -264,8 +300,11 @@ export type PostCreateInput = {
   id?: string
   title: string
   description: string
-  banners?: Prisma.PostCreatebannersInput | string[]
-  htmlContent: string
+  summary: string
+  banner: string
+  htmlContent?: string | null
+  textContent?: string | null
+  jsonContent?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   slug: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -276,8 +315,11 @@ export type PostUncheckedCreateInput = {
   id?: string
   title: string
   description: string
-  banners?: Prisma.PostCreatebannersInput | string[]
-  htmlContent: string
+  summary: string
+  banner: string
+  htmlContent?: string | null
+  textContent?: string | null
+  jsonContent?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   slug: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -288,8 +330,11 @@ export type PostUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  banners?: Prisma.PostUpdatebannersInput | string[]
-  htmlContent?: Prisma.StringFieldUpdateOperationsInput | string
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
+  banner?: Prisma.StringFieldUpdateOperationsInput | string
+  htmlContent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  textContent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jsonContent?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -300,8 +345,11 @@ export type PostUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  banners?: Prisma.PostUpdatebannersInput | string[]
-  htmlContent?: Prisma.StringFieldUpdateOperationsInput | string
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
+  banner?: Prisma.StringFieldUpdateOperationsInput | string
+  htmlContent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  textContent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jsonContent?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -312,8 +360,11 @@ export type PostCreateManyInput = {
   id?: string
   title: string
   description: string
-  banners?: Prisma.PostCreatebannersInput | string[]
-  htmlContent: string
+  summary: string
+  banner: string
+  htmlContent?: string | null
+  textContent?: string | null
+  jsonContent?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   slug: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -323,8 +374,11 @@ export type PostUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  banners?: Prisma.PostUpdatebannersInput | string[]
-  htmlContent?: Prisma.StringFieldUpdateOperationsInput | string
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
+  banner?: Prisma.StringFieldUpdateOperationsInput | string
+  htmlContent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  textContent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jsonContent?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -334,27 +388,25 @@ export type PostUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  banners?: Prisma.PostUpdatebannersInput | string[]
-  htmlContent?: Prisma.StringFieldUpdateOperationsInput | string
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
+  banner?: Prisma.StringFieldUpdateOperationsInput | string
+  htmlContent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  textContent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jsonContent?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type StringNullableListFilter<$PrismaModel = never> = {
-  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
-  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
-  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
-  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
-  isEmpty?: boolean
 }
 
 export type PostCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  banners?: Prisma.SortOrder
+  summary?: Prisma.SortOrder
+  banner?: Prisma.SortOrder
   htmlContent?: Prisma.SortOrder
+  textContent?: Prisma.SortOrder
+  jsonContent?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -364,7 +416,10 @@ export type PostMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  summary?: Prisma.SortOrder
+  banner?: Prisma.SortOrder
   htmlContent?: Prisma.SortOrder
+  textContent?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -374,7 +429,10 @@ export type PostMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  summary?: Prisma.SortOrder
+  banner?: Prisma.SortOrder
   htmlContent?: Prisma.SortOrder
+  textContent?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -383,15 +441,6 @@ export type PostMinOrderByAggregateInput = {
 export type PostScalarRelationFilter = {
   is?: Prisma.PostWhereInput
   isNot?: Prisma.PostWhereInput
-}
-
-export type PostCreatebannersInput = {
-  set: string[]
-}
-
-export type PostUpdatebannersInput = {
-  set?: string[]
-  push?: string | string[]
 }
 
 export type PostCreateNestedOneWithoutPostTagsInput = {
@@ -412,8 +461,11 @@ export type PostCreateWithoutPostTagsInput = {
   id?: string
   title: string
   description: string
-  banners?: Prisma.PostCreatebannersInput | string[]
-  htmlContent: string
+  summary: string
+  banner: string
+  htmlContent?: string | null
+  textContent?: string | null
+  jsonContent?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   slug: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -423,8 +475,11 @@ export type PostUncheckedCreateWithoutPostTagsInput = {
   id?: string
   title: string
   description: string
-  banners?: Prisma.PostCreatebannersInput | string[]
-  htmlContent: string
+  summary: string
+  banner: string
+  htmlContent?: string | null
+  textContent?: string | null
+  jsonContent?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   slug: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -450,8 +505,11 @@ export type PostUpdateWithoutPostTagsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  banners?: Prisma.PostUpdatebannersInput | string[]
-  htmlContent?: Prisma.StringFieldUpdateOperationsInput | string
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
+  banner?: Prisma.StringFieldUpdateOperationsInput | string
+  htmlContent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  textContent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jsonContent?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -461,8 +519,11 @@ export type PostUncheckedUpdateWithoutPostTagsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  banners?: Prisma.PostUpdatebannersInput | string[]
-  htmlContent?: Prisma.StringFieldUpdateOperationsInput | string
+  summary?: Prisma.StringFieldUpdateOperationsInput | string
+  banner?: Prisma.StringFieldUpdateOperationsInput | string
+  htmlContent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  textContent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jsonContent?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -503,8 +564,11 @@ export type PostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   id?: boolean
   title?: boolean
   description?: boolean
-  banners?: boolean
+  summary?: boolean
+  banner?: boolean
   htmlContent?: boolean
+  textContent?: boolean
+  jsonContent?: boolean
   slug?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -516,8 +580,11 @@ export type PostSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   id?: boolean
   title?: boolean
   description?: boolean
-  banners?: boolean
+  summary?: boolean
+  banner?: boolean
   htmlContent?: boolean
+  textContent?: boolean
+  jsonContent?: boolean
   slug?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -527,8 +594,11 @@ export type PostSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   id?: boolean
   title?: boolean
   description?: boolean
-  banners?: boolean
+  summary?: boolean
+  banner?: boolean
   htmlContent?: boolean
+  textContent?: boolean
+  jsonContent?: boolean
   slug?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -538,14 +608,17 @@ export type PostSelectScalar = {
   id?: boolean
   title?: boolean
   description?: boolean
-  banners?: boolean
+  summary?: boolean
+  banner?: boolean
   htmlContent?: boolean
+  textContent?: boolean
+  jsonContent?: boolean
   slug?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "banners" | "htmlContent" | "slug" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
+export type PostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "summary" | "banner" | "htmlContent" | "textContent" | "jsonContent" | "slug" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
 export type PostInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   postTags?: boolean | Prisma.Post$postTagsArgs<ExtArgs>
   _count?: boolean | Prisma.PostCountOutputTypeDefaultArgs<ExtArgs>
@@ -562,8 +635,11 @@ export type $PostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     id: string
     title: string
     description: string
-    banners: string[]
-    htmlContent: string
+    summary: string
+    banner: string
+    htmlContent: string | null
+    textContent: string | null
+    jsonContent: runtime.JsonValue | null
     slug: string
     createdAt: Date
     updatedAt: Date
@@ -994,8 +1070,11 @@ export interface PostFieldRefs {
   readonly id: Prisma.FieldRef<"Post", 'String'>
   readonly title: Prisma.FieldRef<"Post", 'String'>
   readonly description: Prisma.FieldRef<"Post", 'String'>
-  readonly banners: Prisma.FieldRef<"Post", 'String[]'>
+  readonly summary: Prisma.FieldRef<"Post", 'String'>
+  readonly banner: Prisma.FieldRef<"Post", 'String'>
   readonly htmlContent: Prisma.FieldRef<"Post", 'String'>
+  readonly textContent: Prisma.FieldRef<"Post", 'String'>
+  readonly jsonContent: Prisma.FieldRef<"Post", 'Json'>
   readonly slug: Prisma.FieldRef<"Post", 'String'>
   readonly createdAt: Prisma.FieldRef<"Post", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Post", 'DateTime'>

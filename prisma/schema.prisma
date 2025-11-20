@@ -9,6 +9,11 @@ generator client {
   output   = "../src/generated/prisma"
 }
 
+generator zod {
+  provider = "prisma-zod-generator"
+  output   = "../src/generated/schemas"
+}
+
 datasource db {
   provider = "postgresql"
 }
@@ -107,8 +112,11 @@ model Post {
   id          String    @id @default(cuid(2))
   title       String
   description String
-  banners     String[]  @default([]) @map("banners")
-  htmlContent String    @map("html_content") @db.Text
+  summary     String
+  banner      String    @map("banner")
+  htmlContent String?   @map("html_content") @db.Text
+  textContent String?   @map("text_content") @db.Text
+  jsonContent Json?     @map("json_content")
   slug        String    @unique
   createdAt   DateTime  @default(now()) @map("created_at")
   updatedAt   DateTime  @updatedAt @map("updated_at")

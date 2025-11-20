@@ -4,7 +4,7 @@ import { zValidator } from '@hono/zod-validator';
 import { z } from 'zod';
 import { env } from '~/lib/env';
 import { s3 } from '~/lib/s3';
-import { factory } from '../factory';
+import { factory } from '~/server/factory';
 
 const presignedUrlSchema = z.object({
   fileName: z.string().min(1, '文件名不能为空'),

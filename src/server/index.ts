@@ -4,6 +4,7 @@ import { cors } from 'hono/cors';
 import { auth } from '~/lib/auth';
 import { betterAuthMiddleware } from './middleware/better-auth';
 import { prismaMiddleware } from './middleware/prisma';
+import { postsRouter } from './routes/posts/route';
 import { s3Router } from './routes/s3';
 
 export const app = new Hono<Env>().use(
@@ -18,4 +19,4 @@ export const app = new Hono<Env>().use(
   }),
 ).on(['POST', 'GET'], '/api/auth/*', (c) => {
   return auth.handler(c.req.raw);
-}).use(prismaMiddleware, betterAuthMiddleware).basePath('/api').route('/s3', s3Router);
+}).use(prismaMiddleware, betterAuthMiddleware).basePath('/api').route('/s3', s3Router).route('/posts', postsRouter);

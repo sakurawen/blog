@@ -14,6 +14,7 @@ const postFormSchema = z.object({
   description: z.string().min(1, 'Description is required'),
   slug: z.string().min(1, 'Slug is required'),
   banner: z.url(),
+  summary: z.string(),
 });
 
 export function UpsertEditor(_: { id?: string }) {
@@ -24,11 +25,20 @@ export function UpsertEditor(_: { id?: string }) {
       description: '',
       slug: '',
       banner: '',
+      summary: '',
     },
     validators: {
       onSubmit: postFormSchema,
     },
-    async onSubmit() {
+    async onSubmit({ value }) {
+      const htmlContent = editor.getHTML();
+      const jsonContent = editor.getJSON();
+      const submitData = {
+        ...value,
+        htmlContent,
+        jsonContent,
+      };
+      console.log(submitData);
       // TODO: Implement post submission with form values and editor.getHTML()
     },
   });
@@ -96,7 +106,21 @@ export function UpsertEditor(_: { id?: string }) {
                       <Field data-invalid={isValid}>
                         <FieldLabel>Description</FieldLabel>
                         <InputGroup>
-                          <InputGroupTextarea placeholder='请输入placeholder' value={field.state.value} onChange={e => field.handleChange(e.target.value)} />
+                          <InputGroupTextarea placeholder='请输入Description' value={field.state.value} onChange={e => field.handleChange(e.target.value)} />
+                        </InputGroup>
+                        <FieldError errors={field.state.meta.errors} />
+                      </Field>
+                    );
+                  }}
+                </form.Field>
+                <form.Field name='summary'>
+                  {(field) => {
+                    const isValid = field.state.meta.isTouched && !field.state.meta.isValid;
+                    return (
+                      <Field data-invalid={isValid}>
+                        <FieldLabel>Summary</FieldLabel>
+                        <InputGroup>
+                          <InputGroupTextarea placeholder='请输入Summary' value={field.state.value} onChange={e => field.handleChange(e.target.value)} />
                         </InputGroup>
                         <FieldError errors={field.state.meta.errors} />
                       </Field>
