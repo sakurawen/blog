@@ -1,4 +1,4 @@
-import { LayoutDashboard, PencilLine } from 'lucide-react';
+import { Folder, LayoutDashboard, PencilLine } from 'lucide-react';
 
 export interface Group {
   label: string
@@ -8,29 +8,31 @@ export interface Group {
 export interface Menu {
   label: string
   href: string
+  icon?: React.ReactNode
 }
 export const menus: Array<Group> = [
   {
     label: 'Platform',
-    icon: <LayoutDashboard />,
     children: [
       {
         label: 'Dashboard',
+        icon: <LayoutDashboard />,
         href: '/studio',
       },
     ],
   },
   {
     label: 'Resource',
-    icon: <PencilLine />,
     children: [
       {
         label: 'Posts',
+        icon: <PencilLine />,
         href: '/studio/posts',
       },
       {
         label: 'Projects',
         href: '/studio/projects',
+        icon: <Folder />,
       },
     ],
   },
