@@ -2,7 +2,7 @@ import { zValidator } from '@hono/zod-validator';
 import { success } from '~/lib/result';
 import { factory } from '~/server/factory';
 import { authMiddleware } from '~/server/middleware/auth';
-import { postsCreateSchema, postsDeleteSchema, postsUpdateSchema } from './schema';
+import { postsCreateSchema, postsDetailSchema, postsUpdateSchema } from './schema';
 
 export const postsRouter = factory.createApp()
   // 获取文章列表
@@ -37,8 +37,16 @@ export const postsRouter = factory.createApp()
     });
     return c.json(success(res));
   })
+  // 获取文章详情
+  .get('/:id', zValidator('param', postsDetailSchema), async (c) => {
+    const { id } = c.req.valid('param');
+    const post = await c.var.prisma.post.findUnique({
+      where: { id },
+    });
+    return c.json(success(post));
+  })
   // 删除文章
-  .delete('/:id', authMiddleware, zValidator('param', postsDeleteSchema), async (c) => {
+  .delete('/:id', authMiddleware, zValidator('param', postsDetailSchema), async (c) => {
     const { id } = c.req.valid('param');
     const deleted = await c.var.prisma.post.delete({
       where: { id },

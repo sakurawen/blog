@@ -1,13 +1,21 @@
 'use client';
 import { useForm } from '@tanstack/react-form';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { parseResponse } from 'hono/client';
+import { isNil } from 'lodash-es';
+import { Sparkles } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useEffect, useEffectEvent } from 'react';
+import { toast } from 'sonner';
 import { z } from 'zod';
 import { BannerUpload } from '~/components/features/banner-upload';
 import { Editor } from '~/components/features/editor';
 import { Button } from '~/components/ui/button';
 import { Field, FieldError, FieldGroup, FieldLabel, FieldSet } from '~/components/ui/field';
-import { InputGroup, InputGroupInput, InputGroupTextarea } from '~/components/ui/input-group';
+import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupTextarea } from '~/components/ui/input-group';
 import { Spinner } from '~/components/ui/spinner';
 import { useEditor } from '~/hooks/use-editor';
+import { hono } from '~/lib/hono';
 
 const postFormSchema = z.object({
   title: z.string().min(1, 'Title is required'),
@@ -17,15 +25,28 @@ const postFormSchema = z.object({
   summary: z.string(),
 });
 
-export function UpsertEditor(_: { id?: string }) {
+export function UpsertEditor(props: { id?: string }) {
+  const { id } = props;
   const editor = useEditor();
+  const router = useRouter();
+  const queryClient = useQueryClient();
+  const { data: post } = useQuery({
+    enabled: !isNil(id),
+    queryKey: ['post-detail', id],
+    queryFn() {
+      return parseResponse(hono.api.posts[':id'].$get({
+        param: { id: id as string },
+      }));
+    },
+  });
+
   const form = useForm({
     defaultValues: {
-      title: '',
-      description: '',
-      slug: '',
-      banner: '',
-      summary: '',
+      title: post?.data?.title ?? '',
+      description: post?.data?.description ?? '',
+      slug: post?.data?.slug ?? '',
+      banner: post?.data?.banner ?? '',
+      summary: post?.data?.summary ?? '',
     },
     validators: {
       onSubmit: postFormSchema,
@@ -38,10 +59,60 @@ export function UpsertEditor(_: { id?: string }) {
         htmlContent,
         jsonContent,
       };
-      console.log(submitData);
-      // TODO: Implement post submission with form values and editor.getHTML()
+      if (id) {
+        return handleUpdate(submitData);
+      }
+      else {
+        return handleCreate(submitData);
+      }
     },
   });
+
+  async function handleCreate(submitData: z.infer<typeof postFormSchema> & { htmlContent: string, jsonContent: any }) {
+    try {
+      const resp = await parseResponse(hono.api.posts.$post({
+        json: submitData,
+      }));
+      if (resp.data.id) {
+        toast.success('文章创建成功');
+        router.push(`/studio/posts/upsert/${resp.data.id}`);
+      }
+    }
+    catch (err) {
+      toast.error('文章创建失败');
+      throw err;
+    }
+  }
+
+  async function handleUpdate(submitData: z.infer<typeof postFormSchema> & { htmlContent: string, jsonContent: any }) {
+    try {
+      const resp = await parseResponse(hono.api.posts.$put({
+        json: {
+          ...submitData,
+          id: id as string,
+        },
+      }));
+      if (resp.data.id) {
+        toast.success('文章更新成功');
+        queryClient.invalidateQueries({ queryKey: ['post-detail', id] });
+      }
+    }
+    catch (err) {
+      toast.error('文章更新失败');
+      throw err;
+    }
+  }
+
+  const setEditorContent = useEffectEvent((htmlContent: string) => {
+    editor.commands.setContent(htmlContent);
+  });
+
+  useEffect(() => {
+    if (post?.data) {
+      setEditorContent(post.data.htmlContent as string);
+    }
+  }, [post]);
+
   return (
     <div className='flex flex-col md:flex-row h-[calc(100vh-82px)] overflow-hidden'>
       <div className='editor-form w-full md:w-xs overflow-y-auto md:order-2 border-b md:border-b-0 md:border-l border-(--tt-toolbar-border-color)'>
@@ -121,6 +192,15 @@ export function UpsertEditor(_: { id?: string }) {
                         <FieldLabel>Summary</FieldLabel>
                         <InputGroup>
                           <InputGroupTextarea placeholder='请输入Summary' value={field.state.value} onChange={e => field.handleChange(e.target.value)} />
+                          <InputGroupAddon align='block-end'>
+                            <div className='flex w-full justify-end'>
+                              <Button variant='ghost' size='sm' className='rounded-full'>
+                                <Sparkles className='size-4' />
+                                {' '}
+                                AI Generate
+                              </Button>
+                            </div>
+                          </InputGroupAddon>
                         </InputGroup>
                         <FieldError errors={field.state.meta.errors} />
                       </Field>

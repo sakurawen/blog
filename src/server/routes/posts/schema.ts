@@ -7,13 +7,13 @@ export const postsCreateSchema = z.object({
   banner: z.url(),
   summary: z.string().optional(),
   htmlContent: z.string().optional(),
-  jsonContent: z.object().optional(),
+  jsonContent: z.any(),
 });
 
 export const postsUpdateSchema = postsCreateSchema.extend({
   id: z.string().min(1, 'ID is required'),
 });
 
-export const postsDeleteSchema = z.object({
+export const postsDetailSchema = z.object({
   id: z.string().min(1, 'ID is required'),
 });
