@@ -54,7 +54,6 @@
     "notion-client": "^7.7.1",
     "notion-utils": "^7.7.1",
     "pg": "^8.16.3",
-    "prisma-zod-generator": "^1.32.1",
     "radix-ui": "latest",
     "react": "19.2.0",
     "react-content-loader": "^7.1.1",
