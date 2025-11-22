@@ -198,7 +198,7 @@ export function Editor({ editor }: EditorProps) {
   }, [isMobile, mobileView]);
 
   return (
-    <div className='editor relative h-[calc(100vh-130px)]'>
+    <div className='editor relative'>
       <EditorContext value={{ editor }}>
         <Toolbar
           ref={toolbarRef}

@@ -4,9 +4,10 @@ import { parseResponse } from 'hono/client';
 import Link from 'next/link';
 import { PostCard } from '~/components/features/post-card';
 import { hono } from '~/lib/hono';
+import { cn } from '~/lib/utils';
 
 export function Posts() {
-  const { data: posts, isLoading } = useQuery({
+  const { data: posts, isLoading, isFetching } = useQuery({
     queryFn() {
       return parseResponse(hono.api.posts.$get());
     },
@@ -19,11 +20,11 @@ export function Posts() {
 
   return (
     <div className='posts pb-4'>
-      <div className=' flex flex-wrap gap-4'>
+      <div className={cn('grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4', isFetching && 'opacity-80')}>
         {posts?.data.map((post) => {
           return (
             <Link key={post.id} href={`/studio/posts/upsert/${post.id}`}>
-              <PostCard post={post} />
+              <PostCard className='h-full' post={post} />
             </Link>
           );
         })}

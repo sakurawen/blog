@@ -1,25 +1,23 @@
 import type { Post } from '~/generated/prisma/client';
+import { cn } from '~/lib/utils';
 
 interface PostCardProps {
   post: RPCResponse<Post>
+  className?: string
 }
 
 export function PostCard(props: PostCardProps) {
-  const { post } = props;
+  const { post, className } = props;
   return (
     <div
-      className=' shadow-md border rounded-lg p-4 h-72 w-full md:w-fit md:aspect-16/12 bg-cover relative overflow-hidden hover:opacity-80 '
-      style={{
-        backgroundImage: `url(${post.banner})`,
-      }}
+      className={cn(' shadow-md border  bg-white rounded-xl overflow-hidden hover:opacity-80 flex flex-col', className)}
     >
-      <div className='absolute w-full bottom-0 left-0 bg-white/90 backdrop-blur-2xl p-2'>
-        <h2 className='text-xl font-bold mb-2'>{post.title}</h2>
-        <p className='text-gray-600 mb-4'>{post.description}</p>
-        <div className='text-sm text-gray-500'>
-          Slug:
-          {post.slug}
-        </div>
+      <div className='w-full aspect-video'>
+        <img src={post.banner} alt='' />
+      </div>
+      <div className='bg-white p-2 flex-1'>
+        <h2 className='text-lg font-bold mb-2'>{post.title}</h2>
+        <p className=' text-xs mb-4 sm:line-clamp-2 lg:line-clamp-2'>{post.description}</p>
       </div>
     </div>
   );
