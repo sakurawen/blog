@@ -1,4 +1,3 @@
-/* eslint-disable regexp/no-obscure-range */
 import type { Node as TiptapNode } from '@tiptap/pm/model';
 import type { Editor } from '@tiptap/react';
 import { NodeSelection, Selection, TextSelection } from '@tiptap/pm/state';

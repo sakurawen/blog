@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/refs */
 /* eslint-disable react/no-unstable-context-value */
 'use client';
 
@@ -24,13 +25,14 @@ import {
 } from '~/components/tiptap/ui-primitive/toolbar';
 import { BlockquoteButton } from '~/components/tiptap/ui/blockquote-button';
 
+// --- Tiptap UI ---
+import { BookmarkButton } from '~/components/tiptap/ui/bookmark-popover';
 import { CodeBlockButton } from '~/components/tiptap/ui/code-block-button';
 import {
   ColorHighlightPopover,
   ColorHighlightPopoverButton,
   ColorHighlightPopoverContent,
 } from '~/components/tiptap/ui/color-highlight-popover';
-// --- Tiptap UI ---
 import { HeadingDropdownMenu } from '~/components/tiptap/ui/heading-dropdown-menu';
 import { ImageUploadButton } from '~/components/tiptap/ui/image-upload-button';
 import {
@@ -60,6 +62,7 @@ import '~/components/tiptap/node/image-node/image-node.scss';
 
 import '~/components/tiptap/node/heading-node/heading-node.scss';
 import '~/components/tiptap/node/paragraph-node/paragraph-node.scss';
+import '~/components/tiptap/node/bookmark-node/bookmark-node.scss';
 // --- Styles ---
 import '~/components/tiptap/templates/simple/simple-editor.scss';
 
@@ -130,6 +133,7 @@ function MainToolbarContent({
       <ToolbarSeparator />
 
       <ToolbarGroup>
+        <BookmarkButton />
         <ImageUploadButton text='Add' />
       </ToolbarGroup>
 

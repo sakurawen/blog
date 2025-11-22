@@ -49,10 +49,10 @@ interface TooltipContextValue extends UseFloatingReturn<ReferenceType> {
   open: boolean
   setOpen: (open: boolean) => void
   getReferenceProps: (
-    userProps?: React.HTMLProps<HTMLElement>
+    userProps?: React.HTMLProps<HTMLElement>,
   ) => Record<string, unknown>
   getFloatingProps: (
-    userProps?: React.HTMLProps<HTMLDivElement>
+    userProps?: React.HTMLProps<HTMLDivElement>,
   ) => Record<string, unknown>
 }
 
@@ -167,6 +167,7 @@ export function TooltipTrigger({ ref: propRef, children, asChild = false, ...pro
 
     return React.cloneElement(
       children,
+      // eslint-disable-next-line react-hooks/refs
       context.getReferenceProps({
         ref,
         ...props,

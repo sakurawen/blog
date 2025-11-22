@@ -9,6 +9,7 @@ import { Typography } from '@tiptap/extension-typography';
 import { Selection } from '@tiptap/extensions';
 import { useEditor as useTipTapEditor } from '@tiptap/react';
 import { StarterKit } from '@tiptap/starter-kit';
+import { BookmarkNode } from '~/components/tiptap/node/bookmark-node/bookmark-node-extension';
 import { HorizontalRule } from '~/components/tiptap/node/horizontal-rule-node/horizontal-rule-node-extension';
 import { ImageUploadNode } from '~/components/tiptap/node/image-upload-node/image-upload-node-extension';
 
@@ -51,6 +52,7 @@ export const defaultEditorOptions = {
       upload: handleImageUpload,
       onError: error => console.error('Upload failed:', error),
     }),
+    BookmarkNode,
   ],
 };
 export function useEditor(options: UseEditorOptions = defaultEditorOptions) {
