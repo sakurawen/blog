@@ -34,6 +34,7 @@ import {
   ColorHighlightPopoverContent,
 } from '~/components/tiptap/ui/color-highlight-popover';
 import { HeadingDropdownMenu } from '~/components/tiptap/ui/heading-dropdown-menu';
+import { IFrameButton } from '~/components/tiptap/ui/iframe-popover';
 import { ImageUploadButton } from '~/components/tiptap/ui/image-upload-button';
 import {
   LinkButton,
@@ -134,6 +135,7 @@ function MainToolbarContent({
 
       <ToolbarGroup>
         <BookmarkButton />
+        <IFrameButton />
         <ImageUploadButton text='Add' />
       </ToolbarGroup>
 

@@ -1,0 +1,27 @@
+:root {
+  --iframe-border: var(--tt-gray-light-a-300);
+  --iframe-bg: var(--tt-background-color);
+}
+
+.dark {
+  --iframe-border: var(--tt-gray-dark-a-300);
+  --iframe-bg: var(--tt-background-color);
+}
+
+.iframe-node {
+  margin: 1rem 0;
+
+  .iframe-container {
+    position: relative;
+    // border: 1px solid var(--iframe-border);
+    // border-radius: var(--tt-radius-md, 0.5rem);
+    overflow: hidden;
+    background-color: var(--iframe-bg);
+
+    iframe {
+      width: 100%;
+      border: none;
+      display: block;
+    }
+  }
+}

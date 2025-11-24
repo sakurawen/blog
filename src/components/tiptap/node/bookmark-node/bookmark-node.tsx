@@ -5,7 +5,7 @@ import { NodeViewWrapper } from '@tiptap/react';
 import * as React from 'react';
 import './bookmark-node.scss';
 
-export const BookmarkNodeView: React.FC<NodeViewProps> = ({ node }) => {
+export const BookmarkNodeView: React.FC<NodeViewProps> = React.memo(({ node }) => {
   const { url, title, description, image, siteName, favicon } = node.attrs;
 
   const handleClick = () => {
@@ -68,4 +68,4 @@ export const BookmarkNodeView: React.FC<NodeViewProps> = ({ node }) => {
       </div>
     </NodeViewWrapper>
   );
-};
+}, (prev, next) => prev.node.attrs.url === next.node.attrs.url);
