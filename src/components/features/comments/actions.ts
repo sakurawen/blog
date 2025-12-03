@@ -1,19 +1,20 @@
 'use server';
 import { revalidatePath } from 'next/cache';
 import { headers } from 'next/headers';
+import { comments } from '~/db/schemas';
 import { auth } from '~/lib/auth';
-import { prisma } from '~/lib/prisma';
+import { db } from '~/lib/db';
 
 export async function getComments(postId: string) {
-  const comments = await prisma().comment.findMany({
+  const result = await db().query.comments.findMany({
     where: {
       postId,
     },
-    include: {
+    with: {
       user: true,
     },
   });
-  return comments;
+  return result;
 }
 
 export async function createComment(data: {
@@ -26,13 +27,14 @@ export async function createComment(data: {
   if (!session) {
     throw new Error('Unauthorized');
   }
-  const comment = await prisma().comment.create({
-    data: {
+  const [comment] = await db()
+    .insert(comments)
+    .values({
       ...data,
       createdAt: new Date(),
       userId: session.user.id,
-    },
-  });
+    })
+    .returning();
   revalidatePath(`/blog/${data.postId}`);
   return comment;
 }

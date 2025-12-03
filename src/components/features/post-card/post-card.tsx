@@ -1,8 +1,8 @@
-import type { Post } from '~/generated/prisma/client';
+import type { posts } from '~/db/schemas';
 import { cn } from '~/lib/utils';
 
 interface PostCardProps {
-  post: RPCResponse<Post>
+  post: typeof posts.$inferSelect
   className?: string
 }
 
