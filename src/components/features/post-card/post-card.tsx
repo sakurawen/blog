@@ -2,7 +2,7 @@ import type { posts } from '~/db/schemas';
 import { cn } from '~/lib/utils';
 
 interface PostCardProps {
-  post: typeof posts.$inferSelect
+  post: RPCResponse<typeof posts.$inferSelect>
   className?: string
 }
 

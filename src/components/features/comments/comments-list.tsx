@@ -6,7 +6,7 @@ import { dayjs } from '~/lib/dayjs';
 import { cn } from '~/lib/utils';
 
 interface CommentListProps {
-  list: CommentWithUser[]
+  list: Array<CommentWithUser>
 }
 
 export function CommentsList({ list }: CommentListProps) {
