@@ -1,6 +1,6 @@
 import { zValidator } from '@hono/zod-validator';
 import { eq } from 'drizzle-orm';
-import { posts } from '~/db/schemas';
+import { posts } from '~/db/schema';
 import { success } from '~/lib/result';
 import { factory } from '~/server/factory';
 import { authMiddleware } from '~/server/middleware/auth';
@@ -18,26 +18,22 @@ export const postsRouter = factory.createApp()
   })
   // 创建文章
   .post('/', authMiddleware, zValidator('json', postsCreateSchema), async (c) => {
-    const { htmlContent, summary, ...rest } = c.req.valid('json');
+    const data = c.req.valid('json');
     const [res] = await c.var.db
       .insert(posts)
       .values({
-        htmlContent,
-        ...rest,
-        summary: summary || '',
+        ...data,
       })
       .returning();
     return c.json(success(res));
   })
   // 修改文章
   .put('/', authMiddleware, zValidator('json', postsUpdateSchema), async (c) => {
-    const { id, htmlContent, summary, ...rest } = c.req.valid('json');
+    const { id, ...rest } = c.req.valid('json');
     const [res] = await c.var.db
       .update(posts)
       .set({
-        htmlContent,
         ...rest,
-        summary: summary || '',
       })
       .where(eq(posts.id, id))
       .returning();

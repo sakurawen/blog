@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --fix",
+    "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
+    "db:pull": "drizzle-kit pull",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "auth:generate": "npx @better-auth/cli generate"
@@ -17,6 +19,7 @@
     "@aws-sdk/s3-request-presigner": "^3.943.0",
     "@floating-ui/react": "^0.27.16",
     "@hono/zod-validator": "^0.7.5",
+    "@paralleldrive/cuid2": "^3.0.4",
     "@radix-ui/react-label": "^2.1.8",
     "@radix-ui/react-separator": "^1.1.8",
     "@radix-ui/react-slot": "^1.2.4",

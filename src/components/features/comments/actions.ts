@@ -1,7 +1,7 @@
 'use server';
 import { revalidatePath } from 'next/cache';
 import { headers } from 'next/headers';
-import { comments } from '~/db/schemas';
+import { comments } from '~/db/schema';
 import { auth } from '~/lib/auth';
 import { db } from '~/lib/db';
 

@@ -1,4 +1,4 @@
-import type { comments, users } from '~/db/schemas';
+import type { comments, users } from '~/db/schema';
 
 export type Comment = typeof comments.$inferSelect;
 export type User = typeof users.$inferSelect;
