@@ -6,8 +6,8 @@ import { PostsRefreshButton } from './_components/posts-refresh-button';
 
 export default function PostsPage() {
   return (
-    <AdminContainer className='space-y-2'>
-      <div className='flex gap-2'>
+    <AdminContainer className='space-y-4'>
+      <div className='flex gap-4'>
         <Link href='/studio/posts/upsert'>
           <Button>New Post</Button>
         </Link>
