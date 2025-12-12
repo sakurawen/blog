@@ -61,11 +61,13 @@ export function Posts() {
           {posts?.data.map((post) => {
             return (
               <ContextMenu key={post.id}>
-                <ContextMenuTrigger asChild>
-                  <Link href={`/studio/posts/upsert/${post.id}`} className='block 2xl:max-w-xs'>
-                    <PostCard className='h-full' post={post} />
-                  </Link>
-                </ContextMenuTrigger>
+                <ContextMenuTrigger
+                  render={(
+                    <Link href={`/studio/posts/upsert/${post.id}`} className='block 2xl:max-w-xs'>
+                      <PostCard className='h-full' post={post} />
+                    </Link>
+                  )}
+                />
                 <ContextMenuContent>
                   <ContextMenuItem onSelect={() => handleSelectDeletePost(post.id)}>
                     <Trash2Icon />

@@ -21,17 +21,21 @@ export function AppSidebar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar collapsible='offcanvas' variant='inset'>
+    <Sidebar variant='inset'>
       <SidebarHeader>
-        <SidebarMenuButton size='lg' asChild>
-          <a href='#'>
-            <div className='bg-primary/5  flex aspect-square size-8 items-center justify-center rounded-md'>
-              <CitrusIcon className='size-5 text-primary' />
-            </div>
-            <div className=' flex-1 text-left font-bold text-sm leading-tight'>
-              BLOG
-            </div>
-          </a>
+        <SidebarMenuButton
+          size='lg'
+          render={(
+            <a href='#'>
+              <div className='bg-primary/5  flex aspect-square size-8 items-center justify-center rounded-md'>
+                <CitrusIcon className='size-5 text-primary' />
+              </div>
+              <div className=' flex-1 text-left font-bold text-sm leading-tight'>
+                BLOG
+              </div>
+            </a>
+          )}
+        >
         </SidebarMenuButton>
       </SidebarHeader>
       <SidebarContent>
@@ -44,11 +48,15 @@ export function AppSidebar() {
                   {menuGroup.children.map((menu) => {
                     return (
                       <SidebarMenuItem key={menu.label}>
-                        <SidebarMenuButton asChild isActive={pathname === menu.href}>
-                          <Link href={menu.href}>
-                            {menu.icon}
-                            {menu.label}
-                          </Link>
+                        <SidebarMenuButton
+                          isActive={pathname === menu.href}
+                          render={(
+                            <Link href={menu.href}>
+                              {menu.icon}
+                              {menu.label}
+                            </Link>
+                          )}
+                        >
                         </SidebarMenuButton>
                       </SidebarMenuItem>
                     );

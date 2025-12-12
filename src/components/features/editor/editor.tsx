@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/refs */
 /* eslint-disable react/no-unstable-context-value */
 'use client';
 

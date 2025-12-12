@@ -18,7 +18,7 @@ export default antfu({
     'unicorn/prefer-math-trunc': 'off',
     'unicorn/prefer-dom-node-remove': 'off',
     '@typescript-eslint/no-unsafe-function-type': 'off',
-    "ts/no-use-before-define":"off",
+    'ts/no-use-before-define': 'off',
     'no-empty': 'off',
     '@typescript-eslint/no-empty-object-type': 'warn',
     'unicorn/prefer-query-selector': 0,

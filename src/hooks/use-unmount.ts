@@ -7,7 +7,7 @@ import { useEffect, useRef } from 'react';
  */
 export function useUnmount(callback: (...args: Array<any>) => any) {
   const ref = useRef(callback);
-  // eslint-disable-next-line react-hooks/refs
+
   ref.current = callback;
 
   useEffect(
