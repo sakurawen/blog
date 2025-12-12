@@ -1,13 +1,13 @@
 import z from 'zod';
 
 export const postsCreateSchema = z.object({
-  title: z.string().min(1, 'Title is required'),
-  description: z.string().min(1, 'Description is required'),
-  slug: z.string().min(1, 'Slug is required'),
-  banner: z.url(),
+  title: z.string().optional(),
+  description: z.string().optional(),
+  slug: z.string().optional(),
+  banner: z.url().optional(),
   summary: z.string().optional(),
   htmlContent: z.string().optional(),
-  jsonContent: z.any(),
+  jsonContent: z.any().optional(),
 });
 
 export const postsUpdateSchema = postsCreateSchema.extend({
