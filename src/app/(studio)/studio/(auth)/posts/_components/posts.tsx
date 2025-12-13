@@ -69,7 +69,7 @@ export function Posts() {
                   )}
                 />
                 <ContextMenuContent>
-                  <ContextMenuItem onSelect={() => handleSelectDeletePost(post.id)}>
+                  <ContextMenuItem onClick={() => handleSelectDeletePost(post.id)}>
                     <Trash2Icon />
                     Delete
                   </ContextMenuItem>
