@@ -258,19 +258,23 @@ export function LinkPopover({ ref, editor: providedEditor, hideWhenUnavailable =
 
   return (
     <Popover open={isOpen} onOpenChange={handleOnOpenChange}>
-      <PopoverTrigger asChild>
-        <LinkButton
-          disabled={!canSet}
-          data-active-state={isActive ? 'on' : 'off'}
-          data-disabled={!canSet}
-          aria-label={label}
-          aria-pressed={isActive}
-          onClick={handleClick}
-          {...buttonProps}
-          ref={ref}
-        >
-          {children ?? <Icon className='tiptap-button-icon' />}
-        </LinkButton>
+      <PopoverTrigger
+        nativeButton
+        render={(
+          <LinkButton
+            disabled={!canSet}
+            data-active-state={isActive ? 'on' : 'off'}
+            data-disabled={!canSet}
+            aria-label={label}
+            aria-pressed={isActive}
+            onClick={handleClick}
+            {...buttonProps}
+            ref={ref}
+          >
+            {children ?? <Icon className='tiptap-button-icon' />}
+          </LinkButton>
+        )}
+      >
       </PopoverTrigger>
 
       <PopoverContent>

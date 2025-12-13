@@ -1,8 +1,9 @@
 'use client';
 
-import { Popover as PopoverPrimitive } from 'radix-ui';
+import { Popover as PopoverPrimitive } from '@base-ui/react/popover';
 import * as React from 'react';
-import { cn } from '~/lib/tiptap-utils';
+import { cn } from '~/lib/utils';
+
 import '~/components/tiptap/ui-primitive/popover/popover.scss';
 
 function Popover({
@@ -20,19 +21,53 @@ function PopoverTrigger({
 function PopoverContent({
   className,
   align = 'center',
+  alignOffset = 0,
+  side = 'bottom',
   sideOffset = 4,
   ...props
-}: React.ComponentProps<typeof PopoverPrimitive.Content>) {
+}: PopoverPrimitive.Popup.Props
+  & Pick<
+    PopoverPrimitive.Positioner.Props,
+    'align' | 'alignOffset' | 'side' | 'sideOffset'
+  >) {
   return (
     <PopoverPrimitive.Portal>
-      <PopoverPrimitive.Content
+      <PopoverPrimitive.Positioner
         align={align}
+        alignOffset={alignOffset}
+        side={side}
         sideOffset={sideOffset}
-        className={cn('tiptap-popover', className)}
-        {...props}
-      />
+        className='isolate z-50'
+      >
+        <PopoverPrimitive.Popup
+          data-slot='popover-content'
+          className={cn(
+            'bg-popover tiptap-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 ring-foreground/5 flex flex-col gap-4 rounded-2xl p-4 text-sm shadow-2xl ring-1 duration-100 z-50 w-72 origin-(--transform-origin) outline-hidden',
+            className,
+          )}
+          {...props}
+        />
+      </PopoverPrimitive.Positioner>
     </PopoverPrimitive.Portal>
   );
 }
+
+// function PopoverContent({
+//   className,
+//   align = 'center',
+//   sideOffset = 4,
+//   ...props
+// }: React.ComponentProps<typeof PopoverPrimitive.Content>) {
+//   return (
+//     <PopoverPrimitive.Portal>
+//       <PopoverPrimitive.Content
+//         align={align}
+//         sideOffset={sideOffset}
+//         className={cn('tiptap-popover', className)}
+//         {...props}
+//       />
+//     </PopoverPrimitive.Portal>
+//   );
+// }
 
 export { Popover, PopoverContent, PopoverTrigger };

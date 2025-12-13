@@ -21,14 +21,18 @@ export function BookmarkButton() {
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button
-          data-style='ghost'
-          aria-label='Insert bookmark'
-          title='Insert bookmark'
-        >
-          <BookmarkIcon className='tiptap-button-icon' />
-        </Button>
+      <PopoverTrigger
+        nativeButton
+        render={(
+          <Button
+            data-style='ghost'
+            aria-label='Insert bookmark'
+            title='Insert bookmark'
+          >
+            <BookmarkIcon className='tiptap-button-icon' />
+          </Button>
+        )}
+      >
       </PopoverTrigger>
       <PopoverContent>
         <BookmarkPopoverContent

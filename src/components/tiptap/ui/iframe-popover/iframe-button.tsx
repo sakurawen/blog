@@ -21,14 +21,18 @@ export function IFrameButton() {
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button
-          data-style='ghost'
-          aria-label='Insert iframe'
-          title='Insert iframe'
-        >
-          <IFrameIcon className='tiptap-button-icon' />
-        </Button>
+      <PopoverTrigger
+        nativeButton
+        render={(
+          <Button
+            data-style='ghost'
+            aria-label='Insert iframe'
+            title='Insert iframe'
+          >
+            <IFrameIcon className='tiptap-button-icon' />
+          </Button>
+        )}
+      >
       </PopoverTrigger>
       <PopoverContent>
         <IFramePopoverContent
