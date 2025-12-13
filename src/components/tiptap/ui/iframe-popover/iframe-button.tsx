@@ -34,7 +34,7 @@ export function IFrameButton() {
         )}
       >
       </PopoverTrigger>
-      <PopoverContent>
+      <PopoverContent className='p-0'>
         <IFramePopoverContent
           editor={editor}
           onClose={() => setOpen(false)}

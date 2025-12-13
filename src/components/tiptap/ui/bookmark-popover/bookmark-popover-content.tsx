@@ -6,7 +6,6 @@ import * as React from 'react';
 import { Button, ButtonGroup } from '~/components/tiptap/ui-primitive/button';
 import { Card, CardBody, CardItemGroup } from '~/components/tiptap/ui-primitive/card';
 import { Input, InputGroup } from '~/components/tiptap/ui-primitive/input';
-import { useIsMobile } from '~/hooks/use-mobile';
 import { hono } from '~/lib/hono';
 
 interface BookmarkPopoverContentProps {
@@ -18,7 +17,6 @@ export function BookmarkPopoverContent({ editor, onClose }: BookmarkPopoverConte
   const [url, setUrl] = React.useState('');
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState('');
-  const isMobile = useIsMobile();
 
   const handleInsert = async () => {
     if (!url.trim()) {
@@ -85,13 +83,11 @@ export function BookmarkPopoverContent({ editor, onClose }: BookmarkPopoverConte
 
   return (
     <Card
-      style={isMobile ? { boxShadow: 'none', border: 0 } : undefined}
+      className='border-none shadow-none!'
     >
-      <CardBody
-        style={isMobile ? { padding: 0 } : undefined}
-      >
-        <CardItemGroup orientation='horizontal'>
-          <InputGroup>
+      <CardBody className='w-full'>
+        <CardItemGroup orientation='horizontal' className='flex'>
+          <InputGroup className='flex-1'>
             <Input
               type='url'
               placeholder='Paste a bookmark link...'

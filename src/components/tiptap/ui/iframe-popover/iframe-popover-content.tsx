@@ -7,6 +7,7 @@ import { Textarea } from '~/components/theme/textarea';
 import { Button, ButtonGroup } from '~/components/tiptap/ui-primitive/button';
 import { Card, CardBody, CardItemGroup } from '~/components/tiptap/ui-primitive/card';
 import { useIsMobile } from '~/hooks/use-mobile';
+import { Input, InputGroup } from '../../ui-primitive/input';
 
 interface IFramePopoverContentProps {
   editor: Editor
@@ -48,30 +49,30 @@ export function IFramePopoverContent({ editor, onClose }: IFramePopoverContentPr
 
   return (
     <Card
-      style={isMobile ? { boxShadow: 'none', border: 0 } : undefined}
-    >
-      <CardBody
-        style={isMobile ? { padding: 0 } : undefined}
-      >
-        <CardItemGroup orientation='vertical'>
-          <Textarea
-            placeholder='Paste your iframe code here...'
-            value={code}
-            onChange={e => setCode(e.target.value)}
-            onKeyDown={handleKeyDown}
-            autoFocus
-            rows={6}
-            className='font-mono text-sm'
-            style={{ minWidth: '400px' }}
-          />
-        </CardItemGroup>
+      className='border-none shadow-none!'
 
-        <CardItemGroup orientation='horizontal'>
+    >
+      <CardBody className='w-full'>
+        <CardItemGroup orientation='horizontal' className='flex'>
+          <InputGroup className='flex-1'>
+            <Input
+              type='url'
+              placeholder='Paste a bookmark link...'
+              value={code}
+              onChange={e => setCode(e.target.value)}
+              onKeyDown={handleKeyDown}
+              autoFocus
+              autoComplete='off'
+              autoCorrect='off'
+              autoCapitalize='off'
+            />
+          </InputGroup>
+
           <ButtonGroup orientation='horizontal'>
             <Button
               type='button'
               onClick={handleInsert}
-              title='Insert iframe'
+              title='Insert bookmark'
               disabled={!code.trim()}
               data-style='ghost'
             >

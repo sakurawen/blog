@@ -34,7 +34,7 @@ export function BookmarkButton() {
         )}
       >
       </PopoverTrigger>
-      <PopoverContent>
+      <PopoverContent className='p-0'>
         <BookmarkPopoverContent
           editor={editor}
           onClose={() => setOpen(false)}
