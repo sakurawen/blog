@@ -1,83 +1,155 @@
 'use client';
 
-import { DropdownMenu as DropdownMenuPrimitive } from 'radix-ui';
+import { Menu as MenuPrimitive } from '@base-ui/react/menu';
 import * as React from 'react';
-import { cn } from '~/lib/tiptap-utils';
 import '~/components/tiptap/ui-primitive/dropdown-menu/dropdown-menu.scss';
 
 function DropdownMenu({
+  modal = false,
   ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.Root>) {
-  return <DropdownMenuPrimitive.Root modal={false} {...props} />;
+}: MenuPrimitive.Root.Props) {
+  return <MenuPrimitive.Root modal={modal} {...props} />;
 }
 
 function DropdownMenuPortal({
   ...props
-}: React.ComponentProps<typeof DropdownMenuPrimitive.Portal>) {
-  return <DropdownMenuPrimitive.Portal {...props} />;
+}: MenuPrimitive.Portal.Props) {
+  return <MenuPrimitive.Portal {...props} />;
 }
 
-const DropdownMenuTrigger = ({ ref, ...props }: React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Trigger> & { ref?: React.RefObject<React.ComponentRef<typeof DropdownMenuPrimitive.Trigger> | null> }) => <DropdownMenuPrimitive.Trigger ref={ref} {...props} />;
-DropdownMenuTrigger.displayName = DropdownMenuPrimitive.Trigger.displayName;
+function DropdownMenuTrigger({
+  ...props
+}: MenuPrimitive.Trigger.Props) {
+  return <MenuPrimitive.Trigger {...props} />;
+}
 
-const DropdownMenuGroup = DropdownMenuPrimitive.Group;
+function DropdownMenuGroup({
+  ...props
+}: MenuPrimitive.Group.Props) {
+  return <MenuPrimitive.Group {...props} />;
+}
 
-const DropdownMenuSub = DropdownMenuPrimitive.Sub;
+function DropdownMenuSub({
+  ...props
+}: MenuPrimitive.SubmenuRoot.Props) {
+  return <MenuPrimitive.SubmenuRoot {...props} />;
+}
 
-const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
+function DropdownMenuRadioGroup({
+  ...props
+}: MenuPrimitive.RadioGroup.Props) {
+  return <MenuPrimitive.RadioGroup {...props} />;
+}
 
-const DropdownMenuItem = DropdownMenuPrimitive.Item;
+function DropdownMenuItem({
+  ...props
+}: MenuPrimitive.Item.Props) {
+  return <MenuPrimitive.Item {...props} />;
+}
 
-const DropdownMenuSubTrigger = DropdownMenuPrimitive.SubTrigger;
-
-function DropdownMenuSubContent({ ref, className, portal = true, ...props }: React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubContent> & {
-  portal?: boolean | React.ComponentProps<typeof DropdownMenuPortal>
-} & { ref?: React.RefObject<React.ComponentRef<typeof DropdownMenuPrimitive.SubContent> | null> }) {
-  const content = (
-    <DropdownMenuPrimitive.SubContent
-      ref={ref}
-      className={cn('tiptap-dropdown-menu', className)}
+function DropdownMenuSubTrigger({
+  className,
+  children,
+  ...props
+}: MenuPrimitive.SubmenuTrigger.Props) {
+  return (
+    <MenuPrimitive.SubmenuTrigger
+      className={(state) => {
+        const baseClass = 'tiptap-dropdown-menu-item';
+        if (typeof className === 'function') {
+          const customClass = className(state);
+          return customClass ? `${baseClass} ${customClass}` : baseClass;
+        }
+        return className ? `${baseClass} ${className}` : baseClass;
+      }}
       {...props}
-    />
+    >
+      {children}
+    </MenuPrimitive.SubmenuTrigger>
   );
-
-  return portal
-    ? (
-        <DropdownMenuPortal {...(typeof portal === 'object' ? portal : {})}>
-          {content}
-        </DropdownMenuPortal>
-      )
-    : (
-        content
-      );
 }
-DropdownMenuSubContent.displayName
-  = DropdownMenuPrimitive.SubContent.displayName;
 
-function DropdownMenuContent({ ref, className, sideOffset = 4, portal = false, ...props }: React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content> & {
-  portal?: boolean
-} & { ref?: React.RefObject<React.ComponentRef<typeof DropdownMenuPrimitive.Content> | null> }) {
+function DropdownMenuSubContent({
+  ref,
+  className,
+  align = 'start',
+  alignOffset = -3,
+  side = 'right',
+  sideOffset = 0,
+  portal = true,
+  ...props
+}: MenuPrimitive.Popup.Props
+  & Pick<MenuPrimitive.Positioner.Props, 'align' | 'alignOffset' | 'side' | 'sideOffset'>
+  & {
+    ref?: React.RefObject<HTMLDivElement | null>
+    portal?: boolean
+  }) {
   const content = (
-    <DropdownMenuPrimitive.Content
-      ref={ref}
+    <MenuPrimitive.Positioner
+      className='isolate z-50 outline-none'
+      align={align}
+      alignOffset={alignOffset}
+      side={side}
       sideOffset={sideOffset}
-      onCloseAutoFocus={e => e.preventDefault()}
-      className={cn('tiptap-dropdown-menu', className)}
-      {...props}
-    />
+    >
+      <MenuPrimitive.Popup
+        ref={ref}
+        className={(state) => {
+          const baseClass = 'tiptap-dropdown-menu';
+          if (typeof className === 'function') {
+            const customClass = className(state);
+            return customClass ? `${baseClass} ${customClass}` : baseClass;
+          }
+          return className ? `${baseClass} ${className}` : baseClass;
+        }}
+        {...props}
+      />
+    </MenuPrimitive.Positioner>
   );
 
-  return portal
-    ? (
-        <DropdownMenuPortal {...(typeof portal === 'object' ? portal : {})}>
-          {content}
-        </DropdownMenuPortal>
-      )
-    : (
-        content
-      );
+  return portal ? <MenuPrimitive.Portal>{content}</MenuPrimitive.Portal> : content;
 }
-DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName;
+
+function DropdownMenuContent({
+  ref,
+  className,
+  align = 'start',
+  alignOffset = 0,
+  side = 'bottom',
+  sideOffset = 4,
+  portal = false,
+  ...props
+}: MenuPrimitive.Popup.Props
+  & Pick<MenuPrimitive.Positioner.Props, 'align' | 'alignOffset' | 'side' | 'sideOffset'>
+  & {
+    ref?: React.RefObject<HTMLDivElement | null>
+    portal?: boolean
+  }) {
+  const content = (
+    <MenuPrimitive.Positioner
+      className='isolate z-50 outline-none'
+      align={align}
+      alignOffset={alignOffset}
+      side={side}
+      sideOffset={sideOffset}
+    >
+      <MenuPrimitive.Popup
+        ref={ref}
+        className={(state) => {
+          const baseClass = 'tiptap-dropdown-menu';
+          if (typeof className === 'function') {
+            const customClass = className(state);
+            return customClass ? `${baseClass} ${customClass}` : baseClass;
+          }
+          return className ? `${baseClass} ${className}` : baseClass;
+        }}
+        {...props}
+      />
+    </MenuPrimitive.Positioner>
+  );
+
+  return portal ? <MenuPrimitive.Portal>{content}</MenuPrimitive.Portal> : content;
+}
 
 export {
   DropdownMenu,

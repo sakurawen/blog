@@ -18,6 +18,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuPortal,
   DropdownMenuTrigger,
 } from '~/components/tiptap/ui-primitive/dropdown-menu';
 // --- Tiptap UI ---
@@ -84,42 +85,54 @@ export function ListDropdownMenu({
 
   return (
     <DropdownMenu open={isOpen} onOpenChange={handleOnOpenChange}>
-      <DropdownMenuTrigger asChild>
-        <Button
-          type='button'
-          data-style='ghost'
-          data-active-state={isActive ? 'on' : 'off'}
-          role='button'
-          tabIndex={-1}
-          disabled={!canToggle}
-          data-disabled={!canToggle}
-          aria-label='List options'
-          tooltip='List'
-          {...props}
-        >
-          <Icon className='tiptap-button-icon' />
-          <ChevronDownIcon className='tiptap-button-dropdown-small' />
-        </Button>
-      </DropdownMenuTrigger>
+      <DropdownMenuTrigger
+        nativeButton
+        render={(
+          <Button
+            className='tiptap-button'
+            type='button'
+            data-style='ghost'
+            data-active-state={isActive ? 'on' : 'off'}
+            role='button'
+            tabIndex={-1}
+            disabled={!canToggle}
+            data-disabled={!canToggle}
+            aria-label='List options'
+            tooltip='List'
+            {...props}
+          >
 
-      <DropdownMenuContent align='start' portal={portal}>
-        <Card>
-          <CardBody>
-            <ButtonGroup>
-              {filteredLists.map(option => (
-                <DropdownMenuItem key={option.type} asChild>
-                  <ListButton
-                    editor={editor}
-                    type={option.type}
-                    text={option.label}
-                    showTooltip={false}
-                  />
-                </DropdownMenuItem>
-              ))}
-            </ButtonGroup>
-          </CardBody>
-        </Card>
-      </DropdownMenuContent>
+            <Icon className='tiptap-button-icon' />
+            <ChevronDownIcon className='tiptap-button-dropdown-small' />
+          </Button>
+        )}
+      >
+      </DropdownMenuTrigger>
+      <DropdownMenuPortal>
+        <DropdownMenuContent align='start' portal={portal}>
+          <Card>
+            <CardBody>
+              <ButtonGroup>
+                {filteredLists.map(option => (
+                  <DropdownMenuItem
+                    key={option.type}
+                    nativeButton
+                    render={(
+                      <ListButton
+                        editor={editor}
+                        type={option.type}
+                        text={option.label}
+                        showTooltip={false}
+                      />
+                    )}
+                  >
+                  </DropdownMenuItem>
+                ))}
+              </ButtonGroup>
+            </CardBody>
+          </Card>
+        </DropdownMenuContent>
+      </DropdownMenuPortal>
     </DropdownMenu>
   );
 }

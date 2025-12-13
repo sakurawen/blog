@@ -18,6 +18,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuPortal,
   DropdownMenuTrigger,
 } from '~/components/tiptap/ui-primitive/dropdown-menu';
 import { HeadingButton } from '~/components/tiptap/ui/heading-button';
@@ -70,44 +71,55 @@ export function HeadingDropdownMenu({ ref, editor: providedEditor, levels = defa
 
   return (
     <DropdownMenu modal open={isOpen} onOpenChange={handleOpenChange}>
-      <DropdownMenuTrigger asChild>
-        <Button
-          type='button'
-          data-style='ghost'
-          data-active-state={isActive ? 'on' : 'off'}
-          role='button'
-          tabIndex={-1}
-          disabled={!canToggle}
-          data-disabled={!canToggle}
-          aria-label='Format text as heading'
-          aria-pressed={isActive}
-          tooltip='Heading'
-          {...buttonProps}
-          ref={ref}
-        >
-          <Icon className='tiptap-button-icon' />
-          <ChevronDownIcon className='tiptap-button-dropdown-small' />
-        </Button>
-      </DropdownMenuTrigger>
+      <DropdownMenuTrigger
+        nativeButton
+        render={(
+          <Button
+            className='tiptap-button'
+            type='button'
+            data-style='ghost'
+            data-active-state={isActive ? 'on' : 'off'}
+            role='button'
+            tabIndex={-1}
+            disabled={!canToggle}
+            data-disabled={!canToggle}
+            aria-label='Format text as heading'
+            aria-pressed={isActive}
+            tooltip='Heading'
+            {...buttonProps}
 
-      <DropdownMenuContent align='start' portal={portal}>
-        <Card>
-          <CardBody>
-            <ButtonGroup>
-              {levels.map(level => (
-                <DropdownMenuItem key={`heading-${level}`} asChild>
-                  <HeadingButton
-                    editor={editor}
-                    level={level}
-                    text={`Heading ${level}`}
-                    showTooltip={false}
-                  />
-                </DropdownMenuItem>
-              ))}
-            </ButtonGroup>
-          </CardBody>
-        </Card>
-      </DropdownMenuContent>
+          >
+            <Icon className='tiptap-button-icon' />
+            <ChevronDownIcon className='tiptap-button-dropdown-small' />
+          </Button>
+        )}
+      >
+      </DropdownMenuTrigger>
+      <DropdownMenuPortal>
+        <DropdownMenuContent align='start' portal={portal}>
+          <Card>
+            <CardBody>
+              <ButtonGroup>
+                {levels.map(level => (
+                  <DropdownMenuItem
+                    nativeButton
+                    key={`heading-${level}`}
+                    render={(
+                      <HeadingButton
+                        editor={editor}
+                        level={level}
+                        text={`Heading ${level}`}
+                        showTooltip={false}
+                      />
+                    )}
+                  >
+                  </DropdownMenuItem>
+                ))}
+              </ButtonGroup>
+            </CardBody>
+          </Card>
+        </DropdownMenuContent>
+      </DropdownMenuPortal>
     </DropdownMenu>
   );
 }

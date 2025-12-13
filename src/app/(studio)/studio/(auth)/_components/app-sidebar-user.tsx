@@ -41,23 +41,24 @@ export function NavUser() {
     <SidebarMenu>
       <SidebarMenuItem>
         <DropdownMenu>
-          <DropdownMenuTrigger render={(
-            <SidebarMenuButton
-              size='lg'
-              className='data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground'
-            >
-              <Avatar className='h-8 w-8 rounded-lg grayscale'>
-                <AvatarImage src={data?.user.image || ''} alt={data?.user.name} />
-                <AvatarFallback className='rounded-lg'>{data?.user.name.slice(0, 2)}</AvatarFallback>
-              </Avatar>
-              <div className='grid flex-1 text-left text-sm leading-tight'>
-                <span className='truncate font-medium'>{data?.user.name}</span>
-                <span className='text-muted-foreground truncate text-xs'>
-                  {data?.user.email}
-                </span>
-              </div>
-            </SidebarMenuButton>
-          )}
+          <DropdownMenuTrigger
+            render={(
+              <SidebarMenuButton
+                size='lg'
+                className='data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground'
+              >
+                <Avatar className='h-8 w-8 rounded-lg grayscale'>
+                  <AvatarImage src={data?.user.image || ''} alt={data?.user.name} />
+                  <AvatarFallback className='rounded-lg'>{data?.user.name.slice(0, 2)}</AvatarFallback>
+                </Avatar>
+                <div className='grid flex-1 text-left text-sm leading-tight'>
+                  <span className='truncate font-medium'>{data?.user.name}</span>
+                  <span className='text-muted-foreground truncate text-xs'>
+                    {data?.user.email}
+                  </span>
+                </div>
+              </SidebarMenuButton>
+            )}
           />
           <DropdownMenuContent
             align='end'
