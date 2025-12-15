@@ -3,7 +3,8 @@ import { useQuery } from '@tanstack/react-query';
 import { parseResponse } from 'hono/client';
 import { Trash2Icon } from 'lucide-react';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useId, useState } from 'react';
+import ContentLoader from 'react-content-loader';
 import { toast } from 'sonner';
 import { PostCard } from '~/components/features/post-card';
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '~/components/ui/alert-dialog';
@@ -11,6 +12,42 @@ import { Button } from '~/components/ui/button';
 import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from '~/components/ui/context-menu';
 import { hono } from '~/lib/hono';
 import { cn } from '~/lib/utils';
+
+function PostCardLoader() {
+  const id = useId();
+  return (
+    <ContentLoader
+      uniqueKey={id}
+      viewBox='0 0 400 300'
+      className='w-full 2xl:max-w-xs'
+      backgroundColor='var(--secondary)'
+      foregroundColor='var(--background)'
+    >
+      <rect x='0' y='0' rx='8' ry='8' width='400' height='200' />
+      <rect x='0' y='215' rx='4' ry='4' width='300' height='16' />
+      <rect x='0' y='240' rx='4' ry='4' width='400' height='12' />
+      <rect x='0' y='260' rx='4' ry='4' width='400' height='12' />
+      <rect x='0' y='280' rx='4' ry='4' width='200' height='10' />
+    </ContentLoader>
+  );
+}
+
+function PostsLoader() {
+  return (
+    <div className='posts pb-4'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:flex 2xl:flex-wrap gap-4'>
+        <PostCardLoader />
+        <PostCardLoader />
+        <PostCardLoader />
+        <PostCardLoader />
+        <PostCardLoader />
+        <PostCardLoader />
+        <PostCardLoader />
+        <PostCardLoader />
+      </div>
+    </div>
+  );
+}
 
 export function Posts() {
   const [deletePostId, setDeletePostId] = useState<string | null>(null);
@@ -51,7 +88,7 @@ export function Posts() {
   }
 
   if (isLoading) {
-    return 'loading...';
+    return <PostsLoader />;
   }
 
   return (
