@@ -17,7 +17,7 @@ export const BookmarkNodeView: React.FC<NodeViewProps> = React.memo(({ node }) =
   return (
     <NodeViewWrapper className='bookmark-node'>
       <div
-        className='bookmark-card h-32'
+        className='bookmark-card h-30'
         onClick={handleClick}
         role='button'
         tabIndex={0}
@@ -48,7 +48,7 @@ export const BookmarkNodeView: React.FC<NodeViewProps> = React.memo(({ node }) =
               )}
               {title && <div className='bookmark-title'>{title}</div>}
             </div>
-            {description && <div className='bookmark-description'>{description}</div>}
+            {description && <div className='bookmark-description text-xs!'>{description}</div>}
             <div className='bookmark-url'>{url}</div>
           </div>
           {image

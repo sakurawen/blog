@@ -319,7 +319,7 @@ export function UpsertEditor(props: { id?: string }) {
       </div>
       <div className='flex-1 overflow-y-auto md:order-1 relative'>
         {isSaving && (
-          <div className='absolute top-16 right-4 z-10 flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/80 backdrop-blur-sm border border-border shadow-sm text-sm text-muted-foreground'>
+          <div className='fixed top-30 left-0 right-0 w-fit mx-auto z-10 flex items-center gap-2 px-3 py-1.5 rounded-full bg-background/80 backdrop-blur-sm border border-border shadow-sm text-sm text-muted-foreground'>
             <Spinner className='size-3' />
             <span>Saving...</span>
           </div>

@@ -64,7 +64,7 @@ import '~/components/tiptap/node/heading-node/heading-node.scss';
 import '~/components/tiptap/node/paragraph-node/paragraph-node.scss';
 import '~/components/tiptap/node/bookmark-node/bookmark-node.scss';
 // --- Styles ---
-import '~/components/tiptap/templates/simple/simple-editor.scss';
+import './simple-editor.scss';
 
 function MainToolbarContent({
   onHighlighterClick,
