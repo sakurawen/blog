@@ -1,10 +1,5 @@
-import { AdminContainer } from '~/components/admin/admin-container';
-import { UpsertEditor } from './_components/upsert-editor';
+import { redirect } from 'next/navigation';
 
-export default function PostNew() {
-  return (
-    <AdminContainer className='h-full'>
-      <UpsertEditor />
-    </AdminContainer>
-  );
+export default function PostsUpsert() {
+  return redirect('/studio/posts');
 }
