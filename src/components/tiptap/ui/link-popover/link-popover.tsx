@@ -119,15 +119,9 @@ const LinkMain: React.FC<LinkMainProps> = ({
 
   return (
     <Card
-      style={{
-        ...(isMobile ? { boxShadow: 'none', border: 0 } : {}),
-      }}
+      style={(isMobile ? { boxShadow: 'none', border: 0 } : {})}
     >
-      <CardBody
-        style={{
-          ...(isMobile ? { padding: 0 } : {}),
-        }}
-      >
+      <CardBody>
         <CardItemGroup orientation='horizontal'>
           <InputGroup>
             <Input
@@ -277,7 +271,7 @@ export function LinkPopover({ ref, editor: providedEditor, hideWhenUnavailable =
       >
       </PopoverTrigger>
 
-      <PopoverContent>
+      <PopoverContent className='p-0'>
         <LinkMain
           url={url}
           setUrl={setUrl}

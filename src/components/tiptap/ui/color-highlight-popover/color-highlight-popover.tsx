@@ -209,7 +209,7 @@ export function ColorHighlightPopover({
         )}
       >
       </PopoverTrigger>
-      <PopoverContent aria-label='Highlight colors'>
+      <PopoverContent aria-label='Highlight colors' className='p-0'>
         <ColorHighlightPopoverContent editor={editor} colors={colors} />
       </PopoverContent>
     </Popover>
