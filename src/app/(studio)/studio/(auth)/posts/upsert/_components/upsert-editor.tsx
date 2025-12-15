@@ -34,6 +34,7 @@ export function UpsertEditor(props: { id?: string }) {
   const queryClient = useQueryClient();
   const [isSaving, setIsSaving] = useState(false);
   const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const isInitialLoadRef = useRef(true);
 
   const { data: post } = useQuery({
     enabled: !isNil(id),
@@ -124,7 +125,7 @@ export function UpsertEditor(props: { id?: string }) {
           id,
         },
       }));
-      queryClient.invalidateQueries({ queryKey: ['post-detail', id] });
+      // 不刷新数据，避免覆盖用户正在编辑的内容
     }
     catch (err) {
       console.error('自动保存失败:', err);
@@ -133,7 +134,7 @@ export function UpsertEditor(props: { id?: string }) {
     finally {
       setIsSaving(false);
     }
-  }, [id, editor, form.state.values, queryClient]);
+  }, [id, editor, form.state.values]);
 
   // 防抖的自动保存触发
   const triggerAutoSave = useCallback(() => {
@@ -182,8 +183,9 @@ export function UpsertEditor(props: { id?: string }) {
   });
 
   useEffect(() => {
-    if (post?.data) {
+    if (post?.data && isInitialLoadRef.current) {
       setEditorContent(post.data.htmlContent as string);
+      isInitialLoadRef.current = false;
     }
   }, [post]);
 
