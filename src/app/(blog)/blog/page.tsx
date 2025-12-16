@@ -30,7 +30,7 @@ async function PostList() {
   return (
     <div className='grid md:grid-cols-2 grid-cols-1 gap-4 px-4'>
       {data.map(post => (
-        <Link key={post.id} href={`/blog/${post.id}`} className='block'>
+        <Link key={post.id} href={`/blog/${post.id}`} className='block cursor-default'>
           <PostCard
             key={post.id}
             post={post as unknown as RPCResponse<typeof posts.$inferSelect>}
