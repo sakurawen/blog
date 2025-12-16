@@ -9,6 +9,7 @@ import '~/components/tiptap/node/horizontal-rule-node/horizontal-rule-node.scss'
 import '~/components/tiptap/node/list-node/list-node.scss';
 
 import '~/components/tiptap/node/image-node/image-node.scss';
+import '~/components/tiptap/node/iframe-node/iframe-node.scss';
 
 import '~/components/tiptap/node/heading-node/heading-node.scss';
 import '~/components/tiptap/node/paragraph-node/paragraph-node.scss';
@@ -19,11 +20,20 @@ import '~/components/features/editor/simple-editor.scss';
 export async function PostContent({ id }: { id: string }) {
   const data = await getPost(id);
   return (
-    <div
-      className='tiptap ProseMirror'
-      dangerouslySetInnerHTML={{
-        __html: data?.htmlContent || '',
-      }}
-    />
+    <div className='post-content '>
+      {data?.banner
+        ? (
+            <div className='mb-8 rounded-2xl overflow-hidden'>
+              <img className='object-fill aspect-video' src={data?.banner} />
+            </div>
+          )
+        : null}
+      <div
+        className='tiptap ProseMirror'
+        dangerouslySetInnerHTML={{
+          __html: data?.htmlContent || '',
+        }}
+      />
+    </div>
   );
 }

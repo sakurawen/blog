@@ -1,4 +1,4 @@
-import { mergeAttributes, Node, ReactNodeViewRenderer } from '@tiptap/react';
+import { Node, ReactNodeViewRenderer } from '@tiptap/react';
 import { IFrameNodeView } from '~/components/tiptap/node/iframe-node/iframe-node';
 
 export interface IFrameAttributes {
@@ -27,9 +27,6 @@ export const IFrameNode = Node.create({
       code: {
         default: '',
         parseHTML: element => element.getAttribute('data-code'),
-        renderHTML: attributes => ({
-          'data-code': attributes.code,
-        }),
       },
     };
   },
@@ -38,12 +35,40 @@ export const IFrameNode = Node.create({
     return [
       {
         tag: 'div[data-type="iframe"]',
+        getAttrs: (element) => {
+          if (typeof element === 'string')
+            return false;
+          const container = element.querySelector('.iframe-container');
+          // 优先从 data-iframe-html 读取,然后是 innerHTML,最后是 data-code
+          const code = container?.getAttribute('data-iframe-html')
+            || container?.innerHTML
+            || element.getAttribute('data-code')
+            || '';
+          return { code };
+        },
       },
     ];
   },
 
-  renderHTML({ HTMLAttributes }) {
-    return ['div', mergeAttributes(HTMLAttributes, { 'data-type': 'iframe' })];
+  renderHTML({ node }) {
+    const code = node.attrs.code || '';
+
+    // 创建一个临时容器来解析 HTML 字符串
+    const tempContainer = document.createElement('div');
+    tempContainer.innerHTML = code;
+
+    // 获取解析后的第一个元素(通常是 iframe)
+    const iframeElement = tempContainer.firstChild;
+
+    return [
+      'div',
+      {
+        'data-type': 'iframe',
+        'data-code': code,
+        'class': 'iframe-node',
+      },
+      iframeElement || '',
+    ];
   },
 
   addNodeView() {

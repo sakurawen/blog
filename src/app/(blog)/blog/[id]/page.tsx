@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
+import { Comments } from '~/components/features/comments';
 import { PostLoader } from '~/components/features/post-loader';
 import { PageContainer } from '~/components/ui/page-container';
 import { PostHeader } from './_components/post-header';
@@ -23,6 +24,7 @@ export default async function Blog({ params }: { params: Promise<{ id: string }>
       <PostHeader />
       <Suspense fallback={<PostLoader />}>
         <PostContent id={id} />
+        <Comments id={id} />
       </Suspense>
     </PageContainer>
   );

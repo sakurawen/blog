@@ -57,7 +57,7 @@ export function IFramePopoverContent({ editor, onClose }: IFramePopoverContentPr
           <InputGroup className='flex-1'>
             <Input
               type='url'
-              placeholder='Paste a bookmark link...'
+              placeholder='Paste a iframe link...'
               value={code}
               onChange={e => setCode(e.target.value)}
               onKeyDown={handleKeyDown}
@@ -72,7 +72,7 @@ export function IFramePopoverContent({ editor, onClose }: IFramePopoverContentPr
             <Button
               type='button'
               onClick={handleInsert}
-              title='Insert bookmark'
+              title='Insert iframe'
               disabled={!code.trim()}
               data-style='ghost'
             >

@@ -1,4 +1,4 @@
-import { mergeAttributes, Node, ReactNodeViewRenderer } from '@tiptap/react';
+import { Node, ReactNodeViewRenderer } from '@tiptap/react';
 import { BookmarkNodeView } from '~/components/tiptap/node/bookmark-node/bookmark-node';
 
 export interface BookmarkAttributes {
@@ -32,44 +32,26 @@ export const BookmarkNode = Node.create({
       url: {
         default: null,
         parseHTML: element => element.getAttribute('data-url'),
-        renderHTML: attributes => ({
-          'data-url': attributes.url,
-        }),
       },
       title: {
         default: null,
         parseHTML: element => element.getAttribute('data-title'),
-        renderHTML: attributes => ({
-          'data-title': attributes.title,
-        }),
       },
       description: {
         default: null,
         parseHTML: element => element.getAttribute('data-description'),
-        renderHTML: attributes => ({
-          'data-description': attributes.description,
-        }),
       },
       image: {
         default: null,
         parseHTML: element => element.getAttribute('data-image'),
-        renderHTML: attributes => ({
-          'data-image': attributes.image,
-        }),
       },
       siteName: {
         default: null,
         parseHTML: element => element.getAttribute('data-site-name'),
-        renderHTML: attributes => ({
-          'data-site-name': attributes.siteName,
-        }),
       },
       favicon: {
         default: null,
         parseHTML: element => element.getAttribute('data-favicon'),
-        renderHTML: attributes => ({
-          'data-favicon': attributes.favicon,
-        }),
       },
     };
   },
@@ -82,8 +64,62 @@ export const BookmarkNode = Node.create({
     ];
   },
 
-  renderHTML({ HTMLAttributes }) {
-    return ['div', mergeAttributes(HTMLAttributes, { 'data-type': 'bookmark' })];
+  renderHTML({ node }) {
+    const { url, title, description, image, siteName, favicon } = node.attrs;
+
+    const children = [
+      'a',
+      { class: 'bookmark-card h-30 block ', style: 'text-decoration:none', href: url, target: '_blank', rel: 'noopener noreferrer' },
+      [
+        'div',
+        { class: 'bookmark-content' },
+        [
+          'div',
+          { class: 'bookmark-info no-underline' },
+          [
+            'div',
+            { class: 'flex gap-2' },
+            ...(siteName || favicon
+              ? [
+                  [
+                    'div',
+                    { class: 'bookmark-site' },
+                    ...(favicon ? [['img', { src: favicon, alt: '', class: 'bookmark-favicon' }]] : []),
+                    ...(siteName ? [['span', { class: 'bookmark-site-name' }, siteName]] : []),
+                  ],
+                ]
+              : []),
+            ...(title ? [['div', { class: 'bookmark-title ' }, title]] : []),
+          ],
+          ...(description ? [['div', { class: 'bookmark-description text-xs! ' }, description]] : []),
+          ['div', { class: 'bookmark-url' }, url],
+        ],
+        ...(image
+          ? [
+              [
+                'div',
+                { class: 'bookmark-image-container' },
+                ['img', { src: image, alt: title || '', class: 'bookmark-image' }],
+              ],
+            ]
+          : []),
+      ],
+    ];
+
+    return [
+      'div',
+      {
+        'data-type': 'bookmark',
+        'data-url': url,
+        'data-title': title,
+        'data-description': description,
+        'data-image': image,
+        'data-site-name': siteName,
+        'data-favicon': favicon,
+        'class': 'bookmark-node',
+      },
+      children,
+    ];
   },
 
   addNodeView() {
