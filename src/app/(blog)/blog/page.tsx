@@ -1,11 +1,12 @@
+import type { posts } from '~/db/schema';
 import { Icon } from '@iconify/react';
 import Link from 'next/link';
 import { Suspense } from 'react';
-import { PostListLoader } from '~/components/features/notion/notion-loader';
-import { NotionRenderer } from '~/components/features/notion/notion-renderer';
+import { PostCard } from '~/components/features/post-card';
+import { PostListLoader } from '~/components/features/post-loader';
 import { Button } from '~/components/ui/button';
 import { PageContainer } from '~/components/ui/page-container';
-import { getBlog } from './[id]/actions';
+import { getPosts } from './[id]/actions';
 
 export default function Blogs() {
   return (
@@ -25,6 +26,17 @@ export default function Blogs() {
 }
 
 async function PostList() {
-  const data = await getBlog();
-  return <NotionRenderer className='w-auto!' recordMap={data} />;
+  const data = await getPosts();
+  return (
+    <div className='grid md:grid-cols-2 grid-cols-1 gap-4 px-4'>
+      {data.map(post => (
+        <Link key={post.id} href={`/blog/${post.id}`} className='block'>
+          <PostCard
+            key={post.id}
+            post={post as unknown as RPCResponse<typeof posts.$inferSelect>}
+          />
+        </Link>
+      ))}
+    </div>
+  );
 }

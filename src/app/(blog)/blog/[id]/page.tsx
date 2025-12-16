@@ -1,19 +1,19 @@
-import type { ExtendedRecordMap } from 'notion-types';
-import { getPageTitle } from 'notion-utils';
+import type { Metadata } from 'next';
 import { Suspense } from 'react';
-import { Comments } from '~/components/features/comments';
-import { PostLoader } from '~/components/features/notion/notion-loader';
-import { NotionRenderer } from '~/components/features/notion/notion-renderer';
+import { PostLoader } from '~/components/features/post-loader';
 import { PageContainer } from '~/components/ui/page-container';
 import { PostHeader } from './_components/post-header';
-import { getBlog } from './actions';
+import { getPost } from './actions';
+import { PostContent } from './content';
+import '~/components/features/editor/simple-editor.scss';
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const data = await getBlog(id);
+  const data = await getPost(id);
   return {
-    title: getPageTitle(data),
-  };
+    title: data?.title,
+    description: data?.description,
+  } as Metadata;
 }
 
 export default async function Blog({ params }: { params: Promise<{ id: string }> }) {
@@ -25,22 +25,5 @@ export default async function Blog({ params }: { params: Promise<{ id: string }>
         <PostContent id={id} />
       </Suspense>
     </PageContainer>
-  );
-}
-
-async function PostContent({ id }: { id: string }) {
-  const data = await getBlog(id);
-  return (
-    <div style={{ '--bg-color': 'var(--background)' } as React.CSSProperties}>
-      <NotionRenderer
-        footer={
-          <Comments id={id} />
-        }
-        recordMap={data as ExtendedRecordMap}
-        fullPage
-        disableHeader
-        className='w-full!  px-0! pb-0!'
-      />
-    </div>
   );
 }
