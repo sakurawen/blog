@@ -31,7 +31,7 @@ export async function PostContent({ id }: { id: string }) {
             </div>
           )
         : null}
-      <div className='mt-12 mb-8 select-none'>
+      <div className='mt-12 mb-8'>
         <h1 className='mb-6 text-4xl font-bold'>{data?.title}</h1>
         <p className='flex items-center gap-8 opacity-80 text-sm'>
           <span className='flex items-center gap-1'>
