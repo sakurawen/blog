@@ -4,6 +4,7 @@ import { cors } from 'hono/cors';
 import { auth } from '~/lib/auth';
 import { betterAuthMiddleware } from './middleware/better-auth';
 import { drizzleMiddleware } from './middleware/drizzle';
+import { analyticsRouter } from './routes/analytics';
 import { bookmarkRouter } from './routes/bookmark';
 import { postsRouter } from './routes/posts/route';
 import { s3Router } from './routes/s3';
@@ -25,6 +26,7 @@ export const app = new Hono<Env>()
   })
   .use(drizzleMiddleware, betterAuthMiddleware)
   .basePath('/api')
+  .route('/analytics', analyticsRouter)
   .route('/s3', s3Router)
   .route('/posts', postsRouter)
   .route('/bookmark', bookmarkRouter);

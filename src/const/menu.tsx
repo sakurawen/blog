@@ -1,4 +1,4 @@
-import { Folder, LayoutDashboard, PencilLine } from 'lucide-react';
+import { BarChart3, Folder, LayoutDashboard, PencilLine } from 'lucide-react';
 
 export interface Group {
   label: string
@@ -18,6 +18,11 @@ export const menus: Array<Group> = [
         label: 'Dashboard',
         icon: <LayoutDashboard />,
         href: '/studio',
+      },
+      {
+        label: 'Analytics',
+        icon: <BarChart3 />,
+        href: '/studio/analytics',
       },
     ],
   },

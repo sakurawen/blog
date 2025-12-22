@@ -105,3 +105,36 @@ export const verifications = pgTable('verifications', {
   createdAt: timestamp('created_at'),
   updatedAt: timestamp('updated_at'),
 });
+
+export const visitors = pgTable('visitors', {
+  id: text().primaryKey().$defaultFn(createId),
+  visitorId: text('visitor_id').notNull(),
+  firstSeenAt: timestamp('first_seen_at').default(sql`now()`).notNull(),
+  lastSeenAt: timestamp('last_seen_at').default(sql`now()`).notNull(),
+  ipAddress: text('ip_address'),
+  country: text(),
+  city: text(),
+}, table => [
+  uniqueIndex('visitors_visitor_id_unique').using('btree', table.visitorId.asc().nullsLast()),
+]);
+
+export const pageviews = pgTable('pageviews', {
+  id: text().primaryKey().$defaultFn(createId),
+  visitorId: text('visitor_id').notNull(),
+  path: text().notNull(),
+  referrer: text(),
+  ipAddress: text('ip_address'),
+  userAgent: text('user_agent'),
+  device: text(),
+  browser: text(),
+  browserVersion: text('browser_version'),
+  os: text(),
+  osVersion: text('os_version'),
+  country: text(),
+  city: text(),
+  timestamp: timestamp().default(sql`now()`).notNull(),
+  duration: bigint({ mode: 'number' }),
+}, table => [
+  uniqueIndex('pageviews_timestamp_idx').using('btree', table.timestamp.desc().nullsLast()),
+  uniqueIndex('pageviews_path_idx').using('btree', table.path.asc().nullsLast()),
+]);

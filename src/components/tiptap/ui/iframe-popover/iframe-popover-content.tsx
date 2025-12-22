@@ -3,7 +3,6 @@
 import type { Editor } from '@tiptap/react';
 import { CornerDownLeftIcon } from 'lucide-react';
 import * as React from 'react';
-import { Textarea } from '~/components/theme/textarea';
 import { Button, ButtonGroup } from '~/components/tiptap/ui-primitive/button';
 import { Card, CardBody, CardItemGroup } from '~/components/tiptap/ui-primitive/card';
 import { useIsMobile } from '~/hooks/use-mobile';
