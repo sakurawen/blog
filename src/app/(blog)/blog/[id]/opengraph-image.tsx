@@ -1,38 +1,18 @@
-import { ImageResponse } from '@vercel/og';
+import { eq } from 'drizzle-orm';
+import { ImageResponse } from 'next/og';
 import { posts } from '~/db/schema';
 import { db } from '~/lib/db';
+
+export const runtime = 'nodejs';
 
 export const alt = 'Blog Post Preview';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-export async function generateImageMetadata({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
-  const drizzle = db();
-  const post = await drizzle.query.posts.findFirst({
-    where: { id },
-  });
-
-  if (!post) {
-    return [];
-  }
-
-  return [
-    {
-      id: 'og-image',
-      alt: post.title || 'Blog Post',
-      contentType: 'image/png',
-      size: { width: 1200, height: 630 },
-    },
-  ];
-}
-
 export default async function Image({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const drizzle = db();
-  const post = await drizzle.query.posts.findFirst({
-    where: { id },
-  });
+  const post = await drizzle.select().from(posts).where(eq(posts.id, id)).limit(1).then(res => res[0] ?? null);
 
   if (!post) {
     return new ImageResponse(
@@ -195,7 +175,7 @@ export default async function Image({ params }: { params: Promise<{ id: string }
               fontWeight: 500,
             }}
           >
-            sakurawen.com
+            akumanoko.com
           </span>
           <div
             style={{

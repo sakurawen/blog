@@ -12,7 +12,7 @@ const socials = [
   },
   {
     name: 'github',
-    url: 'https://github.com/sakurawen',
+    url: 'https://github.com/agniwen',
     icon: <Icon className='size-5' icon='ri:github-line' />,
 
   },
