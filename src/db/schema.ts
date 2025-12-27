@@ -1,6 +1,6 @@
 import { createId } from '@paralleldrive/cuid2';
 import { sql } from 'drizzle-orm';
-import { bigint, boolean, json, pgSchema, pgTable, primaryKey, serial, text, timestamp, uniqueIndex } from 'drizzle-orm/pg-core';
+import { bigint, boolean, date, index, json, pgSchema, pgTable, primaryKey, serial, text, timestamp, uniqueIndex } from 'drizzle-orm/pg-core';
 
 export const drizzle = pgSchema('drizzle');
 
@@ -106,35 +106,24 @@ export const verifications = pgTable('verifications', {
   updatedAt: timestamp('updated_at'),
 });
 
-export const visitors = pgTable('visitors', {
-  id: text().primaryKey().$defaultFn(createId),
-  visitorId: text('visitor_id').notNull(),
-  firstSeenAt: timestamp('first_seen_at').default(sql`now()`).notNull(),
-  lastSeenAt: timestamp('last_seen_at').default(sql`now()`).notNull(),
-  ipAddress: text('ip_address'),
+export const visitors = pgTable('site_visitors', {
+  visitorId: text('visitor_id').primaryKey(),
+  firstSeenAt: date('first_seen_at').notNull(),
+  lastSeenAt: date('last_seen_at').notNull(),
   country: text(),
   city: text(),
-}, table => [
-  uniqueIndex('visitors_visitor_id_unique').using('btree', table.visitorId.asc().nullsLast()),
-]);
+});
 
-export const pageviews = pgTable('pageviews', {
-  id: text().primaryKey().$defaultFn(createId),
+export const pageviews = pgTable('page_views', {
   visitorId: text('visitor_id').notNull(),
   path: text().notNull(),
+  date: date('date').notNull(),
   referrer: text(),
-  ipAddress: text('ip_address'),
-  userAgent: text('user_agent'),
   device: text(),
   browser: text(),
-  browserVersion: text('browser_version'),
   os: text(),
-  osVersion: text('os_version'),
   country: text(),
-  city: text(),
-  timestamp: timestamp().default(sql`now()`).notNull(),
-  duration: bigint({ mode: 'number' }),
 }, table => [
-  uniqueIndex('pageviews_timestamp_idx').using('btree', table.timestamp.desc().nullsLast()),
-  uniqueIndex('pageviews_path_idx').using('btree', table.path.asc().nullsLast()),
+  primaryKey({ columns: [table.visitorId, table.path, table.date], name: 'pageviews_pkey' }),
+  index('pageviews_date_idx').using('btree', table.date.desc()),
 ]);

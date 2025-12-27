@@ -36,26 +36,19 @@ import {
 import { hono } from '~/lib/hono';
 
 interface PageviewRecord {
-  id: string
   visitorId: string
   path: string
+  date: string
   referrer: string | null
-  ipAddress: string | null
-  userAgent: string | null
   device: string | null
   browser: string | null
-  browserVersion: string | null
   os: string | null
-  osVersion: string | null
   country: string | null
-  city: string | null
-  timestamp: string
-  duration: number | null
 }
 
 const columns: ColumnDef<PageviewRecord>[] = [
   {
-    accessorKey: 'timestamp',
+    accessorKey: 'date',
     header: ({ column }) => {
       return (
         <Button
@@ -63,13 +56,13 @@ const columns: ColumnDef<PageviewRecord>[] = [
           onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
           className='h-8 px-2'
         >
-          时间
+          日期
           <ArrowUpDown className='ml-2 size-4' />
         </Button>
       );
     },
     cell: ({ row }) => {
-      return dayjs(row.getValue('timestamp')).format('YYYY-MM-DD HH:mm:ss');
+      return dayjs(row.getValue('date')).format('YYYY-MM-DD');
     },
   },
   {
@@ -80,43 +73,16 @@ const columns: ColumnDef<PageviewRecord>[] = [
     },
   },
   {
-    accessorKey: 'ipAddress',
-    header: 'IP 地址',
-    cell: ({ row }) => {
-      return <span className='font-mono text-sm'>{row.getValue('ipAddress') || '-'}</span>;
-    },
-  },
-  {
     accessorKey: 'device',
     header: '设备',
   },
   {
     accessorKey: 'browser',
     header: '浏览器',
-    cell: ({ row }) => {
-      const browser = row.getValue('browser') as string;
-      const version = row.original.browserVersion;
-      return (
-        <span>
-          {browser}
-          {version && ` ${version}`}
-        </span>
-      );
-    },
   },
   {
     accessorKey: 'os',
     header: '操作系统',
-    cell: ({ row }) => {
-      const os = row.getValue('os') as string;
-      const version = row.original.osVersion;
-      return (
-        <span>
-          {os}
-          {version && ` ${version}`}
-        </span>
-      );
-    },
   },
   {
     accessorKey: 'referrer',
@@ -139,7 +105,7 @@ const columns: ColumnDef<PageviewRecord>[] = [
 export function AnalyticsTable() {
   const [page, setPage] = useState(1);
   const [sorting, setSorting] = useState<SortingState>([
-    { id: 'timestamp', desc: true },
+    { id: 'date', desc: true },
   ]);
 
   const { data, isLoading } = useQuery({
