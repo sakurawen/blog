@@ -8,6 +8,8 @@ import { Button } from '~/components/ui/button';
 import { PageContainer } from '~/components/ui/page-container';
 import { getPosts } from './[id]/actions';
 
+export const dynamic = 'force-dynamic';
+
 export default function Blogs() {
   return (
     <PageContainer className='pt-12  pb-8 max-w-2xl mx-auto'>
