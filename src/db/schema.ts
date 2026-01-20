@@ -1,6 +1,6 @@
 import { createId } from '@paralleldrive/cuid2';
 import { sql } from 'drizzle-orm';
-import { bigint, boolean, date, index, json, pgSchema, pgTable, primaryKey, serial, text, timestamp, uniqueIndex } from 'drizzle-orm/pg-core';
+import { bigint, boolean, json, pgSchema, pgTable, primaryKey, serial, text, timestamp, uniqueIndex } from 'drizzle-orm/pg-core';
 
 export const drizzle = pgSchema('drizzle');
 
@@ -48,6 +48,7 @@ export const posts = pgTable('posts', {
   description: text(),
   summary: text(),
   banner: text(),
+  published: boolean().default(false),
   htmlContent: text('html_content'),
   textContent: text('text_content'),
   jsonContent: json('json_content'),
@@ -105,25 +106,3 @@ export const verifications = pgTable('verifications', {
   createdAt: timestamp('created_at'),
   updatedAt: timestamp('updated_at'),
 });
-
-export const visitors = pgTable('site_visitors', {
-  visitorId: text('visitor_id').primaryKey(),
-  firstSeenAt: date('first_seen_at').notNull(),
-  lastSeenAt: date('last_seen_at').notNull(),
-  country: text(),
-  city: text(),
-});
-
-export const pageviews = pgTable('page_views', {
-  visitorId: text('visitor_id').notNull(),
-  path: text().notNull(),
-  date: date('date').notNull(),
-  referrer: text(),
-  device: text(),
-  browser: text(),
-  os: text(),
-  country: text(),
-}, table => [
-  primaryKey({ columns: [table.visitorId, table.path, table.date], name: 'pageviews_pkey' }),
-  index('pageviews_date_idx').using('btree', table.date.desc()),
-]);

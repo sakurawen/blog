@@ -6,6 +6,7 @@ export const postsCreateSchema = z.object({
   slug: z.string().optional(),
   banner: z.url().optional(),
   summary: z.string().optional(),
+  published: z.boolean().optional(),
   htmlContent: z.string().optional(),
   jsonContent: z.any().optional(),
 });

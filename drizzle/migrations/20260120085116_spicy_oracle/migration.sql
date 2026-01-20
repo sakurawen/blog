@@ -1,0 +1,6 @@
+ALTER TABLE "posts" ADD COLUMN "published" boolean DEFAULT false;--> statement-breakpoint
+ALTER TABLE "sessions" DROP CONSTRAINT "sessions_user_id_users_id_fkey", ADD CONSTRAINT "sessions_user_id_users_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE;--> statement-breakpoint
+ALTER TABLE "accounts" DROP CONSTRAINT "accounts_user_id_users_id_fkey", ADD CONSTRAINT "accounts_user_id_users_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE;--> statement-breakpoint
+ALTER TABLE "comments" DROP CONSTRAINT "comments_user_id_users_id_fkey", ADD CONSTRAINT "comments_user_id_users_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE;--> statement-breakpoint
+ALTER TABLE "post_tags" DROP CONSTRAINT "post_tags_post_id_posts_id_fkey", ADD CONSTRAINT "post_tags_post_id_posts_id_fkey" FOREIGN KEY ("post_id") REFERENCES "posts"("id");--> statement-breakpoint
+ALTER TABLE "post_tags" DROP CONSTRAINT "post_tags_tag_id_tags_id_fkey", ADD CONSTRAINT "post_tags_tag_id_tags_id_fkey" FOREIGN KEY ("tag_id") REFERENCES "tags"("id");

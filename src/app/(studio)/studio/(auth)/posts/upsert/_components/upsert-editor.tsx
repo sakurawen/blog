@@ -5,7 +5,7 @@ import { parseResponse } from 'hono/client';
 import { isNil } from 'lodash-es';
 import { Sparkles } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useCallback, useEffect, useEffectEvent, useRef, useState } from 'react';
+import { startTransition, useCallback, useEffect, useEffectEvent, useRef, useState } from 'react';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { toast } from 'sonner';
 import { BannerUpload } from '~/components/features/banner-upload';
@@ -13,6 +13,7 @@ import { Editor } from '~/components/features/editor';
 import { Button } from '~/components/ui/button';
 import { Field, FieldError, FieldGroup, FieldLabel, FieldSet } from '~/components/ui/field';
 import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupTextarea } from '~/components/ui/input-group';
+import { NativeSelect, NativeSelectOption } from '~/components/ui/native-select';
 import { Spinner } from '~/components/ui/spinner';
 import { useEditor } from '~/hooks/use-editor';
 import { hono } from '~/lib/hono';
@@ -23,6 +24,7 @@ interface PostFormData {
   slug?: string
   banner?: string
   summary?: string
+  published?: boolean
   htmlContent?: string
   jsonContent?: any
 }
@@ -45,7 +47,6 @@ export function UpsertEditor(props: { id?: string }) {
       }));
     },
   });
-
   const form = useForm({
     defaultValues: {
       title: post?.data?.title ?? '',
@@ -53,6 +54,7 @@ export function UpsertEditor(props: { id?: string }) {
       slug: post?.data?.slug ?? '',
       banner: post?.data?.banner ?? 'https://images.unsplash.com/photo-1604076850742-4c7221f3101b?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       summary: post?.data?.summary ?? '',
+      published: post?.data?.published ?? false,
     },
     async onSubmit({ value }) {
       const htmlContent = editor.getHTML();
@@ -178,16 +180,12 @@ export function UpsertEditor(props: { id?: string }) {
     };
   }, [editor, id, triggerAutoSave]);
 
-  const setEditorContent = useEffectEvent((htmlContent: string) => {
-    editor.commands.setContent(htmlContent);
-  });
-
   useEffect(() => {
-    if (post?.data && isInitialLoadRef.current) {
-      setEditorContent(post.data.htmlContent as string);
+    if (post?.data && isInitialLoadRef.current && editor) {
+      editor.commands.setContent(post.data.htmlContent as string);
       isInitialLoadRef.current = false;
     }
-  }, [post]);
+  }, [editor, post]);
 
   return (
     <div className='flex flex-col md:flex-row h-[calc(100vh-82px)] overflow-hidden'>
@@ -309,6 +307,26 @@ export function UpsertEditor(props: { id?: string }) {
                             </div>
                           </InputGroupAddon>
                         </InputGroup>
+                        <FieldError errors={field.state.meta.errors} />
+                      </Field>
+                    );
+                  }}
+                </form.Field>
+                <form.Field name='published'>
+                  {(field) => {
+                    return (
+                      <Field>
+                        <FieldLabel>Published</FieldLabel>
+                        <NativeSelect
+                          value={field.state.value ? 'true' : 'false'}
+                          onChange={(event) => {
+                            field.handleChange(event.target.value === 'true');
+                            triggerAutoSave();
+                          }}
+                        >
+                          <NativeSelectOption value='false'>Draft</NativeSelectOption>
+                          <NativeSelectOption value='true'>Published</NativeSelectOption>
+                        </NativeSelect>
                         <FieldError errors={field.state.meta.errors} />
                       </Field>
                     );

@@ -1,4 +1,13 @@
+-- Current sql file was generated after introspecting the database
+-- If you want to run this migration please uncomment this code before executing migrations
+/*
 CREATE SCHEMA "drizzle";
+--> statement-breakpoint
+CREATE TABLE "drizzle"."__drizzle_migrations" (
+	"id" serial PRIMARY KEY,
+	"hash" text NOT NULL,
+	"created_at" bigint
+);
 --> statement-breakpoint
 CREATE TABLE "accounts" (
 	"id" text PRIMARY KEY,
@@ -23,12 +32,6 @@ CREATE TABLE "comments" (
 	"parent_id" text,
 	"created_at" timestamp NOT NULL,
 	"content" text NOT NULL
-);
---> statement-breakpoint
-CREATE TABLE "drizzle"."__drizzle_migrations" (
-	"id" serial PRIMARY KEY,
-	"hash" text NOT NULL,
-	"created_at" bigint
 );
 --> statement-breakpoint
 CREATE TABLE "post_tags" (
@@ -97,8 +100,9 @@ CREATE UNIQUE INDEX "posts_slug_unique" ON "posts" ("slug");--> statement-breakp
 CREATE UNIQUE INDEX "sessions_token_unique" ON "sessions" ("token");--> statement-breakpoint
 CREATE UNIQUE INDEX "tags_name_unique" ON "tags" ("name");--> statement-breakpoint
 CREATE UNIQUE INDEX "users_email_unique" ON "users" ("email");--> statement-breakpoint
+ALTER TABLE "sessions" ADD CONSTRAINT "sessions_user_id_users_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE;--> statement-breakpoint
 ALTER TABLE "accounts" ADD CONSTRAINT "accounts_user_id_users_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE;--> statement-breakpoint
 ALTER TABLE "comments" ADD CONSTRAINT "comments_user_id_users_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE;--> statement-breakpoint
 ALTER TABLE "post_tags" ADD CONSTRAINT "post_tags_post_id_posts_id_fkey" FOREIGN KEY ("post_id") REFERENCES "posts"("id");--> statement-breakpoint
-ALTER TABLE "post_tags" ADD CONSTRAINT "post_tags_tag_id_tags_id_fkey" FOREIGN KEY ("tag_id") REFERENCES "tags"("id");--> statement-breakpoint
-ALTER TABLE "sessions" ADD CONSTRAINT "sessions_user_id_users_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE;
+ALTER TABLE "post_tags" ADD CONSTRAINT "post_tags_tag_id_tags_id_fkey" FOREIGN KEY ("tag_id") REFERENCES "tags"("id");
+*/

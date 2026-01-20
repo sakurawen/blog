@@ -45,6 +45,7 @@ export const postsRouter = factory.createApp()
     const post = await c.var.db.query.posts.findFirst({
       where: {
         id,
+        published: true,
       },
     });
     return c.json(success(post));

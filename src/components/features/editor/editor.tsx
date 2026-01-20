@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unstable-context-value */
 'use client';
 
 import type { Editor as EditorType } from '@tiptap/react';
