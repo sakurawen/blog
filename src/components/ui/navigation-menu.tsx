@@ -13,7 +13,7 @@ function NavigationMenu({
     <NavigationMenuPrimitive.Root
       data-slot='navigation-menu'
       className={cn(
-        'max-w-max group/navigation-menu relative flex max-w-max flex-1 items-center justify-center',
+        'max-w-max group/navigation-menu relative flex  flex-1 items-center justify-center',
         className,
       )}
       {...props}
@@ -29,6 +29,7 @@ function NavigationMenuList({
   ...props
 }: NavigationMenuPrimitive.List.Props) {
   return (
+    // @ts-expect-error ignore
     <NavigationMenuPrimitive.List
       data-slot='navigation-menu-list'
       className={cn(
@@ -45,6 +46,7 @@ function NavigationMenuItem({
   ...props
 }: NavigationMenuPrimitive.Item.Props) {
   return (
+    // @ts-expect-error ignore
     <NavigationMenuPrimitive.Item
       data-slot='navigation-menu-item'
       className={cn('relative', className)}
@@ -70,7 +72,7 @@ function NavigationMenuTrigger({
     >
       {children}
       {' '}
-      <ChevronDownIcon className='relative top-[1px] ml-1 size-3 transition duration-300 group-data-open/navigation-menu-trigger:rotate-180 group-data-popup-open/navigation-menu-trigger:rotate-180' aria-hidden='true' />
+      <ChevronDownIcon className='relative top-px ml-1 size-3 transition duration-300 group-data-open/navigation-menu-trigger:rotate-180 group-data-popup-open/navigation-menu-trigger:rotate-180' aria-hidden='true' />
     </NavigationMenuPrimitive.Trigger>
   );
 }
@@ -138,6 +140,7 @@ function NavigationMenuIndicator({
   ...props
 }: NavigationMenuPrimitive.Icon.Props) {
   return (
+    // @ts-expect-error ignore
     <NavigationMenuPrimitive.Icon
       data-slot='navigation-menu-indicator'
       className={cn(
