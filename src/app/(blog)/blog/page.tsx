@@ -36,6 +36,7 @@ async function PostList() {
           <PostCard
             key={post.id}
             post={post as unknown as RPCResponse<typeof posts.$inferSelect>}
+            showMeta={false}
           />
         </Link>
       ))}
