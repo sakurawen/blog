@@ -17,6 +17,7 @@ export const env = createEnv({
   client: {
     NEXT_PUBLIC_AVATAR_URL: z.string(),
     NEXT_PUBLIC_BETTER_AUTH_URL: z.string(),
+    NEXT_PUBLIC_UMAMI_SHARE_URL: z.string(),
   },
   runtimeEnv: {
     NEXT_PUBLIC_AVATAR_URL: process.env.NEXT_PUBLIC_AVATAR_URL,
@@ -30,5 +31,6 @@ export const env = createEnv({
     R2_ENDPOINT: process.env.R2_ENDPOINT,
     R2_BUCKET_NAME: process.env.R2_BUCKET_NAME,
     CLOUDFLARE_CDN_URL: process.env.CLOUDFLARE_CDN_URL,
+    NEXT_PUBLIC_UMAMI_SHARE_URL: process.env.NEXT_PUBLIC_UMAMI_SHARE_URL,
   },
 });
