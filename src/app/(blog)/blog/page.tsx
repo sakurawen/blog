@@ -6,8 +6,6 @@ import { PageContainer } from '~/components/ui/page-container';
 import { getPosts } from './[id]/actions';
 import { PostList } from './_components/post-list';
 
-export const dynamic = 'force-dynamic';
-
 export default function Blogs() {
   return (
     <PageContainer className='pt-12  pb-8 max-w-2xl mx-auto'>

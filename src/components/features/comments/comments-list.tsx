@@ -1,7 +1,7 @@
-'use client';
 import type { InferUserFromClient } from 'better-auth';
 import type { CommentWithUser } from './comments-type';
-import { authClient } from '~/lib/auth-client';
+import { headers } from 'next/headers';
+import { auth } from '~/lib/auth';
 import { dayjs } from '~/lib/dayjs';
 import { cn } from '~/lib/utils';
 
@@ -9,8 +9,10 @@ interface CommentListProps {
   list: Array<CommentWithUser>
 }
 
-export function CommentsList({ list }: CommentListProps) {
-  const { data } = authClient.useSession();
+export async function CommentsList({ list }: CommentListProps) {
+  const data = await auth.api.getSession({
+    headers: await headers(),
+  });
   return (
     <div className={cn('comment-list w-full my-12!')}>
       <div>
@@ -38,13 +40,13 @@ function CommentsListItem({ comment, index, user }: { comment: CommentWithUser, 
   return (
     <div className={cn('comment-list-item gap-4 flex items-end mb-4! ', { 'flex-row-reverse': isSelfComment })}>
       <div className='shrink-0'>
-        <img className='rounded-full size-8' src={comment.user?.image || ''} alt='avatar' />
+        <img className='rounded-full size-8' src={comment.user?.image || '/default-avatar.svg'} alt='avatar' />
       </div>
       <div className={cn({
         'text-right': isSelfComment,
       })}
       >
-        <div className='pl-1 space-x-2 '>
+        <div className='pl-1 space-x-2 pb-1 '>
           <span className='text-sm font-bold'>{comment.user?.name}</span>
           <span className='text-gray-500 text-[10px]'>
             #

@@ -4,6 +4,8 @@ import { Button } from '~/components/ui/button';
 import { PageContainer } from '~/components/ui/page-container';
 import { env } from '~/lib/env';
 
+export const dynamic = 'force-static';
+
 export default function Home() {
   return (
     <PageContainer className='home overflow-hidden container  mx-auto '>
