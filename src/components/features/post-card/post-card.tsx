@@ -15,8 +15,8 @@ export function PostCard(props: PostCardProps) {
     <div
       className={cn('rounded-xl border shadow-xs overflow-hidden hover:opacity-90 flex flex-col', className)}
     >
-      <div className='w-full aspect-video'>
-        <img className='w-full h-full min-h-32 md:max-h-48 object-fill' src={post.banner || ''} alt='' />
+      <div className='w-full '>
+        <img className='w-full h-full min-h-32 md:max-h-48 aspect-video object-fill' src={post.banner || ''} alt='' />
       </div>
       <div className='bg-background p-2 flex-1 select-none'>
         <h2 className='text-lg font-bold'>{post.title || 'Untitled'}</h2>

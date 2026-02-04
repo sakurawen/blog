@@ -1,12 +1,10 @@
-import type { posts } from '~/db/schema';
 import { Icon } from '@iconify/react';
 import Link from 'next/link';
-import { Suspense } from 'react';
-import { PostCard } from '~/components/features/post-card';
-import { PostListLoader } from '~/components/features/post-loader';
+import { HydrationBoundary } from '~/components/features/hydration-boundary';
 import { Button } from '~/components/ui/button';
 import { PageContainer } from '~/components/ui/page-container';
 import { getPosts } from './[id]/actions';
+import { PostList } from './_components/post-list';
 
 export const dynamic = 'force-dynamic';
 
@@ -20,26 +18,17 @@ export default function Blogs() {
           </Button>
         </Link>
       </div>
-      <Suspense fallback={<PostListLoader />}>
+      <HydrationBoundary prefetch={[
+        {
+          queryKey: ['post-list'],
+          queryFn() {
+            return getPosts();
+          },
+        },
+      ]}
+      >
         <PostList />
-      </Suspense>
+      </HydrationBoundary>
     </PageContainer>
-  );
-}
-
-async function PostList() {
-  const data = await getPosts();
-  return (
-    <div className='grid md:grid-cols-2 grid-cols-1 gap-4 px-4'>
-      {data.map(post => (
-        <Link key={post.id} href={`/blog/${post.id}`} className='block cursor-default'>
-          <PostCard
-            key={post.id}
-            post={post as unknown as RPCResponse<typeof posts.$inferSelect>}
-            showMeta={false}
-          />
-        </Link>
-      ))}
-    </div>
   );
 }

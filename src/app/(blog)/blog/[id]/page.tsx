@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
 import { Comments } from '~/components/features/comments';
-import { PostLoader } from '~/components/features/post-loader';
+import { HydrationBoundary } from '~/components/features/hydration-boundary';
 import { PageContainer } from '~/components/ui/page-container';
 import { PostHeader } from './_components/post-header';
 import { getPost } from './actions';
@@ -23,11 +22,19 @@ export default async function Blog({ params }: { params: Promise<{ id: string }>
   const { id } = await params;
   return (
     <PageContainer className='pt-12  px-4 max-w-2xl mx-auto'>
-      <PostHeader />
-      <Suspense fallback={<PostLoader />}>
+      <HydrationBoundary prefetch={[
+        {
+          queryKey: ['post-detail', id],
+          queryFn() {
+            return getPost(id);
+          },
+        },
+      ]}
+      >
+        <PostHeader />
         <PostContent id={id} />
         <Comments id={id} />
-      </Suspense>
+      </HydrationBoundary>
     </PageContainer>
   );
 }

@@ -1,4 +1,6 @@
+'use client';
 /* eslint-disable react-dom/no-dangerously-set-innerhtml */
+import { useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import { Calendar } from 'lucide-react';
 import { getPost } from './actions';
@@ -19,8 +21,14 @@ import '~/components/tiptap/node/bookmark-node/bookmark-node.scss';
 // --- Styles ---
 import '~/components/features/editor/simple-editor.scss';
 
-export async function PostContent({ id }: { id: string }) {
-  const data = await getPost(id);
+export function PostContent({ id }: { id: string }) {
+  const { data } = useQuery({
+    queryKey: ['post-detail', id],
+    queryFn() {
+      return getPost(id);
+    },
+  });
+  const createdAt = data?.createdAt ? dayjs(data.createdAt).format('YYYY年MM月DD日') : '-';
   return (
     <div className='post-content '>
       {data?.banner
@@ -39,7 +47,7 @@ export async function PostContent({ id }: { id: string }) {
             创建时间
           </span>
           <span>
-            {dayjs(data?.createdAt).format('YYYY年MM月DD日')}
+            {createdAt}
           </span>
         </p>
       </div>

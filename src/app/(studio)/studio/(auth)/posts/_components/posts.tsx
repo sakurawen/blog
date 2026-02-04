@@ -100,7 +100,7 @@ export function Posts() {
               <ContextMenu key={post.id}>
                 <ContextMenuTrigger
                   render={(
-                    <Link href={`/studio/posts/upsert/${post.id}`} className='block 2xl:max-w-xs'>
+                    <Link href={`/studio/posts/upsert/${post.id}`} className='block 2xl:w-xs'>
                       <PostCard className='h-full' post={post} />
                     </Link>
                   )}
